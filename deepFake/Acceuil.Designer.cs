@@ -30,17 +30,35 @@
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panelInsidePost = new Panel();
-            boutonPagePost = new Button();
             PanelPulication = new Panel();
             ScrollPub = new VScrollBar();
+            boutonPagePost = new Button();
             SuspendLayout();
             // 
             // panelInsidePost
             // 
-            panelInsidePost.Location = new Point(42, 13);
+            panelInsidePost.Location = new Point(160, 24);
             panelInsidePost.Name = "panelInsidePost";
-            panelInsidePost.Size = new Size(10, 10);
+            panelInsidePost.Size = new Size(211, 541);
             panelInsidePost.TabIndex = 0;
+            // 
+            // PanelPulication
+            // 
+            PanelPulication.AutoScroll = true;
+            PanelPulication.Location = new Point(377, 24);
+            PanelPulication.Name = "PanelPulication";
+            PanelPulication.Size = new Size(366, 550);
+            PanelPulication.TabIndex = 2;
+            PanelPulication.Scroll += PanelPulication_Scroll;
+            // 
+            // ScrollPub
+            // 
+            ScrollPub.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ScrollPub.Location = new Point(762, 24);
+            ScrollPub.Name = "ScrollPub";
+            ScrollPub.Size = new Size(19, 550);
+            ScrollPub.TabIndex = 3;
+            ScrollPub.Scroll += ScrollPub_Scroll;
             // 
             // boutonPagePost
             // 
@@ -51,20 +69,6 @@
             boutonPagePost.Text = "Nouvelle publication";
             boutonPagePost.UseVisualStyleBackColor = true;
             boutonPagePost.Click += boutonPagePost_Click;
-            // 
-            // PanelPulication
-            // 
-            PanelPulication.Location = new Point(277, 46);
-            PanelPulication.Name = "PanelPulication";
-            PanelPulication.Size = new Size(633, 550);
-            PanelPulication.TabIndex = 2;
-            // 
-            // ScrollPub
-            // 
-            ScrollPub.Location = new Point(913, 46);
-            ScrollPub.Name = "ScrollPub";
-            ScrollPub.Size = new Size(19, 550);
-            ScrollPub.TabIndex = 3;
             // 
             // Acceuil
             // 
