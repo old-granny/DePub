@@ -16,7 +16,7 @@ namespace deepFake
     {
         const string DATABASENAME = "deepfake";
         const string TABLENAME = "post_data";
-        private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=yourpassword;";
+        private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
         private MySqlConnection conn;
         
         public FileHandler()
