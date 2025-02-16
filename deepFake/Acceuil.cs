@@ -1,51 +1,71 @@
+using System.Drawing.Printing;
+
 namespace deepFake
 {
+    // Section Principale
     public partial class Acceuil : Form
     {
-        private FileHandler file;
-        private PublierPost pagePublierPost;
+        // Form
+        private PublierPost PublierPostPage;
+        private FrontPage FrontPagePage;
+        private Signup SignupPage;
+        
+        // Attribut
+        List<Form> forms = new List<Form>();
+
 
         public Acceuil()
         {
             InitializeComponent();
-            file = new FileHandler();
-            pagePublierPost = new PublierPost(file) { TopLevel = false, TopMost = true };
-            ScrollPub.Value = ScrollPub.Minimum;
-            
+            InstancierAttribut();
+            OnLoadPage();
 
-            PanelPulication.VerticalScroll.Value = ScrollPub.Minimum;
-            List<Panel> panelList = file.getPosts();
-            for (int i = 0; i < panelList.Count; i++)
-            {
-                PanelPulication.Controls.Add(panelList[i]);
-            }
-
-            pagePublierPost.Show();
-            panelInsidePost.Hide();
-
-            Console.WriteLine(PanelPulication.VerticalScroll.Maximum / 2);
-            ScrollPub.Maximum = (PanelPulication.VerticalScroll.Maximum) / 2;
-            PanelPulication.VerticalScroll.Visible = false;
-            PanelPulication.HorizontalScroll.Visible = false;
-        }
-        private void boutonPagePost_Click(object sender, EventArgs e)
-        {
-            panelInsidePost.Show();
-            PanelPulication.Hide();
-            pagePublierPost.FormBorderStyle = FormBorderStyle.None;
-            panelInsidePost.Controls.Add(pagePublierPost);
-            pagePublierPost.Show();
         }
 
-        private void ScrollPub_Scroll(object sender, ScrollEventArgs e)
+        private void OnLoadPage()
         {
-            Console.WriteLine(ScrollPub.Value);
-            PanelPulication.VerticalScroll.Value = ScrollPub.Value;
+            LoadFrontPage();
         }
 
-        private void PanelPulication_Scroll(object sender, ScrollEventArgs e)
+        private void InstancierAttribut()
         {
-            Console.WriteLine(PanelPulication.VerticalScroll.Maximum);
+            PublierPostPage = new PublierPost(this) { TopLevel = false, TopMost = true };
+            FrontPagePage = new FrontPage(this) { TopLevel = false, TopMost = true };
+            SignupPage = new Signup(this) { TopLevel = false, TopMost = true };
+            forms.Add(PublierPostPage);
+            forms.Add(FrontPagePage);
+            forms.Add(SignupPage);
+        }
+
+
+        public void LoadFrontPage()
+        {
+            LoadFormInsidePanel(FrontPagePage);
+            FrontPagePage.OnLoadPage();
+
+        }
+        public void LoadSignUpPage()
+        {
+            LoadFormInsidePanel(SignupPage);
+        }
+        public void LoadPublierPost()
+        {
+            LoadFormInsidePanel(PublierPostPage);
+        }
+
+        private bool LoadFormInsidePanel(Form form)
+        {
+            CloseFormInsidePanel();
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Show();
+            PanelLoadForm.Controls.Add(form);
+            return true;
+        }
+
+        private bool CloseFormInsidePanel()
+        {
+            PanelLoadForm.Controls.Clear();
+            return true;
         }
     }
 }

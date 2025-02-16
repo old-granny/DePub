@@ -1,3 +1,5 @@
+using Org.BouncyCastle.Tls;
+
 namespace deepFake
 {
     internal static class Program
@@ -8,9 +10,17 @@ namespace deepFake
         [STAThread]
         static void Main()
         {
+
             ApplicationConfiguration.Initialize();
             Acceuil pageAcceuil = new Acceuil();
+            SetGlobals();
             Application.Run(pageAcceuil);
+            Globals.AppRunning = false;
+        }
+        static void SetGlobals()
+        {
+            Globals.AppRunning = true;
+            Globals.FlagChanger = true;
         }
         
     }

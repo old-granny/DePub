@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -10,20 +11,68 @@ namespace deepFake
 
 
     
-    internal class ComSQL
+    public class ComPostSQL
     {
+        // Ici devrait etre des variable d'enviroment
         const string DATABASENAME = "deepfake";
         const string TABLENAME = "post_data";
         private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
+        
+        // Attribut
         private MySqlConnection conn;
+        private List<string[]> CurrentContent;
 
 
-        public ComSQL()
+        // Constructor
+        public ComPostSQL()
         {
             if (!connectionDataBase()) {
                 throw new Exception("Erreur de connection");
-            }        
-        
+            }
+            CurrentContent = getTableContent(TABLENAME);
+        }
+
+        public bool contentChange()
+        {
+            bool changed = CurrentContent == getTableContent(TABLENAME);
+            CurrentContent = getTableContent(TABLENAME);
+            return changed;
+        }
+
+        // Ici oubliger d'etre dans post data
+        public bool insertIntoData(string title, string content)
+        {
+            // Methode tres insecure a verifier !!!!!!!!!!!
+
+            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{title}', '{content}');";
+            MySqlCommand query = new MySqlCommand(cmd, conn);
+            query.ExecuteNonQuery();
+
+            return true;
+        }
+
+        public List<string[]> getTableContent(string tableName)
+        {
+            List<string[]> tableContent = new List<string[]>();
+         
+            string cmd = $"SELECT * FROM {tableName};";
+            MySqlCommand query = new MySqlCommand(cmd, conn);
+            MySqlDataReader reader = query.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string[] row = new string[reader.FieldCount];
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    if (reader[i] != null)
+                    {
+                        row[i] = reader[i].ToString();
+                    }
+                }
+                tableContent.Add(row);
+            }
+            reader.Close();
+            return tableContent;
         }
 
         private bool connectionDataBase()

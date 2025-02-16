@@ -29,56 +29,30 @@
         private void InitializeComponent()
         {
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            panelInsidePost = new Panel();
-            PanelPulication = new Panel();
+            PanelLoadForm = new Panel();
             ScrollPub = new VScrollBar();
-            boutonPagePost = new Button();
             SuspendLayout();
             // 
-            // panelInsidePost
+            // PanelLoadForm
             // 
-            panelInsidePost.Location = new Point(160, 24);
-            panelInsidePost.Name = "panelInsidePost";
-            panelInsidePost.Size = new Size(211, 541);
-            panelInsidePost.TabIndex = 0;
-            // 
-            // PanelPulication
-            // 
-            PanelPulication.AutoScroll = true;
-            PanelPulication.Location = new Point(377, 24);
-            PanelPulication.Name = "PanelPulication";
-            PanelPulication.Size = new Size(366, 550);
-            PanelPulication.TabIndex = 2;
-            PanelPulication.Scroll += PanelPulication_Scroll;
+            PanelLoadForm.Location = new Point(12, 12);
+            PanelLoadForm.Name = "PanelLoadForm";
+            PanelLoadForm.Size = new Size(1465, 793);
+            PanelLoadForm.TabIndex = 0;
             // 
             // ScrollPub
             // 
-            ScrollPub.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ScrollPub.Location = new Point(762, 24);
+            ScrollPub.Location = new Point(584, 0);
             ScrollPub.Name = "ScrollPub";
-            ScrollPub.Size = new Size(19, 550);
-            ScrollPub.TabIndex = 3;
-            ScrollPub.Scroll += ScrollPub_Scroll;
-            // 
-            // boutonPagePost
-            // 
-            boutonPagePost.Location = new Point(500, 600);
-            boutonPagePost.Name = "boutonPagePost";
-            boutonPagePost.Size = new Size(200, 30);
-            boutonPagePost.TabIndex = 1;
-            boutonPagePost.Text = "Nouvelle publication";
-            boutonPagePost.UseVisualStyleBackColor = true;
-            boutonPagePost.Click += boutonPagePost_Click;
+            ScrollPub.Size = new Size(17, 550);
+            ScrollPub.TabIndex = 0;
             // 
             // Acceuil
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 700);
-            Controls.Add(ScrollPub);
-            Controls.Add(PanelPulication);
-            Controls.Add(panelInsidePost);
-            Controls.Add(boutonPagePost);
+            ClientSize = new Size(1489, 844);
+            Controls.Add(PanelLoadForm);
             Name = "Acceuil";
             Text = "Form1";
             ResumeLayout(false);
@@ -87,9 +61,7 @@
         #endregion
 
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Panel panelInsidePost;
-        private Button boutonPagePost;
-        private Panel PanelPulication;
+        private Panel PanelLoadForm;
         private VScrollBar ScrollPub;
     }
 }

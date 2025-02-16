@@ -12,10 +12,12 @@ namespace deepFake
 {
     public partial class PublierPost : Form
     {
-        FileHandler handler;
-        public PublierPost(FileHandler handle)
+        private Acceuil Main;
+        private ComPostSQL Handle;
+        public PublierPost(Acceuil acceuil)
         {
-            handler = handle;
+            Main = acceuil;
+            Handle = new ComPostSQL();
             InitializeComponent();
         }
 
@@ -23,8 +25,9 @@ namespace deepFake
         {
             string content = Contenue.Text;
             string title = Titre.Text;
-            handler.insertIntoData(title, content);
+            Handle.insertIntoData(title, content);
 
+            Main.LoadFrontPage();
         }
     }
 }
