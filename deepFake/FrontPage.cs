@@ -51,5 +51,10 @@ namespace deepFake
         {
             Main.LoadPublierPost();
         }
+
+        private void BTNSignin_Click(object sender, EventArgs e)
+        {
+            Main.LoadSignUpPage();
+        }
     }
 }

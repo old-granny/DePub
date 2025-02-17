@@ -10,39 +10,39 @@ namespace deepFake
     internal class ComUserSQL
     {
         // Ici devrait etre des variable d'enviroment
-        const string DATABASENAME = "deepfake";
-        const string TABLENAME = "post_data";
+        const string DATABASENAME = "deepfakeUsers";
+        const string TABLENAME = "users_infos";
         private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
 
         // Attribut
         private MySqlConnection conn;
-        private List<string[]> CurrentContent;
 
         public ComUserSQL()
         {
-
+            connectionDataBase();
+            //createTable();
         }
-
-        public bool contentChange()
-        {
-            bool changed = CurrentContent == getTableContent(TABLENAME);
-            CurrentContent = getTableContent(TABLENAME);
-            return changed;
-        }
-
+        
         // Ici oubliger d'etre dans post data
-        public bool insertIntoData(string title, string content)
+        public bool createNewUser(string username, string name, string prename, string email, string password, string date)
         {
+            // Implementer hashing et tout
             // Methode tres insecure a verifier !!!!!!!!!!!
-
-            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{title}', '{content}');";
+            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{username}', '{name}', '{prename}','{email}','{password}','{date}');";
             MySqlCommand query = new MySqlCommand(cmd, conn);
             query.ExecuteNonQuery();
 
             return true;
         }
 
-        public List<string[]> getTableContent(string tableName)
+        public string getUsername()
+        {
+            List<string[]> tableContent = getTableContent(TABLENAME);
+            return tableContent[0][0];
+        }
+
+
+        private List<string[]> getTableContent(string tableName)
         {
             List<string[]> tableContent = new List<string[]>();
 
@@ -81,7 +81,7 @@ namespace deepFake
             }
         }
 
-        private bool createDeepSeek()
+        private bool createUserDb()
         {
 
             if (createDataBase())
@@ -125,18 +125,21 @@ namespace deepFake
 
         private bool createTable()
         {
-            string query = "CREATE TABLE 'post_data' (" +
-                "'id' int NOT NULL AUTO_INCREMENT," +
-                "'title' varchar(55) DEFAULT NULL," +
-                "'content' varchar(2500) DEFAULT NULL," +
-                "PRIMARY KEY('id')" +
+            string query = $"CREATE TABLE `{TABLENAME}` (" +
+                "`id` int NOT NULL AUTO_INCREMENT," +
+                "`username` varchar(55) DEFAULT NULL," +
+                "`name` varchar(55) DEFAULT NULL," +
+                "`prename` varchar(55) DEFAULT NULL," +
+                "`email` varchar(55) DEFAULT NULL," +
+                "`password` varchar(55) DEFAULT NULL," +
+                "`date` varchar(55) DEFAULT NULL," +
+                "PRIMARY KEY(`id`)" +
                 ");";
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 cmd.ExecuteNonQuery(); // Execute query
             }
             return true;
-
         }
     }
 }

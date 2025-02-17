@@ -10,15 +10,22 @@ using System.Windows.Forms;
 
 namespace deepFake
 {
-    
+
     public partial class Signup : Form
     {
+        private ComUserSQL conn;
         private Acceuil Main;
         public Signup(Acceuil acceuil)
         {
             Main = acceuil;
+            conn = new ComUserSQL();
             InitializeComponent();
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            conn.createNewUser(UsernameTBX.Text, NameTXB.Text, PrenomTXB.Text, emailTXB.Text, passwordTXB.Text, dateTXB.Text);
+            Main.LoadFrontPage();
+        }
     }
 }
