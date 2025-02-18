@@ -31,9 +31,26 @@ namespace deepFake
             FrontPageHandle = new FrontPageLoader();
         }
 
+
+        public void LoadUserInfos(string name, int id)
+        {
+            ProfilTitle.Text = name;
+        }
+
         public void OnLoadPage()
         {
             LoadFrontPage();
+            if (Main.User != null)
+            {
+                LoadUserInfos(Main.User.Username, Main.User.id);
+                panelSignin.Show();
+                panelSign.Hide();
+            }
+            else
+            {
+                panelSignin.Hide();
+                panelSign.Show();
+            }
         }
 
         private void LoadFrontPage()
@@ -54,7 +71,20 @@ namespace deepFake
 
         private void BTNSignin_Click(object sender, EventArgs e)
         {
+            Main.LoadSigningPage();
+        }
+
+        private void BTNSignup_Click(object sender, EventArgs e)
+        {
             Main.LoadSignUpPage();
+        }
+
+        private void SignoutBTN_Click(object sender, EventArgs e)
+        {
+            const string defaut = "Not Sign In";
+            Main.User = null;
+            ProfilTitle.Text = defaut;
+            Main.LoadFrontPage();
         }
     }
 }

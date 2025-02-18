@@ -34,11 +34,12 @@
             UsernameTBX = new TextBox();
             NameTXB = new TextBox();
             PrenomTXB = new TextBox();
+            dateTXB = new TextBox();
+            emailTXB = new TextBox();
+            passwordTXB = new TextBox();
             pictureBox1 = new PictureBox();
             SignupButton = new Button();
-            passwordTXB = new TextBox();
-            emailTXB = new TextBox();
-            dateTXB = new TextBox();
+            GoBackLBL = new Label();
             panel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,11 +47,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(GoBackLBL);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(14, 16);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1520, 880);
+            panel1.Size = new Size(1330, 660);
             panel1.TabIndex = 0;
             // 
             // flowLayoutPanel1
@@ -66,10 +67,9 @@
             flowLayoutPanel1.Controls.Add(pictureBox1);
             flowLayoutPanel1.Controls.Add(SignupButton);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(494, 99);
-            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            flowLayoutPanel1.Location = new Point(432, 74);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(480, 503);
+            flowLayoutPanel1.Size = new Size(420, 377);
             flowLayoutPanel1.TabIndex = 5;
             // 
             // LabelTitre
@@ -77,90 +77,102 @@
             LabelTitre.AutoSize = true;
             LabelTitre.Location = new Point(3, 0);
             LabelTitre.Name = "LabelTitre";
-            LabelTitre.Size = new Size(89, 20);
+            LabelTitre.Size = new Size(72, 15);
             LabelTitre.TabIndex = 1;
             LabelTitre.Text = "SignupForm";
             // 
             // UsernameTBX
             // 
-            UsernameTBX.Location = new Point(3, 24);
-            UsernameTBX.Margin = new Padding(3, 4, 3, 4);
+            UsernameTBX.Location = new Point(3, 18);
             UsernameTBX.Name = "UsernameTBX";
-            UsernameTBX.Size = new Size(466, 27);
+            UsernameTBX.Size = new Size(408, 23);
             UsernameTBX.TabIndex = 0;
             UsernameTBX.Text = "Username";
             // 
             // NameTXB
             // 
-            NameTXB.Location = new Point(3, 59);
-            NameTXB.Margin = new Padding(3, 4, 3, 4);
+            NameTXB.Location = new Point(3, 47);
             NameTXB.Name = "NameTXB";
-            NameTXB.Size = new Size(466, 27);
+            NameTXB.Size = new Size(408, 23);
             NameTXB.TabIndex = 2;
             NameTXB.Text = "Name";
             // 
             // PrenomTXB
             // 
-            PrenomTXB.Location = new Point(3, 94);
-            PrenomTXB.Margin = new Padding(3, 4, 3, 4);
+            PrenomTXB.Location = new Point(3, 76);
             PrenomTXB.Name = "PrenomTXB";
-            PrenomTXB.Size = new Size(465, 27);
+            PrenomTXB.Size = new Size(407, 23);
             PrenomTXB.TabIndex = 3;
             PrenomTXB.Text = "Prenom";
             // 
+            // dateTXB
+            // 
+            dateTXB.Location = new Point(3, 104);
+            dateTXB.Margin = new Padding(3, 2, 3, 2);
+            dateTXB.Name = "dateTXB";
+            dateTXB.Size = new Size(407, 23);
+            dateTXB.TabIndex = 8;
+            dateTXB.Text = "Date";
+            // 
+            // emailTXB
+            // 
+            emailTXB.Location = new Point(3, 131);
+            emailTXB.Margin = new Padding(3, 2, 3, 2);
+            emailTXB.Name = "emailTXB";
+            emailTXB.Size = new Size(407, 23);
+            emailTXB.TabIndex = 7;
+            emailTXB.Text = "Email";
+            // 
+            // passwordTXB
+            // 
+            passwordTXB.Location = new Point(3, 158);
+            passwordTXB.Margin = new Padding(3, 2, 3, 2);
+            passwordTXB.Name = "passwordTXB";
+            passwordTXB.Size = new Size(408, 23);
+            passwordTXB.TabIndex = 6;
+            passwordTXB.Text = "Password";
+            // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(3, 228);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(3, 186);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(466, 129);
+            pictureBox1.Size = new Size(408, 97);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // SignupButton
             // 
-            SignupButton.Location = new Point(3, 364);
+            SignupButton.Location = new Point(3, 288);
+            SignupButton.Margin = new Padding(3, 2, 3, 2);
             SignupButton.Name = "SignupButton";
-            SignupButton.Size = new Size(94, 29);
+            SignupButton.Size = new Size(82, 22);
             SignupButton.TabIndex = 5;
             SignupButton.Text = "Signup";
             SignupButton.UseVisualStyleBackColor = true;
             SignupButton.Click += button1_Click;
             // 
-            // passwordTXB
+            // GoBackLBL
             // 
-            passwordTXB.Location = new Point(3, 194);
-            passwordTXB.Name = "passwordTXB";
-            passwordTXB.Size = new Size(466, 27);
-            passwordTXB.TabIndex = 6;
-            passwordTXB.Text = "Password";
-            // 
-            // emailTXB
-            // 
-            emailTXB.Location = new Point(3, 161);
-            emailTXB.Name = "emailTXB";
-            emailTXB.Size = new Size(465, 27);
-            emailTXB.TabIndex = 7;
-            emailTXB.Text = "Email";
-            // 
-            // dateTXB
-            // 
-            dateTXB.Location = new Point(3, 128);
-            dateTXB.Name = "dateTXB";
-            dateTXB.Size = new Size(465, 27);
-            dateTXB.TabIndex = 8;
-            dateTXB.Text = "Date";
+            GoBackLBL.AutoSize = true;
+            GoBackLBL.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            GoBackLBL.ForeColor = Color.Blue;
+            GoBackLBL.Location = new Point(606, 471);
+            GoBackLBL.Name = "GoBackLBL";
+            GoBackLBL.Size = new Size(66, 21);
+            GoBackLBL.TabIndex = 6;
+            GoBackLBL.Text = "Go Back";
+            GoBackLBL.Click += GoBackLBL_Click;
             // 
             // Signup
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1585, 973);
+            ClientSize = new Size(1387, 730);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Signup";
             Text = "Signup";
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -180,5 +192,6 @@
         private TextBox emailTXB;
         private TextBox passwordTXB;
         private TextBox dateTXB;
+        private Label GoBackLBL;
     }
 }

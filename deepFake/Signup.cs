@@ -27,5 +27,10 @@ namespace deepFake
             conn.createNewUser(UsernameTBX.Text, NameTXB.Text, PrenomTXB.Text, emailTXB.Text, passwordTXB.Text, dateTXB.Text);
             Main.LoadFrontPage();
         }
+
+        private void GoBackLBL_Click(object sender, EventArgs e)
+        {
+            Main.LoadFrontPage();
+        }
     }
 }

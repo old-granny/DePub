@@ -178,3 +178,4 @@ C:\Users\-_-\Documents\ProjetDeepFake\deepFake\deepFake\obj\Debug\net8.0-windows
 C:\Users\-_-\Documents\ProjetDeepFake\deepFake\deepFake\obj\Debug\net8.0-windows\deepFake.FrontPage.resources
 C:\Users\raphb\Documents\DeepFake\deepFake\obj\Debug\net8.0-windows\deepFake.FrontPage.resources
 C:\Users\raphb\Documents\DeepFake\deepFake\obj\Debug\net8.0-windows\deepFake.Signup.resources
+C:\Users\-_-\Documents\ProjetDeepFake\deepFake\deepFake\obj\Debug\net8.0-windows\deepFake.Signing.resources

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,13 @@ namespace deepFake
         const string DATABASENAME = "deepfakeUsers";
         const string TABLENAME = "users_infos";
         private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
-
+        private string ConnectionStringCreateDatabse = $"Server=localhost;Port=3306;User Id=root;Password=wx2413#10MIA?;";
         // Attribut
         private MySqlConnection conn;
 
         public ComUserSQL()
         {
             connectionDataBase();
-            //createTable();
         }
         
         // Ici oubliger d'etre dans post data
@@ -34,6 +34,46 @@ namespace deepFake
 
             return true;
         }
+
+        public bool CheckUser(string username, string password)
+        {
+            bool validUser = false;  // Default to false
+            List<string[]> tableContent = new List<string[]>();
+
+
+            string cmd = $"SELECT COUNT(*) FROM {TABLENAME} WHERE username = @username AND password = @password";
+
+            using (MySqlCommand query = new MySqlCommand(cmd, conn))
+            {
+                // Use parameterized queries to prevent SQL injection
+                query.Parameters.AddWithValue("@username", username);
+                query.Parameters.AddWithValue("@password", password);
+
+
+                MySqlDataReader reader = query.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string[] row = new string[reader.FieldCount];
+                    for (int i = 0; i < reader.FieldCount; i++)
+                    {
+                        if (reader[i] != null)
+                        {
+                            row[i] = reader[i].ToString();
+                        }
+                    }
+                    tableContent.Add(row);
+                }
+                reader.Close();
+            }
+            int id = Int32.Parse(tableContent[0][0]);
+            if (id > 0) {
+                validUser = true;   
+            }
+
+            return validUser;
+        }
+
 
         public string getUsername()
         {

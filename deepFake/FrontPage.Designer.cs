@@ -33,25 +33,29 @@
             BTNSignin = new Button();
             BTNSignup = new Button();
             panel1 = new Panel();
-            label1 = new Label();
+            panelSignin = new Panel();
+            SignoutBTN = new Button();
+            Username = new Label();
+            panelSign = new Panel();
+            ProfilTitle = new Label();
             panel1.SuspendLayout();
+            panelSignin.SuspendLayout();
+            panelSign.SuspendLayout();
             SuspendLayout();
             // 
             // PanelContenuePublication
             // 
             PanelContenuePublication.AutoScroll = true;
-            PanelContenuePublication.Location = new Point(350, 93);
-            PanelContenuePublication.Margin = new Padding(3, 4, 3, 4);
+            PanelContenuePublication.Location = new Point(306, 70);
             PanelContenuePublication.Name = "PanelContenuePublication";
-            PanelContenuePublication.Size = new Size(1203, 892);
+            PanelContenuePublication.Size = new Size(1053, 669);
             PanelContenuePublication.TabIndex = 3;
             // 
             // boutonPagePost
             // 
-            boutonPagePost.Location = new Point(3, 848);
-            boutonPagePost.Margin = new Padding(3, 4, 3, 4);
+            boutonPagePost.Location = new Point(3, 447);
             boutonPagePost.Name = "boutonPagePost";
-            boutonPagePost.Size = new Size(240, 40);
+            boutonPagePost.Size = new Size(201, 30);
             boutonPagePost.TabIndex = 4;
             boutonPagePost.Text = "Nouvelle publication";
             boutonPagePost.UseVisualStyleBackColor = true;
@@ -59,10 +63,9 @@
             // 
             // BTNSignin
             // 
-            BTNSignin.Location = new Point(62, 279);
-            BTNSignin.Margin = new Padding(3, 4, 3, 4);
+            BTNSignin.Location = new Point(51, 3);
             BTNSignin.Name = "BTNSignin";
-            BTNSignin.Size = new Size(114, 31);
+            BTNSignin.Size = new Size(100, 23);
             BTNSignin.TabIndex = 1;
             BTNSignin.Text = "Signing";
             BTNSignin.UseVisualStyleBackColor = true;
@@ -70,47 +73,85 @@
             // 
             // BTNSignup
             // 
-            BTNSignup.Location = new Point(62, 317);
-            BTNSignup.Margin = new Padding(3, 4, 3, 4);
+            BTNSignup.Location = new Point(51, 32);
             BTNSignup.Name = "BTNSignup";
-            BTNSignup.Size = new Size(114, 31);
+            BTNSignup.Size = new Size(100, 23);
             BTNSignup.TabIndex = 6;
             BTNSignup.Text = "SignUp";
             BTNSignup.UseVisualStyleBackColor = true;
+            BTNSignup.Click += BTNSignup_Click;
             // 
             // panel1
             // 
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(boutonPagePost);
-            panel1.Controls.Add(BTNSignup);
-            panel1.Controls.Add(BTNSignin);
-            panel1.Location = new Point(75, 93);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Controls.Add(panelSignin);
+            panel1.Controls.Add(panelSign);
+            panel1.Controls.Add(ProfilTitle);
+            panel1.Location = new Point(66, 70);
             panel1.Name = "panel1";
-            panel1.Size = new Size(247, 892);
+            panel1.Size = new Size(216, 669);
             panel1.TabIndex = 0;
             // 
-            // label1
+            // panelSignin
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(81, 59);
-            label1.Name = "label1";
-            label1.Size = new Size(83, 20);
-            label1.TabIndex = 7;
-            label1.Text = "Not Sign in";
+            panelSignin.Controls.Add(SignoutBTN);
+            panelSignin.Controls.Add(Username);
+            panelSignin.Controls.Add(boutonPagePost);
+            panelSignin.Location = new Point(6, 62);
+            panelSignin.Name = "panelSignin";
+            panelSignin.Size = new Size(207, 541);
+            panelSignin.TabIndex = 8;
+            // 
+            // SignoutBTN
+            // 
+            SignoutBTN.Location = new Point(51, 515);
+            SignoutBTN.Name = "SignoutBTN";
+            SignoutBTN.Size = new Size(100, 23);
+            SignoutBTN.TabIndex = 6;
+            SignoutBTN.Text = "Sign out";
+            SignoutBTN.UseVisualStyleBackColor = true;
+            SignoutBTN.Click += SignoutBTN_Click;
+            // 
+            // Username
+            // 
+            Username.AutoSize = true;
+            Username.Location = new Point(80, 17);
+            Username.Name = "Username";
+            Username.Size = new Size(38, 15);
+            Username.TabIndex = 5;
+            Username.Text = "label1";
+            // 
+            // panelSign
+            // 
+            panelSign.Controls.Add(BTNSignin);
+            panelSign.Controls.Add(BTNSignup);
+            panelSign.Location = new Point(3, 606);
+            panelSign.Name = "panelSign";
+            panelSign.Size = new Size(210, 60);
+            panelSign.TabIndex = 0;
+            // 
+            // ProfilTitle
+            // 
+            ProfilTitle.AutoSize = true;
+            ProfilTitle.Location = new Point(72, 22);
+            ProfilTitle.Name = "ProfilTitle";
+            ProfilTitle.Size = new Size(66, 15);
+            ProfilTitle.TabIndex = 7;
+            ProfilTitle.Text = "Not Sign in";
             // 
             // FrontPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1567, 1055);
+            ClientSize = new Size(1371, 791);
             Controls.Add(panel1);
             Controls.Add(PanelContenuePublication);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FrontPage";
             Text = "FrontPage";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panelSignin.ResumeLayout(false);
+            panelSignin.PerformLayout();
+            panelSign.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -123,6 +164,10 @@
         private Button BTNSignin;
         private Button BTNSignup;
         private Panel panel1;
-        private Label label1;
+        private Label ProfilTitle;
+        private Panel panelSignin;
+        private Panel panelSign;
+        private Label Username;
+        private Button SignoutBTN;
     }
 }
