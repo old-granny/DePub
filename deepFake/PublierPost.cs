@@ -14,6 +14,7 @@ namespace deepFake
     public partial class PublierPost : Form
     {
         private List<String> AbsoluteImagePath = new List<String>();
+        private List<PictureBox> PictureBXList = new List<PictureBox>();
         private Acceuil Main;
         private ComPostSQL Handle;
         public PublierPost(Acceuil acceuil)
@@ -21,6 +22,19 @@ namespace deepFake
             Main = acceuil;
             Handle = new ComPostSQL();
             InitializeComponent();
+        }
+
+
+        private PictureBox createPictureBoxe(int pos, int width, int height)
+        {
+            PictureBox pic = new PictureBox();
+            pic.SizeMode = PictureBoxSizeMode.Zoom;
+            pic.Size = new Size(300, 300);
+            pic.Location = new Point(pos * 3, pos*3);
+            pic.Name = $"pict{pos}";
+            pic.TabIndex = 0;
+
+            return pic;
         }
 
         private void boutonPost_Click(object sender, EventArgs e)
@@ -56,15 +70,17 @@ namespace deepFake
             int pos = 0;
             foreach (string fileName in AbsoluteImagePath)
             {
-                Label label2 = new Label();
                 Image img = Image.FromFile(fileName);
-                label2.AutoSize = true;
-                label2.Name = $"label{pos}";
-                label2.Size = new Size(img.Width, img.Height);
-                label2.TabIndex = 1;
-                label2.Image = img;
-                flowLayoutPanel1.Controls.Add(label2);
-                pos +=1;
+                PictureBox pan = createPictureBoxe(pos, img.Width, img.Height);
+                pan.Image = img;
+                if (!PictureBXList.Contains(pan)) {
+                    PictureBXList.Add(pan);
+                }
+                pos++;
+            }
+            foreach (PictureBox pan in PictureBXList)
+            {
+                flowLayoutPanel1.Controls.Add(pan);
             }
         }
         private void CancelBTN_Click(object sender, EventArgs e)
