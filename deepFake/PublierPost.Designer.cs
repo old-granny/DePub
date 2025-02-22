@@ -29,18 +29,22 @@
         private void InitializeComponent()
         {
             panelContenuePost = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            CancelBTN = new Button();
             boutonPost = new Button();
             Titre = new TextBox();
             Contenue = new TextBox();
+            AddImageLBL = new Label();
             panel1 = new Panel();
-            button1 = new Button();
             panelContenuePost.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panelContenuePost
             // 
-            panelContenuePost.Controls.Add(button1);
+            panelContenuePost.BorderStyle = BorderStyle.FixedSingle;
+            panelContenuePost.Controls.Add(flowLayoutPanel1);
+            panelContenuePost.Controls.Add(CancelBTN);
             panelContenuePost.Controls.Add(boutonPost);
             panelContenuePost.Controls.Add(Titre);
             panelContenuePost.Controls.Add(Contenue);
@@ -48,6 +52,23 @@
             panelContenuePost.Name = "panelContenuePost";
             panelContenuePost.Size = new Size(608, 505);
             panelContenuePost.TabIndex = 4;
+            // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.Location = new Point(296, 3);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(307, 444);
+            flowLayoutPanel1.TabIndex = 5;
+            // 
+            // CancelBTN
+            // 
+            CancelBTN.Location = new Point(293, 479);
+            CancelBTN.Name = "CancelBTN";
+            CancelBTN.Size = new Size(312, 23);
+            CancelBTN.TabIndex = 3;
+            CancelBTN.Text = "Cancel";
+            CancelBTN.UseVisualStyleBackColor = true;
+            CancelBTN.Click += CancelBTN_Click;
             // 
             // boutonPost
             // 
@@ -61,7 +82,7 @@
             // 
             // Titre
             // 
-            Titre.Location = new Point(3, 32);
+            Titre.Location = new Point(3, 3);
             Titre.Name = "Titre";
             Titre.Size = new Size(287, 23);
             Titre.TabIndex = 1;
@@ -69,29 +90,32 @@
             // 
             // Contenue
             // 
-            Contenue.Location = new Point(3, 61);
+            Contenue.Location = new Point(3, 32);
             Contenue.Multiline = true;
             Contenue.Name = "Contenue";
-            Contenue.Size = new Size(287, 441);
+            Contenue.Size = new Size(287, 470);
             Contenue.TabIndex = 0;
             Contenue.Text = "Contenue";
             // 
+            // AddImageLBL
+            // 
+            AddImageLBL.AutoSize = true;
+            AddImageLBL.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            AddImageLBL.Location = new Point(745, 475);
+            AddImageLBL.Name = "AddImageLBL";
+            AddImageLBL.Size = new Size(83, 20);
+            AddImageLBL.TabIndex = 4;
+            AddImageLBL.Text = "Add Image";
+            AddImageLBL.Click += label1_Click;
+            // 
             // panel1
             // 
+            panel1.Controls.Add(AddImageLBL);
             panel1.Controls.Add(panelContenuePost);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(1176, 676);
             panel1.TabIndex = 5;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(293, 479);
-            button1.Name = "button1";
-            button1.Size = new Size(312, 23);
-            button1.TabIndex = 3;
-            button1.Text = "Cancel";
-            button1.UseVisualStyleBackColor = true;
             // 
             // PublierPost
             // 
@@ -104,6 +128,7 @@
             panelContenuePost.ResumeLayout(false);
             panelContenuePost.PerformLayout();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -114,6 +139,8 @@
         private TextBox Titre;
         private TextBox Contenue;
         private Panel panel1;
-        private Button button1;
+        private Button CancelBTN;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Label AddImageLBL;
     }
 }
