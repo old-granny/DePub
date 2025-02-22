@@ -10,6 +10,9 @@
     <Compile Update="PublierPost.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SandBoxe.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Signing.cs">
       <SubType>Form</SubType>
     </Compile>

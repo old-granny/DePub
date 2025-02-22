@@ -70,6 +70,7 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.Controls.Add(pictureBox1);
             flowLayoutPanel1.Location = new Point(422, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
