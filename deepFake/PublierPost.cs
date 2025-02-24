@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,8 +17,14 @@ namespace deepFake
     {
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
-        private List<Image> ListImagesEnvoyer = new List<Image>();
         
+        
+        private List<Image> ListImagesEnvoyer = new List<Image>();
+
+        private List<Panel> ListPanelsActive = new List<Panel>();
+        private List<Label> ListLabelsActive = new List<Label>();
+
+
         private Acceuil Main;
         private ComPostSQL Handle;
         public PublierPost(Acceuil acceuil)
@@ -43,7 +50,7 @@ namespace deepFake
             label.AutoSize = true;
             label.BorderStyle = BorderStyle.FixedSingle;
             label.Location = new Point(457, 0);
-            label.Name = $"label{pos}";
+            label.Name = filename + pos.ToString();
             label.Size = new Size(20, 22);
             label.TabIndex = 1;
             label.Text = "X";
@@ -56,6 +63,8 @@ namespace deepFake
             panaelImage.TabIndex = 0;
 
             label.Click += LabelDeleteClick;
+            ListLabelsActive.Add(label);
+            ListPanelsActive.Add(panaelImage);
 
             return panaelImage;
         }
@@ -104,8 +113,9 @@ namespace deepFake
             int pos = 0;
             foreach (string fileName in AbsoluteImagePath)
             {
-                if (!ListImageDejaFlow.Contains(fileName)) { 
-                    ListImageDejaFlow.Add(fileName);
+                string formatedFileName = fileName + pos.ToString();
+                if (!ListImageDejaFlow.Contains(formatedFileName)) { 
+                    ListImageDejaFlow.Add(formatedFileName);
                     Panel pan = CreatePanaelImage(pos, fileName);
                     flowLayoutPanel1.Controls.Add(pan);
                     pos += 1;
@@ -122,8 +132,15 @@ namespace deepFake
             Label clickedLabel = sender as Label;
             if (clickedLabel != null)
             {
-                string labelName = clickedLabel.Name;
-                Console.WriteLine($"You clicked: {labelName}");
+                int position = ListLabelsActive.IndexOf(clickedLabel);
+                if(position != -1)
+                {
+                    ListLabelsActive.RemoveAt(position);
+                    flowLayoutPanel1.Controls.Remove(ListPanelsActive[position]);
+                    ListPanelsActive[position].Dispose();
+                    ListPanelsActive.RemoveAt(position);
+                    ListImageDejaFlow.Remove(clickedLabel.Name);
+                }   
             }
         }
     }

@@ -183,3 +183,4 @@ C:\Users\-_-\Documents\ProjetDeepFake\deepFake\deepFake\obj\Debug\net8.0-windows
 C:\Users\raphb\Documents\DeepFake\deepFake\obj\Debug\net8.0-windows\deepFake.Properties.Resources.resources
 C:\Users\raphb\Documents\DeepFake\deepFake\obj\Debug\net8.0-windows\deepFake.Signing.resources
 C:\Users\raphb\Documents\DeepFake\deepFake\obj\Debug\net8.0-windows\deepFake.SandBoxe.resources
+C:\Users\-_-\Documents\ProjetDeepFake\deepFake\deepFake\obj\Debug\net8.0-windows\deepFake.SandBoxe.resources
