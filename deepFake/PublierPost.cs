@@ -9,6 +9,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using Org.BouncyCastle.Crypto.Parameters;
 
 namespace deepFake
@@ -20,13 +21,13 @@ namespace deepFake
         
         
         private List<Image> ListImagesEnvoyer = new List<Image>();
-
         private List<Panel> ListPanelsActive = new List<Panel>();
-        private List<Label> ListLabelsActive = new List<Label>();
+        private int Pos = 0;
 
-
+        //
         private Acceuil Main;
         private ComPostSQL Handle;
+       
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
@@ -34,11 +35,11 @@ namespace deepFake
             InitializeComponent();
         }
 
-        private Panel CreatePanaelImage(int pos, string filename)
+        private Panel CreatePanaelImage(string filename)
         {
             Panel panaelImage = new Panel();
             Label label = new Label();
-            PictureBox pic = createPictureBoxe(pos, filename);
+            PictureBox pic = createPictureBoxe(filename);
             // 
             // pictureBox1
             // 
@@ -50,7 +51,7 @@ namespace deepFake
             label.AutoSize = true;
             label.BorderStyle = BorderStyle.FixedSingle;
             label.Location = new Point(457, 0);
-            label.Name = filename + pos.ToString();
+            label.Name = filename + Pos.ToString();
             label.Size = new Size(20, 22);
             label.TabIndex = 1;
             label.Text = "X";
@@ -58,27 +59,29 @@ namespace deepFake
             panaelImage.Controls.Add(label);
             panaelImage.Controls.Add(pic);
             panaelImage.Location = new Point(12, 12);
-            panaelImage.Name = "panel1";
+            panaelImage.Name = $"panel{Pos}";
             panaelImage.Size = new Size(477, 276);
             panaelImage.TabIndex = 0;
 
             label.Click += LabelDeleteClick;
-            ListLabelsActive.Add(label);
+
             ListPanelsActive.Add(panaelImage);
 
+            Pos += 1;
             return panaelImage;
         }
 
-        private PictureBox createPictureBoxe(int pos, string filename)
+        private PictureBox createPictureBoxe(string filename)
         {
             PictureBox pic = new PictureBox();
             Image img = Image.FromFile(filename);
             pic.SizeMode = PictureBoxSizeMode.Zoom;
             pic.Size = new Size(300, 300);
-            pic.Name = $"pict{pos}";
+            pic.Name = $"pict{Pos}";
             pic.TabIndex = 0;
             pic.Image = img;
-
+            ListImagesEnvoyer.Add(img);
+            
             return pic;
         }
 
@@ -103,24 +106,16 @@ namespace deepFake
                 foreach (string fileName in ofd.FileNames)
                 {
                     AbsoluteImagePath.Add(fileName);
+                    UpdateLabelimage(fileName);
                 }
-                UpdateLabelimage();
+                
             }
         }
 
-        private void UpdateLabelimage()
+        private void UpdateLabelimage(string filename)
         {
-            int pos = 0;
-            foreach (string fileName in AbsoluteImagePath)
-            {
-                string formatedFileName = fileName + pos.ToString();
-                if (!ListImageDejaFlow.Contains(formatedFileName)) { 
-                    ListImageDejaFlow.Add(formatedFileName);
-                    Panel pan = CreatePanaelImage(pos, fileName);
-                    flowLayoutPanel1.Controls.Add(pan);
-                    pos += 1;
-                }
-            }
+            Panel pan = CreatePanaelImage(filename);
+            flowLayoutPanel1.Controls.Add(pan);
         }
         private void CancelBTN_Click(object sender, EventArgs e)
         {
@@ -130,17 +125,12 @@ namespace deepFake
         private void LabelDeleteClick(object sender, EventArgs e)
         {
             Label clickedLabel = sender as Label;
-            if (clickedLabel != null)
+            Panel parent = clickedLabel.Parent as Panel;
+            if (parent != null)
             {
-                int position = ListLabelsActive.IndexOf(clickedLabel);
-                if(position != -1)
-                {
-                    ListLabelsActive.RemoveAt(position);
-                    flowLayoutPanel1.Controls.Remove(ListPanelsActive[position]);
-                    ListPanelsActive[position].Dispose();
-                    ListPanelsActive.RemoveAt(position);
-                    ListImageDejaFlow.Remove(clickedLabel.Name);
-                }   
+                flowLayoutPanel1.Controls.Remove(parent);
+                parent.Dispose();
+                ListPanelsActive.Remove(parent);
             }
         }
     }
