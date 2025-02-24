@@ -16,7 +16,7 @@ namespace deepFake
         // Ici devrait etre des variable d'enviroment
         const string DATABASENAME = "deepfake";
         const string TABLENAME = "post_data";
-        private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
+        private string ConnectionString = $"Server=127.0.0.1;Port=3306;Database = {DATABASENAME};User Id=root;Password=;";
         
         // Attribut
         private MySqlConnection conn;
@@ -26,10 +26,14 @@ namespace deepFake
         // Constructor
         public ComPostSQL()
         {
+            
             if (!connectionDataBase()) {
                 throw new Exception("Erreur de connection");
             }
+            
             CurrentContent = getTableContent(TABLENAME);
+            
+            //createTable();
         }
 
         public bool contentChange()
@@ -40,11 +44,11 @@ namespace deepFake
         }
 
         // Ici oubliger d'etre dans post data
-        public bool insertIntoData(string title, string content)
+        public bool insertIntoData(string title, string content, byte[] img0, byte[] img1, byte[] img2)
         {
             // Methode tres insecure a verifier !!!!!!!!!!!
 
-            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{title}', '{content}');";
+            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{title}', '{content}', '{img0}', '{img1}', '{img2}');";
             MySqlCommand query = new MySqlCommand(cmd, conn);
             query.ExecuteNonQuery();
 
@@ -134,6 +138,8 @@ namespace deepFake
 
         private bool createTable()
         {
+            // CREATE TABLE post_data (id int NOT NULL AUTO_INCREMENT, title varchar(55) DEFAULT NULL, content varchar(2500) DEFAULT NULL, PRIMARY KEY (id));
+
             string query = "CREATE TABLE 'post_data' (" +
                 "'id' int NOT NULL AUTO_INCREMENT," +
                 "'title' varchar(55) DEFAULT NULL," +

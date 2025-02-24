@@ -13,7 +13,7 @@ namespace deepFake
         // Ici devrait etre des variable d'enviroment
         const string DATABASENAME = "deepfakeUsers";
         const string TABLENAME = "users_infos";
-        private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=wx2413#10MIA?;";
+        private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=;";
         private string ConnectionStringCreateDatabse = $"Server=localhost;Port=3306;User Id=root;Password=wx2413#10MIA?;";
         // Attribut
         private MySqlConnection conn;
@@ -21,6 +21,7 @@ namespace deepFake
         public ComUserSQL()
         {
             connectionDataBase();
+            //createTable();
         }
         
         // Ici oubliger d'etre dans post data
@@ -165,6 +166,8 @@ namespace deepFake
 
         private bool createTable()
         {
+            //CREATE TABLE `TABLENAME` (`id` INT NOT NULL AUTO_INCREMENT, `username` VARCHAR(55) DEFAULT NULL, `name` VARCHAR(55) DEFAULT NULL, `prename` VARCHAR(55) DEFAULT NULL, `email` VARCHAR(55) DEFAULT NULL, `password` VARCHAR(55) DEFAULT NULL, `date` VARCHAR(55) DEFAULT NULL, PRIMARY KEY (`id`));
+
             string query = $"CREATE TABLE `{TABLENAME}` (" +
                 "`id` int NOT NULL AUTO_INCREMENT," +
                 "`username` varchar(55) DEFAULT NULL," +

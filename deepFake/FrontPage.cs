@@ -26,7 +26,9 @@ namespace deepFake
             OnLoadPage();
         }
 
+
         private void LoadInstance()
+        // Fonction qui vas servir a instancier les instances
         {
             FrontPageHandle = new FrontPageLoader();
         }
@@ -37,6 +39,9 @@ namespace deepFake
             ProfilTitle.Text = name;
         }
 
+        /// <summary>  
+        /// TODO  
+        /// </summary>
         public void OnLoadPage()
         {
             LoadFrontPage();

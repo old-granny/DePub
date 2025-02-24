@@ -19,9 +19,10 @@ namespace deepFake
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
         
-        
+        private Dictionary<Panel, byte[]> PanelImageDict = new Dictionary<Panel, byte[]>();
         private List<Image> ListImagesEnvoyer = new List<Image>();
         private List<Panel> ListPanelsActive = new List<Panel>();
+
         private int Pos = 0;
 
         //
@@ -39,7 +40,8 @@ namespace deepFake
         {
             Panel panaelImage = new Panel();
             Label label = new Label();
-            PictureBox pic = createPictureBoxe(filename);
+            Image img = Image.FromFile(filename);
+            PictureBox pic = createPictureBoxe(img);
             // 
             // pictureBox1
             // 
@@ -65,16 +67,14 @@ namespace deepFake
 
             label.Click += LabelDeleteClick;
 
-            ListPanelsActive.Add(panaelImage);
-
+            PanelImageDict.Add(panaelImage, File.ReadAllBytes(filename));
             Pos += 1;
             return panaelImage;
         }
 
-        private PictureBox createPictureBoxe(string filename)
+        private PictureBox createPictureBoxe(Image img)
         {
             PictureBox pic = new PictureBox();
-            Image img = Image.FromFile(filename);
             pic.SizeMode = PictureBoxSizeMode.Zoom;
             pic.Size = new Size(300, 300);
             pic.Name = $"pict{Pos}";
@@ -87,14 +87,37 @@ namespace deepFake
 
         private void boutonPost_Click(object sender, EventArgs e)
         {
+            // manque de verification
+
             string content = Contenue.Text;
             string title = Titre.Text;
-            Handle.insertIntoData(title, content);
+
+            byte[] img1 = null;
+            byte[] img2 = null;
+            byte[] img3 = null;
+            if (PanelImageDict.Count >= 1)
+            {
+                img1 = PanelImageDict.ElementAt(0).Value;
+            }
+            if(PanelImageDict.Count >= 2)
+            {
+                img2 = PanelImageDict.ElementAt(1).Value;
+            }
+            if (PanelImageDict.Count >= 3)
+            {
+                img3 = PanelImageDict.ElementAt(2).Value;
+            }
+            Handle.insertIntoData(title, content, img1, img2, img3);
             Main.LoadFrontPage();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
+            if (Pos > 2) {
+                // Checker exede le nombre d'image permisse
+                Console.WriteLine("Nb image exceed");
+                return;
+            }         
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.CheckFileExists = true;
             ofd.AddExtension = true;
@@ -105,8 +128,16 @@ namespace deepFake
             {
                 foreach (string fileName in ofd.FileNames)
                 {
-                    AbsoluteImagePath.Add(fileName);
-                    UpdateLabelimage(fileName);
+                    if (Pos > 2)
+                    {
+                        Console.WriteLine("Nb image exceed");
+                    }
+                    else
+                    {
+                        AbsoluteImagePath.Add(fileName);
+                        UpdateLabelimage(fileName);
+
+                    }
                 }
                 
             }
@@ -130,7 +161,8 @@ namespace deepFake
             {
                 flowLayoutPanel1.Controls.Remove(parent);
                 parent.Dispose();
-                ListPanelsActive.Remove(parent);
+                PanelImageDict.Remove(parent);
+                Pos -= 1;
             }
         }
     }
