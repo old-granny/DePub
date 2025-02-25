@@ -46,14 +46,22 @@ namespace deepFake
         // Ici oubliger d'etre dans post data
         public bool insertIntoData(string title, string content, byte[] img0, byte[] img1, byte[] img2)
         {
-            // Methode tres insecure a verifier !!!!!!!!!!!
+            string cmd = $"INSERT INTO {TABLENAME} (title, content, image1, image2, image3) VALUES (@title, @content, @img0, @img1, @img2)";
 
-            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{title}', '{content}', '{img0}', '{img1}', '{img2}');";
-            MySqlCommand query = new MySqlCommand(cmd, conn);
-            query.ExecuteNonQuery();
+            using (MySqlCommand query = new MySqlCommand(cmd, conn))
+            {
+                query.Parameters.AddWithValue("@title", title);
+                query.Parameters.AddWithValue("@content", content);
+                query.Parameters.Add("@img0", MySqlDbType.Blob).Value = (img0 ?? new byte[0]);
+                query.Parameters.Add("@img1", MySqlDbType.Blob).Value = (img1 ?? new byte[0]);
+                query.Parameters.Add("@img2", MySqlDbType.Blob).Value = (img2 ?? new byte[0]);
+
+                query.ExecuteNonQuery();
+            }
 
             return true;
         }
+
 
         public List<string[]> getTableContent(string tableName)
         {

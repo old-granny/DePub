@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\comusersql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\comusersql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -120,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FrontPage.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs",
               "RelativeDocumentMoniker": "deepFake\\FrontPage.cs",
@@ -140,7 +140,7 @@
               "RelativeDocumentMoniker": "deepFake\\PublierPost.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\PublierPost.cs",
               "RelativeToolTip": "deepFake\\PublierPost.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAkwHAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAwF8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.611Z",
               "IsPinned": true,
@@ -213,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ComUserSQL.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\ComUserSQL.cs",
               "RelativeDocumentMoniker": "deepFake\\ComUserSQL.cs",
@@ -221,8 +221,7 @@
               "RelativeToolTip": "deepFake\\ComUserSQL.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T18:40:10.618Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T18:40:10.618Z"
             },
             {
               "$type": "Document",
@@ -232,7 +231,7 @@
               "RelativeDocumentMoniker": "deepFake\\ComPostSQL.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\ComPostSQL.cs",
               "RelativeToolTip": "deepFake\\ComPostSQL.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAQwDcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.632Z",
               "EditorCaption": ""
@@ -345,7 +344,7 @@
         "Y": 0,
         "Width": 778,
         "Height": 821,
-        "WindowState": 2
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
@@ -354,7 +353,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "SandBoxe.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\SandBoxe.cs",
               "RelativeDocumentMoniker": "deepFake\\SandBoxe.cs",
