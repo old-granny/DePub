@@ -40,7 +40,9 @@ namespace deepFake
         {
             Panel panaelImage = new Panel();
             Label label = new Label();
-            Image img = Image.FromFile(filename);
+            byte[] img_bytes = File.ReadAllBytes(filename);
+            Image img = (Bitmap)((new ImageConverter()).ConvertFrom(img_bytes));
+            //Image img = Image.FromFile(filename);
             PictureBox pic = createPictureBoxe(img);
             // 
             // pictureBox1
@@ -67,7 +69,7 @@ namespace deepFake
 
             label.Click += LabelDeleteClick;
 
-            PanelImageDict.Add(panaelImage, File.ReadAllBytes(filename));
+            PanelImageDict.Add(panaelImage, img_bytes);
             Pos += 1;
             return panaelImage;
         }

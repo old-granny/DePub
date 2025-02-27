@@ -61,7 +61,7 @@ namespace deepFake
         private void LoadFrontPage()
         {
 
-            List<Panel> panelList = FrontPageHandle.getPosts();
+            List<Panel> panelList = FrontPageHandle.getPosts(1);
             for (int i = 0; i < panelList.Count; i++)
             {
                 PanelContenuePublication.Controls.Add(panelList[i]);
