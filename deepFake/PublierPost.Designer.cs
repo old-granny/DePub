@@ -36,15 +36,13 @@
             Titre = new TextBox();
             Contenue = new TextBox();
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             panelContenuePost.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelContenuePost
             // 
+            panelContenuePost.BackColor = SystemColors.ControlLight;
             panelContenuePost.BorderStyle = BorderStyle.FixedSingle;
             panelContenuePost.Controls.Add(AddImageLBL);
             panelContenuePost.Controls.Add(flowLayoutPanel1);
@@ -60,6 +58,7 @@
             // AddImageLBL
             // 
             AddImageLBL.AutoSize = true;
+            AddImageLBL.BackColor = SystemColors.ButtonFace;
             AddImageLBL.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             AddImageLBL.Location = new Point(715, 530);
             AddImageLBL.Name = "AddImageLBL";
@@ -71,7 +70,7 @@
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.Controls.Add(pictureBox1);
+            flowLayoutPanel1.BackColor = SystemColors.ButtonFace;
             flowLayoutPanel1.Location = new Point(422, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(667, 560);
@@ -116,33 +115,26 @@
             // 
             // panel1
             // 
+            panel1.BackColor = SystemColors.ButtonFace;
+            panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panelContenuePost);
             panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(1176, 676);
             panel1.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(3, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 50);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            // 
             // PublierPost
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLight;
             ClientSize = new Size(1200, 700);
             Controls.Add(panel1);
             Name = "PublierPost";
             Text = "PublierPost";
             panelContenuePost.ResumeLayout(false);
             panelContenuePost.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -156,6 +148,5 @@
         private Button CancelBTN;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label AddImageLBL;
-        private PictureBox pictureBox1;
     }
 }

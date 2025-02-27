@@ -88,6 +88,8 @@ namespace deepFake
         private void boutonPost_Click(object sender, EventArgs e)
         {
             // manque de verification
+            // Checker si le size est acceptable
+            // Max 16 777 216 bits 
 
             string content = Contenue.Text;
             string title = Titre.Text;

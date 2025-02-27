@@ -48,13 +48,14 @@ namespace deepFake
         {
             string cmd = $"INSERT INTO {TABLENAME} (title, content, image1, image2, image3) VALUES (@title, @content, @img0, @img1, @img2)";
 
+            
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
                 query.Parameters.AddWithValue("@title", title);
                 query.Parameters.AddWithValue("@content", content);
-                query.Parameters.Add("@img0", MySqlDbType.Blob).Value = (img0 ?? new byte[0]);
-                query.Parameters.Add("@img1", MySqlDbType.Blob).Value = (img1 ?? new byte[0]);
-                query.Parameters.Add("@img2", MySqlDbType.Blob).Value = (img2 ?? new byte[0]);
+                query.Parameters.Add("@img0", MySqlDbType.MediumBlob).Value = (img0 ?? new byte[0]);
+                query.Parameters.Add("@img1", MySqlDbType.MediumBlob).Value = (img1 ?? new byte[0]);
+                query.Parameters.Add("@img2", MySqlDbType.MediumBlob).Value = (img2 ?? new byte[0]);
 
                 query.ExecuteNonQuery();
             }
