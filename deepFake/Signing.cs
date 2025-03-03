@@ -26,7 +26,7 @@ namespace deepFake
         {
             string username = UsernameTXB.Text;
             string password = PasswordTXB.Text;
-            if (Conn.CheckUser(username, password)) {
+            if (Conn.SigningCheck(username, password)) {
                 Main.User = new UserInstance();
                 Main.User.Username = username;
                 Main.User.id = 0;

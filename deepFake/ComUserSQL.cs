@@ -3,6 +3,7 @@ using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,36 +20,57 @@ namespace deepFake
         private MySqlConnection conn;
 
         public ComUserSQL()
-        {
-            connectionDataBase();
-            //createTable();
+        {   
+            connectionDataBase(); // Instancier la connection
         }
         
-        // Ici oubliger d'etre dans post data
+        
         public bool createNewUser(string username, string name, string prename, string email, string password, string date)
         {
-            // Implementer hashing et tout
-            // Methode tres insecure a verifier !!!!!!!!!!!
-            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, '{username}', '{name}', '{prename}','{email}','{password}','{date}');";
-            MySqlCommand query = new MySqlCommand(cmd, conn);
-            query.ExecuteNonQuery();
+            // Etape 1 verification initial
+            if(!Algorithme.IsSignUpParamSecure(username, name, prename, email, password, date)) return false;
 
-            return true;
+            // Etape 2 utiliser hashing sur le mot de passe
+            string hashedPassword = Algorithme.HashPassword(password);
+
+            string cmd = $"INSERT INTO {TABLENAME} VALUES (NULL, @username, @name, @prename,@email,@password,@date);";
+
+            try
+            {
+                MySqlCommand query = new MySqlCommand(cmd, conn);
+                // Ajouter les paramettre
+                query.Parameters.AddWithValue("@username", username);
+                query.Parameters.AddWithValue("@password", hashedPassword);
+                query.Parameters.AddWithValue("@name", name);
+                query.Parameters.AddWithValue("@prename", prename);
+                query.Parameters.AddWithValue("@email", email);
+                query.Parameters.AddWithValue("@date", date);
+
+                query.ExecuteNonQuery();
+
+                return true;
+            }
+            catch (Exception ex) {
+                Console.WriteLine("There was an error inserting data");
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            
         }
 
-        public bool CheckUser(string username, string password)
+        public bool SigningCheck(string username, string password)
         {
-            bool validUser = false;  // Default to false
+            bool validUser = false;
+            if (!Algorithme.VerifySigningParam(username, password)) return false;
+            
             List<string[]> tableContent = new List<string[]>();
-
-
             string cmd = $"SELECT COUNT(*) FROM {TABLENAME} WHERE username = @username AND password = @password";
 
+            string hashedPassword = Algorithme.HashPassword(password);
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
-                // Use parameterized queries to prevent SQL injection
                 query.Parameters.AddWithValue("@username", username);
-                query.Parameters.AddWithValue("@password", password);
+                query.Parameters.AddWithValue("@password", hashedPassword);
 
 
                 MySqlDataReader reader = query.ExecuteReader();
@@ -67,8 +89,12 @@ namespace deepFake
                 }
                 reader.Close();
             }
-            int id = Int32.Parse(tableContent[0][0]);
-            if (id > 0) {
+            
+            // Devrait utiliser tryParse
+
+            // Vas parse le premier paramettre recu apres le query pour obtenir l'ID
+            int id = Int32.Parse(tableContent[0][0]); 
+            if (id > 0) { // Si le ID n'est pas 0 alors la combinaison username - password n'existe pas
                 validUser = true;   
             }
 
@@ -76,11 +102,9 @@ namespace deepFake
         }
 
 
-        public string getUsername()
-        {
-            List<string[]> tableContent = getTableContent(TABLENAME);
-            return tableContent[0][0];
-        }
+        public string getUsername() =>
+            getTableContent(TABLENAME)[0][0];
+        
 
 
         private List<string[]> getTableContent(string tableName)
@@ -122,6 +146,8 @@ namespace deepFake
             }
         }
 
+        // ---------------------------- Section a retirer ------------------------------------------//
+        //   --------->
         private bool createUserDb()
         {
 

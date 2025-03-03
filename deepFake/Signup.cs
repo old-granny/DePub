@@ -27,6 +27,9 @@ namespace deepFake
             // Ici devrait implementer quelque securiter supplemataire 
             // Verifie si texte contient charactere illigal
             // Verifier si mot de passe securitere
+            // Verifier si le username exsite deja
+            
+            
             return "OK";
 
         }

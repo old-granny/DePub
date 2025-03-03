@@ -1,18 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace deepFake
 {
+    /// <summary>
+    /// The class Globals contains Global variable, so the instance will be static,
+    /// so variable can change and other are const
+    /// </summary>
     static internal class Globals
     {
         public static bool FlagChanger { get; set; }
         public static bool AppRunning {  get; set; }
+        
+        // Constante Global
+        public const int MinimumPasswordCount = 10; 
+        public const int MaximumPasswordCount = 50;
+        
+        public const int MinimumUsernameCount = 5;
+        public const int MaximumUsernameCount = 25;
+
+        public const int MaximumEmailCount = 100;
+
+        public const int MinimumNameCount = 2;
+        public const int MaximumNameCount = 20;
+
+        public const int MinimumPrenameCount = 2;
+        public const int MaximumPrenameCount = 20;
+
+
     }
 
+    /// <summary>
+    /// The Algorithme class will contain multitude of fonction that will be static and can be reusse in mulitple places
+    /// </summary>
     static internal class Algorithme
     {
         /// <summary>
@@ -48,6 +74,104 @@ namespace deepFake
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Will check whenever the use want to signing
+        /// </summary>
+        /// <param name="username"> the username </param>
+        /// <param name="password"> the password </param>
+        /// <returns> if the param are secure true if not false</returns>
+        static public bool VerifySigningParam(string username, string password)
+        {
+            // look if the size of the username is correct
+            if (string.IsNullOrWhiteSpace(username) || username.Length > Globals.MaximumUsernameCount || username.Length < Globals.MinimumUsernameCount)
+                return false;
+
+            // Check if the lenght of the password is okey
+            if (string.IsNullOrWhiteSpace(password) || password.Length > Globals.MaximumPasswordCount || username.Length < Globals.MinimumPasswordCount)
+                return false;
+
+            // Prevent SQL injection using Regex
+            string forbiddenPattern = @"(--|;|/\*|\*/|=|['""\\]|xp_|exec|union|select|insert|delete|update|drop|truncate|alter|create|shutdown|grant|revoke)";
+            if (Regex.IsMatch(username, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(password, forbiddenPattern, RegexOptions.IgnoreCase))
+            {
+                return false;
+            }
+            return true; // everything was secure
+        }
+
+        static public bool IsSignUpParamSecure(string username, string name, string prename, string email, string password, string date)
+        {
+            // Validate username length
+            if (string.IsNullOrWhiteSpace(username) || username.Length < Globals.MinimumUsernameCount || username.Length > Globals.MaximumUsernameCount)
+                return false;
+
+            // Validate password length
+            if (string.IsNullOrWhiteSpace(password) || password.Length < Globals.MinimumPasswordCount || password.Length > Globals.MaximumPasswordCount)
+                return false;
+
+            // Validate name length
+            if (string.IsNullOrWhiteSpace(name) || name.Length < Globals.MinimumNameCount || name.Length > Globals.MaximumNameCount)
+                return false;
+
+            // Validate prename length
+            if (string.IsNullOrWhiteSpace(prename) || prename.Length < Globals.MinimumPrenameCount || prename.Length > Globals.MaximumPrenameCount)
+                return false;
+
+            // Validate email length and format
+            if (string.IsNullOrWhiteSpace(email) || email.Length > Globals.MaximumEmailCount || !IsValidEmail(email))
+                return false;
+
+            // Validate date format
+            if (string.IsNullOrWhiteSpace(date))
+                return false;
+
+            // Prevent SQL injection using Regex
+            string forbiddenPattern = @"(--|;|/\*|\*/|=|['""\\]|xp_|exec|union|select|insert|delete|update|drop|truncate|alter|create|shutdown|grant|revoke)";
+            if (Regex.IsMatch(username, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(password, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(name, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(prename, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(email, forbiddenPattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(date, forbiddenPattern, RegexOptions.IgnoreCase))
+            {
+                return false;
+            }
+
+            return true; // Everything is secure
+        }
+
+        // Helper function to validate email format
+        static private bool IsValidEmail(string email)
+        {
+            string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, emailPattern);
+        }
+
+
+
+        
+
+        /// <summary>
+        /// The fonction will hash the password using SHA256
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <returns> hashed string </returns>
+        public static string HashPassword(string inputString)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in GetHash(inputString))
+                sb.Append(b.ToString("X2"));
+
+            return sb.ToString();
+        }
+        //helper Fonction
+        private static byte[] GetHash(string inputString)
+        {
+            using (HashAlgorithm algorithm = SHA256.Create())
+                return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
         }
     }
 }
