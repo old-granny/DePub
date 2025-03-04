@@ -144,7 +144,7 @@ namespace deepFake
         }
 
         // Helper function to validate email format
-        static private bool IsValidEmail(string email)
+        static public bool IsValidEmail(string email)
         {
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
             return Regex.IsMatch(email, emailPattern);

@@ -61,12 +61,15 @@ namespace deepFake
         public bool SigningCheck(string username, string password)
         {
             bool validUser = false;
+            string hashedPassword = Algorithme.HashPassword(password);
+            Console.WriteLine(hashedPassword);
+
             if (!Algorithme.VerifySigningParam(username, password)) return false;
             
             List<string[]> tableContent = new List<string[]>();
             string cmd = $"SELECT COUNT(*) FROM {TABLENAME} WHERE username = @username AND password = @password";
 
-            string hashedPassword = Algorithme.HashPassword(password);
+            
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
                 query.Parameters.AddWithValue("@username", username);

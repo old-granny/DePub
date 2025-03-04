@@ -24,12 +24,12 @@ namespace deepFake
 
         private string VerifierUserInfos(string username, string name, string prename, string email, string password, string date)
         {
-            // Ici devrait implementer quelque securiter supplemataire 
-            // Verifie si texte contient charactere illigal
-            // Verifier si mot de passe securitere
-            // Verifier si le username exsite deja
-            
-            
+            if (username.Length > Globals.MaximumUsernameCount || username.Length < Globals.MinimumUsernameCount || username.ToLower() == "username") return "USERNAME";
+            if (name.Length > Globals.MaximumNameCount || name.Length < Globals.MinimumNameCount || name.ToLower() == "name") return "NAME";
+            if (!Algorithme.IsValidEmail(email)) return "EMAIL";
+            if (password.Length > Globals.MaximumPasswordCount|| password.Length < Globals.MinimumPasswordCount|| password.ToLower() == "password") return "PASSWORD";
+
+
             return "OK";
 
         }
@@ -41,17 +41,64 @@ namespace deepFake
             switch (retour)
             {
                 case "OK":
-                    conn.createNewUser(UsernameTBX.Text, NameTXB.Text, PrenomTXB.Text, emailTXB.Text, passwordTXB.Text, dateTXB.Text);
+                    if(!conn.createNewUser(UsernameTBX.Text, NameTXB.Text, PrenomTXB.Text, emailTXB.Text, passwordTXB.Text, dateTXB.Text))
+                    {
+                        GeneralMistake();
+                    }
+                    else
+                    {
+                        // everything worked
+                        Main.LoadFrontPage();
+                    }
                     break;
+                case "USERNAME":
+                    UsernameMistake();
+                    break;
+                case "PASSWORD":
+                    PasswordMistake();
+                    break;
+                case "NAME":
+                    NameMistake();
+                    break;
+                case "EMAIL":
+                    EmailMistake();
+                    break;
+
                 default:
                     break;
             }
-            Main.LoadFrontPage();
         }
 
         private void GoBackLBL_Click(object sender, EventArgs e)
         {
             Main.LoadFrontPage(); // Aller a la page principale
+        }
+        private void UsernameMistake()
+        {
+            ErrorListLB.Text = "Username Mistake";
+            ErrorListLB.ForeColor = Color.Red;
+        }
+        private void PasswordMistake() 
+        {
+            ErrorListLB.Text = "Pasword Mistake";
+            ErrorListLB.ForeColor = Color.Red;
+
+        }
+        private void NameMistake()
+        {
+            ErrorListLB.Text = "Name Mistake";
+            ErrorListLB.ForeColor = Color.Red;
+        }
+        private void EmailMistake()
+        {
+            ErrorListLB.Text = "Email Mistake";
+            ErrorListLB.ForeColor = Color.Red;
+        }
+        private void GeneralMistake()
+        {
+            // A completer
+            ErrorListLB.Text = "General Mistake";
+            ErrorListLB.ForeColor = Color.Red;
         }
     }
 }
