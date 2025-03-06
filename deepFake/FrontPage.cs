@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,17 @@ namespace deepFake
         {
             Main = acceuil;
             InitializeComponent();
+            beautefull();
             LoadInstance();
             OnLoadPage();
+        }
+
+        private void beautefull()
+        {
+            //PanelContenuePublication.BackColor = ColorTranslator.FromHtml("#FBE4D8");
+            // btn
+            //BTNSignin.Location = new Point(panelSign.Width/2 - BTNSignin.Width, 4);
+            //BTNSignup.Location = new Point(panelSign.Width/ 2 - BTNSignup.Width, 4);
         }
 
 
@@ -36,7 +46,7 @@ namespace deepFake
 
         public void LoadUserInfos(string name, int id)
         {
-            ProfilTitle.Text = name;
+            //ProfilTitle.Text = name;
         }
 
         /// <summary>  
@@ -88,7 +98,7 @@ namespace deepFake
         {
             const string defaut = "Not Sign In";
             Main.User = null;
-            ProfilTitle.Text = defaut;
+            //ProfilTitle.Text = defaut;
             Main.LoadFrontPage();
         }
     }

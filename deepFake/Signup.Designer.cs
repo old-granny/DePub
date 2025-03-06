@@ -30,7 +30,6 @@ namespace deepFake
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Signup));
             panel1 = new Panel();
             pictureBox2 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -46,31 +45,31 @@ namespace deepFake
             SignupButton = new Button();
             GoBackLBL = new Label();
             pictureBox3 = new PictureBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(panel2);
             panel1.Controls.Add(pictureBox2);
-            panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Controls.Add(GoBackLBL);
             panel1.Controls.Add(pictureBox3);
-            panel1.Location = new Point(12, 13);
+            panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1290, 720);
+            panel1.Size = new Size(1282, 728);
             panel1.TabIndex = 0;
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(0, -1);
+            pictureBox2.Location = new Point(12, 30);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(692, 721);
+            pictureBox2.Size = new Size(641, 582);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
@@ -78,8 +77,8 @@ namespace deepFake
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel1.Controls.Add(LabelTitre);
             flowLayoutPanel1.Controls.Add(UsernameTBX);
             flowLayoutPanel1.Controls.Add(NameTXB);
             flowLayoutPanel1.Controls.Add(PrenomTXB);
@@ -90,24 +89,26 @@ namespace deepFake
             flowLayoutPanel1.Controls.Add(ErrorListLB);
             flowLayoutPanel1.Controls.Add(SignupButton);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-            flowLayoutPanel1.Location = new Point(736, 87);
+            flowLayoutPanel1.Location = new Point(19, 90);
             flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(469, 485);
+            flowLayoutPanel1.Size = new Size(510, 442);
             flowLayoutPanel1.TabIndex = 5;
             // 
             // LabelTitre
             // 
             LabelTitre.AutoSize = true;
-            LabelTitre.Location = new Point(3, 0);
+            LabelTitre.BorderStyle = BorderStyle.FixedSingle;
+            LabelTitre.Font = new Font("Segoe UI Variable Display", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LabelTitre.Location = new Point(208, 34);
             LabelTitre.Name = "LabelTitre";
-            LabelTitre.Size = new Size(89, 20);
+            LabelTitre.Size = new Size(106, 39);
             LabelTitre.TabIndex = 1;
-            LabelTitre.Text = "SignupForm";
+            LabelTitre.Text = "Signup";
             // 
             // UsernameTBX
             // 
-            UsernameTBX.Location = new Point(3, 24);
+            UsernameTBX.Location = new Point(3, 4);
             UsernameTBX.Margin = new Padding(3, 4, 3, 4);
             UsernameTBX.Name = "UsernameTBX";
             UsernameTBX.Size = new Size(466, 27);
@@ -116,7 +117,7 @@ namespace deepFake
             // 
             // NameTXB
             // 
-            NameTXB.Location = new Point(3, 59);
+            NameTXB.Location = new Point(3, 39);
             NameTXB.Margin = new Padding(3, 4, 3, 4);
             NameTXB.Name = "NameTXB";
             NameTXB.Size = new Size(466, 27);
@@ -125,7 +126,7 @@ namespace deepFake
             // 
             // PrenomTXB
             // 
-            PrenomTXB.Location = new Point(3, 94);
+            PrenomTXB.Location = new Point(3, 74);
             PrenomTXB.Margin = new Padding(3, 4, 3, 4);
             PrenomTXB.Name = "PrenomTXB";
             PrenomTXB.Size = new Size(465, 27);
@@ -134,7 +135,7 @@ namespace deepFake
             // 
             // dateTXB
             // 
-            dateTXB.Location = new Point(3, 128);
+            dateTXB.Location = new Point(3, 108);
             dateTXB.Name = "dateTXB";
             dateTXB.Size = new Size(465, 27);
             dateTXB.TabIndex = 8;
@@ -142,7 +143,7 @@ namespace deepFake
             // 
             // emailTXB
             // 
-            emailTXB.Location = new Point(3, 161);
+            emailTXB.Location = new Point(3, 141);
             emailTXB.Name = "emailTXB";
             emailTXB.Size = new Size(465, 27);
             emailTXB.TabIndex = 7;
@@ -150,7 +151,7 @@ namespace deepFake
             // 
             // passwordTXB
             // 
-            passwordTXB.Location = new Point(3, 194);
+            passwordTXB.Location = new Point(3, 174);
             passwordTXB.Name = "passwordTXB";
             passwordTXB.Size = new Size(466, 27);
             passwordTXB.TabIndex = 6;
@@ -158,24 +159,24 @@ namespace deepFake
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(3, 228);
+            pictureBox1.Location = new Point(3, 208);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(466, 129);
+            pictureBox1.Size = new Size(466, 105);
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
             // ErrorListLB
             // 
             ErrorListLB.AutoSize = true;
-            ErrorListLB.Location = new Point(3, 361);
+            ErrorListLB.Location = new Point(3, 317);
             ErrorListLB.Name = "ErrorListLB";
             ErrorListLB.Size = new Size(0, 20);
             ErrorListLB.TabIndex = 9;
             // 
             // SignupButton
             // 
-            SignupButton.Location = new Point(3, 384);
+            SignupButton.Location = new Point(3, 340);
             SignupButton.Name = "SignupButton";
             SignupButton.Size = new Size(94, 29);
             SignupButton.TabIndex = 5;
@@ -188,7 +189,7 @@ namespace deepFake
             GoBackLBL.AutoSize = true;
             GoBackLBL.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             GoBackLBL.ForeColor = Color.Blue;
-            GoBackLBL.Location = new Point(961, 618);
+            GoBackLBL.Location = new Point(208, 571);
             GoBackLBL.Name = "GoBackLBL";
             GoBackLBL.Size = new Size(83, 28);
             GoBackLBL.TabIndex = 6;
@@ -197,29 +198,42 @@ namespace deepFake
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(690, 0);
+            pictureBox3.BackColor = Color.White;
+            pictureBox3.Location = new Point(652, 30);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(600, 720);
+            pictureBox3.Size = new Size(598, 654);
             pictureBox3.TabIndex = 8;
             pictureBox3.TabStop = false;
+            // 
+            // panel2
+            // 
+            panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(flowLayoutPanel1);
+            panel2.Controls.Add(LabelTitre);
+            panel2.Controls.Add(GoBackLBL);
+            panel2.Location = new Point(670, 45);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(550, 606);
+            panel2.TabIndex = 9;
             // 
             // Signup
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(0, 0, 192);
-            ClientSize = new Size(1327, 773);
+            BackColor = Color.White;
+            ClientSize = new Size(1282, 728);
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Signup";
             Text = "Signup";
             panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -240,5 +254,6 @@ namespace deepFake
         private Label ErrorListLB;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
+        private Panel panel2;
     }
 }

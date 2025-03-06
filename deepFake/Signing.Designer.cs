@@ -44,18 +44,20 @@
             // 
             panel1.Controls.Add(label2);
             panel1.Controls.Add(PanelSigning);
-            panel1.Location = new Point(68, 50);
+            panel1.Location = new Point(1, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1331, 775);
+            panel1.Size = new Size(1282, 728);
             panel1.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(638, 575);
+            label2.ForeColor = Color.Blue;
+            label2.Location = new Point(583, 662);
             label2.Name = "label2";
-            label2.Size = new Size(66, 21);
+            label2.Size = new Size(83, 28);
             label2.TabIndex = 5;
             label2.Text = "Go Back";
             label2.Click += label2_Click;
@@ -68,35 +70,37 @@
             PanelSigning.Controls.Add(LoginBTN);
             PanelSigning.Controls.Add(UsernameTXB);
             PanelSigning.Controls.Add(PasswordTXB);
-            PanelSigning.Location = new Point(495, 111);
+            PanelSigning.Location = new Point(435, 41);
+            PanelSigning.Margin = new Padding(3, 4, 3, 4);
             PanelSigning.Name = "PanelSigning";
-            PanelSigning.Size = new Size(347, 461);
+            PanelSigning.Size = new Size(396, 591);
             PanelSigning.TabIndex = 4;
             // 
             // ResultLBL
             // 
             ResultLBL.AutoSize = true;
-            ResultLBL.Location = new Point(160, 329);
+            ResultLBL.Location = new Point(183, 439);
             ResultLBL.Name = "ResultLBL";
-            ResultLBL.Size = new Size(38, 15);
+            ResultLBL.Size = new Size(0, 20);
             ResultLBL.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(109, 67);
+            label1.Location = new Point(125, 89);
             label1.Name = "label1";
-            label1.Size = new Size(112, 40);
+            label1.Size = new Size(146, 50);
             label1.TabIndex = 2;
             label1.Text = "Signing";
             // 
             // LoginBTN
             // 
             LoginBTN.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LoginBTN.Location = new Point(109, 373);
+            LoginBTN.Location = new Point(125, 497);
+            LoginBTN.Margin = new Padding(3, 4, 3, 4);
             LoginBTN.Name = "LoginBTN";
-            LoginBTN.Size = new Size(139, 46);
+            LoginBTN.Size = new Size(159, 61);
             LoginBTN.TabIndex = 3;
             LoginBTN.Text = "Login";
             LoginBTN.UseVisualStyleBackColor = true;
@@ -104,28 +108,31 @@
             // 
             // UsernameTXB
             // 
-            UsernameTXB.Location = new Point(39, 250);
+            UsernameTXB.Location = new Point(45, 333);
+            UsernameTXB.Margin = new Padding(3, 4, 3, 4);
             UsernameTXB.Name = "UsernameTXB";
-            UsernameTXB.Size = new Size(276, 23);
+            UsernameTXB.Size = new Size(315, 27);
             UsernameTXB.TabIndex = 0;
             UsernameTXB.Text = "Username";
             UsernameTXB.Enter += UsernameTXB_Enter;
             // 
             // PasswordTXB
             // 
-            PasswordTXB.Location = new Point(39, 279);
+            PasswordTXB.Location = new Point(45, 372);
+            PasswordTXB.Margin = new Padding(3, 4, 3, 4);
             PasswordTXB.Name = "PasswordTXB";
-            PasswordTXB.Size = new Size(276, 23);
+            PasswordTXB.Size = new Size(315, 27);
             PasswordTXB.TabIndex = 1;
             PasswordTXB.Text = "Password";
             PasswordTXB.Enter += PasswordTXB_Enter;
             // 
             // Signing
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1430, 860);
+            ClientSize = new Size(1282, 728);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Signing";
             Text = "Signing";
             panel1.ResumeLayout(false);

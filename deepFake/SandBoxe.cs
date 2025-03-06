@@ -15,6 +15,12 @@ namespace deepFake
         public SandBoxe()
         {
             InitializeComponent();
+            beautefullUI();
+        }
+
+        private void beautefullUI()
+        {
+            
         }
     }
 }

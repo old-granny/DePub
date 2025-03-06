@@ -22,6 +22,7 @@ namespace deepFake
         {
             InitializeComponent();
             InstancierAttribut();
+            Beautefull();
             OnLoadPage();
 
         }
@@ -44,6 +45,11 @@ namespace deepFake
             forms.Add(FrontPagePage);
             forms.Add(SignupPage);
             forms.Add(SigningPage);
+        }
+        private void Beautefull()
+        {
+            PanelLoadForm.BackColor = ColorTranslator.FromHtml("#FBE4D8");
+
         }
 
 

@@ -40,10 +40,10 @@ namespace deepFake
                 Panel panel = CreatePostPanel(ligne[0], ligne[1], x, y, images);
                 list.Add(panel);
                 nbPostsLoader++;
-                y += 700;
+                y += 900;
                 if (nbPostsLoader % 3 == 0) // Augmenter la position selon le le nombre de posts
                 {
-                    y += 300;
+                    y += 900;
                     x = 0;
                 }
                 
@@ -62,28 +62,33 @@ namespace deepFake
             panelContenuePost.Location = new Point(x, y);
             panelContenuePost.Controls.Add(Titre);
             panelContenuePost.Controls.Add(Contenue);
-            panelContenuePost.Size = new Size(650, 550);
+            panelContenuePost.Size = new Size(1300, 900);
             panelContenuePost.BorderStyle = BorderStyle.FixedSingle;
 
             // Title settings
-            Titre.Location = new Point(0, 3);
-            Titre.Size = new Size(325, 23);
+            Titre.Location = new Point(10, 3);
+            Titre.Size = new Size(325, 50);
             Titre.Text = title;
-            
+            Titre.Font = new Font("Candara", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+
+
 
             // Content settings
-            Contenue.Location = new Point(0, 32);
-            Contenue.Size = new Size(325, 100);
+            Contenue.Location = new Point(10, 100);
+            Contenue.Size = new Size(1200, 150);
             Contenue.Text = content;
+            Contenue.Font = new Font("Candara", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
 
+            
             PictureBox pictureBox = new PictureBox();
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.Size = new Size((int)1920/3, (int)1080/3);
+            pictureBox.Size = new Size((int)1920/2, (int)1080/2);
             pictureBox.Name = $"pictpost";
             pictureBox.TabIndex = 0;
             pictureBox.Image = images[0]; // Image de titre
-            pictureBox.Location = new Point(0, 150);
+            pictureBox.Location = new Point(0, 300);
             panelContenuePost.Controls.Add(pictureBox);
+            
             return panelContenuePost;
         }
 

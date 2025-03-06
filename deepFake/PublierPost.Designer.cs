@@ -50,9 +50,10 @@
             panelContenuePost.Controls.Add(boutonPost);
             panelContenuePost.Controls.Add(Titre);
             panelContenuePost.Controls.Add(Contenue);
-            panelContenuePost.Location = new Point(50, 20);
+            panelContenuePost.Location = new Point(24, 23);
+            panelContenuePost.Margin = new Padding(3, 4, 3, 4);
             panelContenuePost.Name = "panelContenuePost";
-            panelContenuePost.Size = new Size(1094, 626);
+            panelContenuePost.Size = new Size(1245, 690);
             panelContenuePost.TabIndex = 4;
             // 
             // AddImageLBL
@@ -60,9 +61,9 @@
             AddImageLBL.AutoSize = true;
             AddImageLBL.BackColor = SystemColors.ButtonFace;
             AddImageLBL.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AddImageLBL.Location = new Point(715, 530);
+            AddImageLBL.Location = new Point(816, 579);
             AddImageLBL.Name = "AddImageLBL";
-            AddImageLBL.Size = new Size(83, 20);
+            AddImageLBL.Size = new Size(103, 25);
             AddImageLBL.TabIndex = 4;
             AddImageLBL.Text = "Add Image";
             AddImageLBL.Click += label1_Click;
@@ -71,16 +72,18 @@
             // 
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = SystemColors.ButtonFace;
-            flowLayoutPanel1.Location = new Point(422, 3);
+            flowLayoutPanel1.Location = new Point(482, 4);
+            flowLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(667, 560);
+            flowLayoutPanel1.Size = new Size(758, 571);
             flowLayoutPanel1.TabIndex = 5;
             // 
             // CancelBTN
             // 
-            CancelBTN.Location = new Point(422, 598);
+            CancelBTN.Location = new Point(480, 646);
+            CancelBTN.Margin = new Padding(3, 4, 3, 4);
             CancelBTN.Name = "CancelBTN";
-            CancelBTN.Size = new Size(667, 23);
+            CancelBTN.Size = new Size(762, 31);
             CancelBTN.TabIndex = 3;
             CancelBTN.Text = "Cancel";
             CancelBTN.UseVisualStyleBackColor = true;
@@ -88,9 +91,10 @@
             // 
             // boutonPost
             // 
-            boutonPost.Location = new Point(422, 569);
+            boutonPost.Location = new Point(478, 609);
+            boutonPost.Margin = new Padding(3, 4, 3, 4);
             boutonPost.Name = "boutonPost";
-            boutonPost.Size = new Size(667, 23);
+            boutonPost.Size = new Size(762, 31);
             boutonPost.TabIndex = 2;
             boutonPost.Text = "publier";
             boutonPost.UseVisualStyleBackColor = true;
@@ -98,18 +102,20 @@
             // 
             // Titre
             // 
-            Titre.Location = new Point(3, 3);
+            Titre.Location = new Point(3, 4);
+            Titre.Margin = new Padding(3, 4, 3, 4);
             Titre.Name = "Titre";
-            Titre.Size = new Size(413, 23);
+            Titre.Size = new Size(471, 27);
             Titre.TabIndex = 1;
             Titre.Text = "Titre";
             // 
             // Contenue
             // 
-            Contenue.Location = new Point(3, 32);
+            Contenue.Location = new Point(3, 39);
+            Contenue.Margin = new Padding(3, 4, 3, 4);
             Contenue.Multiline = true;
             Contenue.Name = "Contenue";
-            Contenue.Size = new Size(413, 589);
+            Contenue.Size = new Size(471, 638);
             Contenue.TabIndex = 0;
             Contenue.Text = "Contenue";
             // 
@@ -118,18 +124,20 @@
             panel1.BackColor = SystemColors.ButtonFace;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panelContenuePost);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(0, 1);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1176, 676);
+            panel1.Size = new Size(1282, 728);
             panel1.TabIndex = 5;
             // 
             // PublierPost
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1200, 700);
+            ClientSize = new Size(1282, 728);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PublierPost";
             Text = "PublierPost";
             panelContenuePost.ResumeLayout(false);
