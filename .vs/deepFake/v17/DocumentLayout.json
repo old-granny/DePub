@@ -7,6 +7,38 @@
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\bubblepub.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\bubblepub.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\bubblepub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\bubblepub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\bubblepub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\bubblepub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -15,16 +47,8 @@
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpage.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\signing.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,26 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\userinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\userinstance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\acceuil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\acceuil.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\sandboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\signing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\signing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\raphb\\documents\\deepfake\\deepfake\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -102,7 +106,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Signup.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signup.cs",
               "RelativeDocumentMoniker": "deepFake\\Signup.cs",
@@ -111,8 +115,7 @@
               "ViewState": "AgIAAE8AAAAAAAAAAAAkwFoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.48Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -120,9 +123,9 @@
               "Title": "FrontPage.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs",
               "RelativeDocumentMoniker": "deepFake\\FrontPage.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs*",
-              "RelativeToolTip": "deepFake\\FrontPage.cs*",
-              "ViewState": "AgIAAEYAAAAAAAAAAAA+wGcAAAAFAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs",
+              "RelativeToolTip": "deepFake\\FrontPage.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAjwEkAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.608Z",
               "IsPinned": true,
@@ -130,7 +133,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "PublierPost.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\PublierPost.cs",
               "RelativeDocumentMoniker": "deepFake\\PublierPost.cs",
@@ -139,17 +142,18 @@
               "ViewState": "AgIAAD8AAAAAAAAAAAAYwE8AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.611Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Acceuil.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Acceuil.cs",
               "RelativeDocumentMoniker": "deepFake\\Acceuil.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Acceuil.cs",
               "RelativeToolTip": "deepFake\\Acceuil.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAwBkAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAEYAAAAAAAAAAAA/wFEAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.614Z",
               "IsPinned": true,
@@ -161,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "SandBoxe.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\SandBoxe.cs",
               "RelativeDocumentMoniker": "deepFake\\SandBoxe.cs",
@@ -169,12 +173,11 @@
               "RelativeToolTip": "deepFake\\SandBoxe.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T02:04:36.766Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T02:04:36.766Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ComUserSQL.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\ComUserSQL.cs",
               "RelativeDocumentMoniker": "deepFake\\ComUserSQL.cs",
@@ -186,20 +189,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "ComPostSQL.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\ComPostSQL.cs",
               "RelativeDocumentMoniker": "deepFake\\ComPostSQL.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\ComPostSQL.cs",
               "RelativeToolTip": "deepFake\\ComPostSQL.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAnwB8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCUAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 4,
               "Title": "Acceuil.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Acceuil.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Acceuil.Designer.cs",
@@ -212,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 15,
               "Title": "UserInstance.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\UserInstance.cs",
               "RelativeDocumentMoniker": "deepFake\\UserInstance.cs",
@@ -220,8 +223,7 @@
               "RelativeToolTip": "deepFake\\UserInstance.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T19:05:56.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T19:05:56.465Z"
             },
             {
               "$type": "Document",
@@ -231,14 +233,14 @@
               "RelativeDocumentMoniker": "deepFake\\FrontPageLoader.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPageLoader.cs",
               "RelativeToolTip": "deepFake\\FrontPageLoader.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAYwCAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAA1wEoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.62Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Globals.cs",
               "RelativeDocumentMoniker": "deepFake\\Globals.cs",
@@ -250,20 +252,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 10,
               "Title": "FrontPage.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\FrontPage.Designer.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.Designer.cs*",
-              "RelativeToolTip": "deepFake\\FrontPage.Designer.cs*",
-              "ViewState": "AgIAAD4AAAAAAAAAAADgv0oAAABiAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.Designer.cs",
+              "RelativeToolTip": "deepFake\\FrontPage.Designer.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAiwDsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-17T18:40:10.616Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 14,
               "Title": "PublierPost.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\PublierPost.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\PublierPost.Designer.cs",
@@ -276,7 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "SandBoxe.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\SandBoxe.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\SandBoxe.Designer.cs",
@@ -284,12 +286,11 @@
               "RelativeToolTip": "deepFake\\SandBoxe.Designer.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAYwFAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T21:08:52.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-22T21:08:52.024Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "Signing.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signing.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Signing.Designer.cs",
@@ -297,12 +298,11 @@
               "RelativeToolTip": "deepFake\\Signing.Designer.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T20:42:02.098Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T20:42:02.098Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Program.cs",
               "RelativeDocumentMoniker": "deepFake\\Program.cs",
@@ -310,12 +310,11 @@
               "RelativeToolTip": "deepFake\\Program.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA1wBEAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T18:40:10.629Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T18:40:10.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Signup.Designer.cs",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signup.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Signup.Designer.cs",
@@ -323,8 +322,7 @@
               "RelativeToolTip": "deepFake\\Signup.Designer.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwBgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T18:40:10.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T18:40:10.636Z"
             }
           ]
         },
@@ -348,85 +346,91 @@
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "FloatingWindowState": {
-        "Id": "55aea1d3-7a27-4542-a113-255fa538c76d",
-        "Display": 1,
-        "X": -3,
-        "Y": 0,
-        "Width": 779,
-        "Height": 821,
-        "WindowState": 2
+        "Id": "3a015587-6a39-41c3-9137-db9f74555bf2",
+        "Display": 0,
+        "X": -37,
+        "Y": 81,
+        "Width": 1496,
+        "Height": 532,
+        "WindowState": 0
       },
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BubblePub.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.Designer.cs",
+              "RelativeDocumentMoniker": "deepFake\\BubblePub.Designer.cs",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.Designer.cs",
+              "RelativeToolTip": "deepFake\\BubblePub.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T04:57:41.041Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SandBoxe.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\SandBoxe.cs",
-              "RelativeDocumentMoniker": "deepFake\\SandBoxe.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\SandBoxe.cs [Design]",
-              "RelativeToolTip": "deepFake\\SandBoxe.cs [Design]",
+              "DocumentIndex": 6,
+              "Title": "BubblePub.cs",
+              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.cs",
+              "RelativeDocumentMoniker": "deepFake\\BubblePub.cs",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.cs",
+              "RelativeToolTip": "deepFake\\BubblePub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAhwBEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:36:46.423Z",
+              "WhenOpened": "2025-03-07T04:57:32.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FrontPage.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs",
+              "RelativeDocumentMoniker": "deepFake\\FrontPage.cs",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs [Design]",
+              "RelativeToolTip": "deepFake\\FrontPage.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T02:55:08.978Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
+              "Title": "PublierPost.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\PublierPost.cs",
+              "RelativeDocumentMoniker": "deepFake\\PublierPost.cs",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\PublierPost.cs [Design]",
+              "RelativeToolTip": "deepFake\\PublierPost.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-07T02:55:51.952Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Acceuil.cs [Design]",
               "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Acceuil.cs",
               "RelativeDocumentMoniker": "deepFake\\Acceuil.cs",
               "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Acceuil.cs [Design]",
               "RelativeToolTip": "deepFake\\Acceuil.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:37:21.425Z",
+              "WhenOpened": "2025-03-07T02:55:21.951Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrontPage.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs",
-              "RelativeDocumentMoniker": "deepFake\\FrontPage.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\FrontPage.cs [Design]*",
-              "RelativeToolTip": "deepFake\\FrontPage.cs [Design]*",
+              "DocumentIndex": 5,
+              "Title": "BubblePub.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.cs",
+              "RelativeDocumentMoniker": "deepFake\\BubblePub.cs",
+              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\BubblePub.cs [Design]",
+              "RelativeToolTip": "deepFake\\BubblePub.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:37:18.705Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Signup.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signup.cs",
-              "RelativeDocumentMoniker": "deepFake\\Signup.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signup.cs [Design]",
-              "RelativeToolTip": "deepFake\\Signup.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:37:15.299Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Signing.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signing.cs",
-              "RelativeDocumentMoniker": "deepFake\\Signing.cs",
-              "ToolTip": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\Signing.cs [Design]",
-              "RelativeToolTip": "deepFake\\Signing.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T01:37:13.563Z",
+              "WhenOpened": "2025-03-07T04:15:16.433Z",
               "EditorCaption": " [Design]"
             }
           ]

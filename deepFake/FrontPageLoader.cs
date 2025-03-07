@@ -55,14 +55,21 @@ namespace deepFake
         private Panel CreatePostPanel(string title, string content, int x, int y, List<Image> images)
         {
             Panel panelContenuePost = new Panel();
+            
             Label Titre = new Label();
             Label Contenue = new Label();
+            BubblePub bubble = new BubblePub();
+
+            bubble.FormBorderStyle = FormBorderStyle.None;
+            bubble.Show();
+
+            panelContenuePost.Controls.Add(bubble);
 
             // Panel settings
             panelContenuePost.Location = new Point(x, y);
-            panelContenuePost.Controls.Add(Titre);
-            panelContenuePost.Controls.Add(Contenue);
-            panelContenuePost.Size = new Size(1300, 900);
+            //panelContenuePost.Controls.Add(Titre);
+            //panelContenuePost.Controls.Add(Contenue);
+            panelContenuePost.Size = new Size(1265, 900);
             panelContenuePost.BorderStyle = BorderStyle.FixedSingle;
 
             // Title settings
@@ -74,7 +81,7 @@ namespace deepFake
 
 
             // Content settings
-            Contenue.Location = new Point(10, 100);
+            Contenue.Location = new Point(10, 50);
             Contenue.Size = new Size(1200, 150);
             Contenue.Text = content;
             Contenue.Font = new Font("Candara", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -82,13 +89,14 @@ namespace deepFake
             
             PictureBox pictureBox = new PictureBox();
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.Size = new Size((int)1920/2, (int)1080/2);
+            pictureBox.Size = new Size((int)(1920/2.5f), (int)(1080/2.5f));
             pictureBox.Name = $"pictpost";
             pictureBox.TabIndex = 0;
             pictureBox.Image = images[0]; // Image de titre
             pictureBox.Location = new Point(0, 300);
-            panelContenuePost.Controls.Add(pictureBox);
+            //panelContenuePost.Controls.Add(pictureBox);
             
+
             return panelContenuePost;
         }
 
