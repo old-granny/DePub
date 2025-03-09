@@ -52,7 +52,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2009, 1059);
+            ClientSize = new Size(1924, 1055);
             Controls.Add(PanelLoadForm);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Acceuil";

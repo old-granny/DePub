@@ -5,7 +5,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="BubblePub.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Update="FrontPage.cs">
       <SubType>Form</SubType>

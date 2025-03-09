@@ -58,9 +58,8 @@ namespace deepFake
             
             Label Titre = new Label();
             Label Contenue = new Label();
-            BubblePub bubble = new BubblePub();
+            BubblePub bubble = new BubblePub(title, content, images[0]);
 
-            bubble.FormBorderStyle = FormBorderStyle.None;
             bubble.Show();
 
             panelContenuePost.Controls.Add(bubble);
