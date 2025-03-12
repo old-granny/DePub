@@ -36,9 +36,8 @@
             // PanelLoadForm
             // 
             PanelLoadForm.Location = new Point(0, 0);
-            PanelLoadForm.Margin = new Padding(3, 4, 3, 4);
             PanelLoadForm.Name = "PanelLoadForm";
-            PanelLoadForm.Size = new Size(2010, 1061);
+            PanelLoadForm.Size = new Size(1920, 1080);
             PanelLoadForm.TabIndex = 0;
             // 
             // ScrollPub
@@ -50,11 +49,10 @@
             // 
             // Acceuil
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1924, 1055);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(PanelLoadForm);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Acceuil";
             Text = "Form1";
             ResumeLayout(false);

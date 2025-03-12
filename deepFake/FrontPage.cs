@@ -30,10 +30,10 @@ namespace deepFake
 
         private void beautefull()
         {
-            //PanelContenuePublication.BackColor = ColorTranslator.FromHtml("#FBE4D8");
-            // btn
-            //BTNSignin.Location = new Point(panelSign.Width/2 - BTNSignin.Width, 4);
-            //BTNSignup.Location = new Point(panelSign.Width/ 2 - BTNSignup.Width, 4);
+            this.BackColor = ColorTranslator.FromHtml("#E3DDE2");
+            PanelContenuePublication.BackColor = ColorTranslator.FromHtml("#E3DDE2");
+            PanelTop.BackColor = ColorTranslator.FromHtml("#554971");
+
         }
 
 

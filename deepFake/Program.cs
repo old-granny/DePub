@@ -13,7 +13,7 @@ namespace deepFake
 
             ApplicationConfiguration.Initialize();
             
-            SandBoxe pageAcceuil = new SandBoxe();
+            Acceuil pageAcceuil = new Acceuil();
             SetGlobals();
             Application.Run(pageAcceuil);
             Globals.AppRunning = false;

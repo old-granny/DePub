@@ -32,28 +32,24 @@
             boutonPagePost = new Button();
             BTNSignin = new Button();
             BTNSignup = new Button();
-            panel1 = new Panel();
+            PanelTop = new Panel();
+            label2 = new Label();
             panelSignin = new Panel();
             panelSign = new Panel();
             SignoutBTN = new Button();
             FrontPagePNL = new Panel();
-            panel3 = new Panel();
-            label1 = new Label();
-            panel2 = new Panel();
-            label2 = new Label();
-            panel1.SuspendLayout();
+            PanelTop.SuspendLayout();
             panelSignin.SuspendLayout();
             panelSign.SuspendLayout();
             FrontPagePNL.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // PanelContenuePublication
             // 
             PanelContenuePublication.AutoScroll = true;
-            PanelContenuePublication.Location = new Point(191, 88);
+            PanelContenuePublication.Location = new Point(0, 89);
             PanelContenuePublication.Name = "PanelContenuePublication";
-            PanelContenuePublication.Size = new Size(1128, 638);
+            PanelContenuePublication.Size = new Size(1920, 1080);
             PanelContenuePublication.TabIndex = 3;
             // 
             // boutonPagePost
@@ -89,17 +85,27 @@
             BTNSignup.UseVisualStyleBackColor = true;
             BTNSignup.Click += BTNSignup_Click;
             // 
-            // panel1
+            // PanelTop
             // 
-            panel1.BackColor = SystemColors.ControlLightLight;
-            panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(panelSignin);
-            panel1.Controls.Add(panelSign);
-            panel1.Location = new Point(3, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1614, 80);
-            panel1.TabIndex = 0;
+            PanelTop.BackColor = SystemColors.ControlLightLight;
+            PanelTop.BorderStyle = BorderStyle.FixedSingle;
+            PanelTop.Controls.Add(label2);
+            PanelTop.Controls.Add(panelSignin);
+            PanelTop.Controls.Add(panelSign);
+            PanelTop.Location = new Point(0, 0);
+            PanelTop.Name = "PanelTop";
+            PanelTop.Size = new Size(1920, 83);
+            PanelTop.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Candara", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(500, 32);
+            label2.Name = "label2";
+            label2.Size = new Size(169, 39);
+            label2.TabIndex = 0;
+            label2.Text = "Profil Infos";
             // 
             // panelSignin
             // 
@@ -134,71 +140,28 @@
             // 
             // FrontPagePNL
             // 
-            FrontPagePNL.Controls.Add(panel3);
-            FrontPagePNL.Controls.Add(panel2);
             FrontPagePNL.Controls.Add(PanelContenuePublication);
-            FrontPagePNL.Controls.Add(panel1);
-            FrontPagePNL.Location = new Point(10, 9);
+            FrontPagePNL.Controls.Add(PanelTop);
+            FrontPagePNL.Location = new Point(0, 0);
             FrontPagePNL.Margin = new Padding(3, 2, 3, 2);
             FrontPagePNL.Name = "FrontPagePNL";
-            FrontPagePNL.Size = new Size(1665, 731);
+            FrontPagePNL.Size = new Size(1920, 1080);
             FrontPagePNL.TabIndex = 4;
-            // 
-            // panel3
-            // 
-            panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(label1);
-            panel3.Location = new Point(1324, 88);
-            panel3.Margin = new Padding(3, 2, 3, 2);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(292, 638);
-            panel3.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Candara", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(3, 11);
-            label1.Name = "label1";
-            label1.Size = new Size(262, 37);
-            label1.TabIndex = 0;
-            label1.Text = "You have no friend";
-            // 
-            // panel2
-            // 
-            panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Location = new Point(3, 683);
-            panel2.Margin = new Padding(3, 2, 3, 2);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(184, 43);
-            panel2.TabIndex = 4;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Candara", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(500, 32);
-            label2.Name = "label2";
-            label2.Size = new Size(169, 39);
-            label2.TabIndex = 0;
-            label2.Text = "Profil Infos";
             // 
             // FrontPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1760, 888);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(FrontPagePNL);
             Name = "FrontPage";
             Text = "FrontPage";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            PanelTop.ResumeLayout(false);
+            PanelTop.PerformLayout();
             panelSignin.ResumeLayout(false);
             panelSign.ResumeLayout(false);
             FrontPagePNL.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -210,14 +173,11 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Button BTNSignin;
         private Button BTNSignup;
-        private Panel panel1;
+        private Panel PanelTop;
         private Panel panelSignin;
         private Panel panelSign;
         private Button SignoutBTN;
         private Panel FrontPagePNL;
-        private Panel panel3;
-        private Label label1;
-        private Panel panel2;
         private Label label2;
     }
 }
