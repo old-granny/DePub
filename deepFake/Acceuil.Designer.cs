@@ -37,7 +37,7 @@
             // 
             PanelLoadForm.Location = new Point(0, 0);
             PanelLoadForm.Name = "PanelLoadForm";
-            PanelLoadForm.Size = new Size(1920, 1080);
+            PanelLoadForm.Size = new Size(1925, 1080);
             PanelLoadForm.TabIndex = 0;
             // 
             // ScrollPub

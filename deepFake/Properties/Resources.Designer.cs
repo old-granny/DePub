@@ -73,6 +73,16 @@ namespace deepFake.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BigRectangle {
+            get {
+                object obj = ResourceManager.GetObject("BigRectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CanadaImage {
             get {
                 object obj = ResourceManager.GetObject("CanadaImage", resourceCulture);

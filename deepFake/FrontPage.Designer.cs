@@ -47,9 +47,9 @@
             // PanelContenuePublication
             // 
             PanelContenuePublication.AutoScroll = true;
-            PanelContenuePublication.Location = new Point(0, 89);
+            PanelContenuePublication.Location = new Point(0, 78);
             PanelContenuePublication.Name = "PanelContenuePublication";
-            PanelContenuePublication.Size = new Size(1920, 1080);
+            PanelContenuePublication.Size = new Size(1925, 1091);
             PanelContenuePublication.TabIndex = 3;
             // 
             // boutonPagePost
@@ -94,7 +94,7 @@
             PanelTop.Controls.Add(panelSign);
             PanelTop.Location = new Point(0, 0);
             PanelTop.Name = "PanelTop";
-            PanelTop.Size = new Size(1920, 83);
+            PanelTop.Size = new Size(1925, 83);
             PanelTop.TabIndex = 0;
             // 
             // label2
@@ -153,7 +153,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1909, 1041);
             Controls.Add(FrontPagePNL);
             Name = "FrontPage";
             Text = "FrontPage";

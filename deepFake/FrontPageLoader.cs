@@ -30,7 +30,7 @@ namespace deepFake
                 postToShow = 15;
             }
 
-            int x = 100, y = 0; // Les position des posts
+            int x = 100, y = 50; // Les position des posts
 
             int nbPostsLoader = 0;
             // Devrait trouver une facon qui pourrait fonctionnner si on veut pas necessairement les premier post
@@ -38,14 +38,14 @@ namespace deepFake
             for (int i = 0; i < postToShow; i++) {
                 string[] ligne = Handle.getPostData("post_data", idPost[i]); // Ici le i est senser representer le id du post, vas surement launch une erreur
                 List<Image> images = Handle.GetTableImages("post_data", idPost[i]);
-                Panel panel = LoadRectanlges(ligne[0], ligne[1], x, y, images);
+                Panel panel = LoadRectanlges(ligne[0], ligne[1], x, y, images, idPost[i]);
                 list.Add(panel);
                 nbPostsLoader++;
                 x += 600;
                 if (nbPostsLoader % 3 == 0) // Augmenter la position selon le le nombre de posts
                 {
                     y += 900;
-                    x = 0;
+                    x = 100;
                 }
                 
             }
@@ -95,18 +95,20 @@ namespace deepFake
             pictureBox.Image = images[0]; // Image de titre
             pictureBox.Location = new Point(0, 300);
             //panelContenuePost.Controls.Add(pictureBox);
-            
+
+
+         
 
             return panelContenuePost;
         }
 
-        public Panel LoadRectanlges(string title, string content, int x, int y, List<Image> images)
+        public Panel LoadRectanlges(string title, string content, int x, int y, List<Image> images, int id)
         {
             Panel pan1 = new Panel();
             pan1.BackgroundImage = Properties.Resources.LightBlueRect1;
             pan1.Size = new Size(500, 700);
             pan1.Location = new Point(x, y);
-
+           
 
             // Titre 
             Label lbs = new Label();
@@ -151,14 +153,21 @@ namespace deepFake
             lbs.Click += Pan1_Click;
             contenueLBL.Click += Pan1_Click;
             pic.Click += Pan1_Click;
-            
+
+            // Set les name comme id pour quand le click va se produire
+            pan1.Name = id.ToString();
+            lbs.Name = id.ToString();
+            contenueLBL.Name = id.ToString();
+            pic.Name = id.ToString();
+
             return pan1;
         }
 
         private void Pan1_Click(object? sender, EventArgs e)
         {
-            Console.WriteLine("hello");
+            Control cont = sender as Control;
+            if (cont != null) 
+                Console.WriteLine(cont.Name);
         }
-
     }
 }

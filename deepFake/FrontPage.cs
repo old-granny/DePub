@@ -22,6 +22,7 @@ namespace deepFake
         public FrontPage(Acceuil acceuil)
         {
             Main = acceuil;
+            this.Name = "FrontPage";
             InitializeComponent();
             beautefull();
             LoadInstance();
