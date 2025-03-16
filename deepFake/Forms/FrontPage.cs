@@ -1,4 +1,5 @@
-﻿using System;
+﻿using deepFake;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -101,6 +102,11 @@ namespace deepFake
             Main.User = null;
             //ProfilTitle.Text = defaut;
             Main.LoadFrontPage();
+        }
+
+        public bool Cleanup()
+        {
+            return true;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using deepFake;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,6 +63,10 @@ namespace deepFake
         private void label2_Click(object sender, EventArgs e)
         {
             Main.LoadFrontPage();
+        }
+        public bool Cleanup()
+        {
+            return true;
         }
     }
 }

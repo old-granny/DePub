@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using deepFake;
+using deepFake.Elements;
 using Org.BouncyCastle.Crypto.Parameters;
 
 namespace deepFake
@@ -18,7 +20,7 @@ namespace deepFake
     {
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
-        
+
         private Dictionary<Panel, byte[]> PanelImageDict = new Dictionary<Panel, byte[]>();
         private List<Image> ListImagesEnvoyer = new List<Image>();
         private List<Panel> ListPanelsActive = new List<Panel>();
@@ -28,13 +30,63 @@ namespace deepFake
         //
         private Acceuil Main;
         private ComPostSQL Handle;
-       
+        InputTexte Input1;
+        InputTexte Input2;
+        InputTexte Input3;
+
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
             Handle = new ComPostSQL();
             InitializeComponent();
+            InitializeElement();
+            Beautefull();
         }
+
+        private void InitializeElement()
+        {
+            Point pos = new Point(200, 100);
+            Size size = new Size(200, 100);
+            Input1 = new InputTexte("Input title", pos, size, 50, 850);
+            Input1.Name = "texte1";
+            
+            ScrollablePanel.Controls.Add(Input1);
+
+            AddElement element1 = new AddElement();
+
+            ScrollablePanel.Controls.Add(element1);
+        }
+
+        private void Beautefull()
+        {
+            PanelContenue.BackColor = ColorTranslator.FromHtml("#E3DDE2");
+            PanelPost.BackColor = Color.White;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private Panel CreatePanaelImage(string filename)
         {
@@ -83,7 +135,7 @@ namespace deepFake
             pic.TabIndex = 0;
             pic.Image = img;
             ListImagesEnvoyer.Add(img);
-            
+
             return pic;
         }
 
@@ -93,8 +145,9 @@ namespace deepFake
             // Checker si le size est acceptable
             // Max 16 777 216 bits 
 
-            string content = Contenue.Text;
-            string title = Titre.Text;
+            //string title = Contenu1LBL.Text;
+         
+
 
             byte[] img1 = null;
             byte[] img2 = null;
@@ -103,7 +156,7 @@ namespace deepFake
             {
                 img1 = PanelImageDict.ElementAt(0).Value;
             }
-            if(PanelImageDict.Count >= 2)
+            if (PanelImageDict.Count >= 2)
             {
                 img2 = PanelImageDict.ElementAt(1).Value;
             }
@@ -111,24 +164,25 @@ namespace deepFake
             {
                 img3 = PanelImageDict.ElementAt(2).Value;
             }
-            Handle.insertIntoData(title, content, img1, img2, img3);
+            //Handle.insertIntoData(title, content, img1, img2, img3);
             Main.LoadFrontPage();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            if (Pos > 2) {
+            if (Pos > 2)
+            {
                 // Checker exede le nombre d'image permisse
                 Console.WriteLine("Nb image exceed");
                 return;
-            }         
+            }
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.CheckFileExists = true;
             ofd.AddExtension = true;
             ofd.Multiselect = true;
             ofd.Filter = "All Files|*.png;*.jpeg;*.jpg;";
 
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
                 foreach (string fileName in ofd.FileNames)
                 {
@@ -143,14 +197,14 @@ namespace deepFake
 
                     }
                 }
-                
+
             }
         }
 
         private void UpdateLabelimage(string filename)
         {
             Panel pan = CreatePanaelImage(filename);
-            flowLayoutPanel1.Controls.Add(pan);
+            PanelPost.Controls.Add(pan);
         }
         private void CancelBTN_Click(object sender, EventArgs e)
         {
@@ -163,11 +217,26 @@ namespace deepFake
             Panel parent = clickedLabel.Parent as Panel;
             if (parent != null)
             {
-                flowLayoutPanel1.Controls.Remove(parent);
+                PanelPost.Controls.Remove(parent);
                 parent.Dispose();
                 PanelImageDict.Remove(parent);
                 Pos -= 1;
             }
+        }
+
+        public bool Cleanup()
+        {
+            return true;
+        }
+
+        private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
+        {
+            
+            int scrolled = e.Delta;
+
+            // Max en hauteur = 135 et min hauteur = -325
+            if (ScrollablePanel.Location.Y + scrolled < 135 && ScrollablePanel.Location.Y + scrolled > -325)
+                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
         }
     }
 }

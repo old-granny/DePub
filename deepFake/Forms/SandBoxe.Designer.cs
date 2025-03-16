@@ -88,7 +88,7 @@ namespace deepFake
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(657, 549);
+            label2.Location = new Point(710, 538);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 2;

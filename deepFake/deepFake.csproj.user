@@ -1,25 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Acceuil.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="BubblePub.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="FrontPage.cs">
+    <Compile Update="Elements\AddElement.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Elements\InputTexte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Forms\Acceuil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="PublierPost.cs">
+    <Compile Update="Forms\FrontPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SandBoxe.cs">
+    <Compile Update="Forms\PublierPost.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Signing.cs">
+    <Compile Update="Forms\SandBoxe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Signup.cs">
+    <Compile Update="Forms\Signing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Signup.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

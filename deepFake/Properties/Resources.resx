@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BigRectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BigRectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CanadaImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CanadaImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -126,6 +129,9 @@
   </data>
   <data name="rectanglePUB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rectanglePUB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GreyRect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GreyRect.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,7 +145,7 @@
   <data name="LightBlueRect" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LightBlueRect1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BigRectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigRectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AddImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using deepFake;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +29,7 @@ namespace deepFake
             if (name.Length > Globals.MaximumNameCount || name.Length < Globals.MinimumNameCount || name.ToLower() == "name") return "NAME";
             if (!Algorithme.IsValidEmail(email)) return "EMAIL";
             if (password.Length > Globals.MaximumPasswordCount|| password.Length < Globals.MinimumPasswordCount|| password.ToLower() == "password") return "PASSWORD";
-
-
+            
             return "OK";
 
         }
@@ -99,6 +99,11 @@ namespace deepFake
             // A completer
             ErrorListLB.Text = "General Mistake";
             ErrorListLB.ForeColor = Color.Red;
+        }
+
+        public bool Cleanup()
+        {
+            return true;
         }
     }
 }

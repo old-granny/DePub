@@ -1,3 +1,4 @@
+using deepFake;
 using System.Drawing.Printing;
 using System.Security.Cryptography;
 
@@ -38,7 +39,9 @@ namespace deepFake
 
         private void InstancierAttribut()
         {
-            User = null;
+            User = new UserInstance();
+            User.Username = "hello";
+            User.id= 1;
             // Forms
             PublierPostPage = new PublierPost(this) { TopLevel = false, TopMost = true };
             FrontPagePage = new FrontPage(this) { TopLevel = false, TopMost = true };
@@ -54,21 +57,23 @@ namespace deepFake
 
         public void LoadFrontPage()
         {
+            FrontPagePage.Cleanup();
             LoadFormInsidePanel(FrontPagePage);
-            FrontPagePage.OnLoadPage();
-
         }
 
         public void LoadSignUpPage()
         {
+            SignupPage.Cleanup();
             LoadFormInsidePanel(SignupPage);
         }
         public void LoadPublierPost()
         {
+            PublierPostPage.Cleanup();
             LoadFormInsidePanel(PublierPostPage);
         }
         public void LoadSigningPage()
         {
+            SigningPage.Cleanup();
             LoadFormInsidePanel(SigningPage);
         }
 
@@ -87,7 +92,12 @@ namespace deepFake
 
         private bool CloseFormInsidePanel(Form form)
         {
-            form.Close();
+            form.Hide();
+            return true;
+        }
+
+        public bool Cleanup()
+        {
             return true;
         }
     }
