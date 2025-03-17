@@ -18,6 +18,9 @@ namespace deepFake
 {
     public partial class PublierPost : Form
     {
+        private List<InputTexte> inputTexteList = new List<InputTexte>();
+
+
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
 
@@ -25,8 +28,8 @@ namespace deepFake
         private List<Image> ListImagesEnvoyer = new List<Image>();
         private List<Panel> ListPanelsActive = new List<Panel>();
 
-        private int Pos = 0;
 
+        private int Pos = 0;
         //
         private Acceuil Main;
         private ComPostSQL Handle;
@@ -65,7 +68,35 @@ namespace deepFake
 
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (inputTexteList.Count < 3)
+            {
+                InputTexte inputT = new InputTexte("input1", GetNextInputTextePoint(), new Size(200, 200), 200, 200);
+                inputTexteList.Add(inputT);
+                ScrollablePanel.Controls.Add(inputT);
+            }
+        }
+        private Point GetNextInputTextePoint()
+        {
+            Point pt = new Point(-1000, -1000);
+
+            switch (inputTexteList.Count)
+            {
+                case 0:
+                    pt.X = 200;
+                    pt.Y = 400;
+                    break;
+                case 1:
+                    pt.X = 200;
+                    pt.Y = 600;
+                    break;
+                case 2:
+                    pt.X = 200;
+                    pt.Y = 800;
+                    break;
+                default:
+                    return pt;
+            }
+            return pt;
         }
 
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
@@ -79,6 +110,7 @@ namespace deepFake
             PanelPost.BackColor = Color.White;
         }
 
+        
 
 
 

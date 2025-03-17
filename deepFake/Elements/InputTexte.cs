@@ -14,6 +14,9 @@ namespace deepFake.Elements
         private int minTextBoxWidth = 50;
         private int maxTextBoxWidth;
 
+        private int minTextBoxHeight = 50;
+        private int maxTextBoxHeight = 150;
+
         public InputTexte(string str, Point pt, Size size, int maxChar, int maxWidth)
         {
             this.Location = pt;
@@ -39,6 +42,7 @@ namespace deepFake.Elements
                 Visible = false,
                 Location = editableLabel.Location,
                 Width = 150,
+                Multiline = true,
                 Font = new Font("Candara", 24F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
             this.Controls.Add(editTextBox);
@@ -110,6 +114,13 @@ namespace deepFake.Elements
 
             editTextBox.Width = newWidth;
             this.Width = newWidth;
+            
+            int newHeight = Math.Max(minTextBoxWidth, textSize.Width);
+            newWidth = Math.Min(maxTextBoxWidth, newWidth); // Optional: max width limit
+
+            editTextBox.Width = newWidth;
+            this.Width = newWidth;
+
         }
     } 
 }
