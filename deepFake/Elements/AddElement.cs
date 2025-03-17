@@ -8,30 +8,37 @@ namespace deepFake.Elements
 {
     internal class AddElement : Panel
     {
+        public Button ajouterTexteBtn;
+        public Button ajouterImageBtn;
+
         public AddElement()
         {
             this.Location = new Point(0, 0);
-            this.Size = new Size(100, 200); 
+            this.Size = new Size(140, 80); 
             this.BorderStyle = BorderStyle.FixedSingle;
             InitializeCompenents();
         }
 
         private void InitializeCompenents()
         {
-            Button ajouterTexte = new Button();
-            Button ajouterImage = new Button();
+            ajouterTexteBtn = new Button();
+            ajouterImageBtn = new Button();
 
-            ajouterImage.Text = "Add a Image";
-            ajouterTexte.Text = "Add Texte";
+            ajouterImageBtn.Text = "Add a Image";
+            ajouterTexteBtn.Text = "Add Texte";
 
-            ajouterImage.Size = new Size(100,100);
-            ajouterTexte.Size = new Size(100, 100);
+            ajouterImageBtn.Font = new Font("Candara", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ajouterTexteBtn.Font = new Font("Candara", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
 
-            ajouterImage.Location = new Point(0, 0);
-            ajouterTexte.Location = new Point(0, 100);
 
-            this.Controls.Add(ajouterTexte);
-            this.Controls.Add(ajouterImage);
+            ajouterImageBtn.Size = new Size(140, 40);
+            ajouterTexteBtn.Size = new Size(140, 40);
+
+            ajouterImageBtn.Location = new Point(0, 0);
+            ajouterTexteBtn.Location = new Point(0, 40);
+
+            this.Controls.Add(ajouterTexteBtn);
+            this.Controls.Add(ajouterImageBtn);
 
         }
     }

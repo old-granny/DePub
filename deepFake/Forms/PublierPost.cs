@@ -34,6 +34,8 @@ namespace deepFake
         InputTexte Input2;
         InputTexte Input3;
 
+        private AddElement Element1;
+
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
@@ -49,12 +51,26 @@ namespace deepFake
             Size size = new Size(200, 100);
             Input1 = new InputTexte("Input title", pos, size, 50, 850);
             Input1.Name = "texte1";
-            
+
             ScrollablePanel.Controls.Add(Input1);
 
-            AddElement element1 = new AddElement();
+            Element1 = new AddElement();
+            Element1.Location = new Point(200, 200);
+            ScrollablePanel.Controls.Add(Element1);
 
-            ScrollablePanel.Controls.Add(element1);
+            Element1.ajouterImageBtn.Click += AjouterImageBtn_Click;
+            Element1.ajouterTexteBtn.Click += AjouterTexteBtn_Click;
+
+        }
+
+        private void AjouterTexteBtn_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AjouterImageBtn_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         private void Beautefull()
