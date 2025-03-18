@@ -1,81 +1,91 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZstdSharp.Unsafe;
 
 namespace deepFake.Elements
 {
-    internal class InputTexte : Panel
+    internal class InputTexte : DraggablePanel
     {
-        private Label editableLabel;
-        private TextBox editTextBox;
+        private Label EditableLabel;
+        private TextBox EditTextBox;
+        private bool Multined;
 
-        private int minTextBoxWidth = 50;
-        private int maxTextBoxWidth;
+        public int MaxChar;
+        public bool IsDraggable = false;
+        
 
-        private int minTextBoxHeight = 50;
-        private int maxTextBoxHeight = 150;
-
-        public InputTexte(string str, Point pt, Size size, int maxChar, int maxWidth)
+        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable)
         {
-            this.Location = pt;
             this.Size = size;
-            maxTextBoxWidth = maxWidth;
-            // Create and set up Label
-            editableLabel = new Label
+            MaxChar = maxChar;
+            Multined = multiline;
+            Create_InputText(texte, size, multiline);
+            if (draggable)
             {
-                Text = str,
+                IsDraggable = true;
+                this.Set_Draggable();
+            }
+        }
+
+        private void Create_InputText(string contenue, Size size, bool multiline)
+        {
+            // Create and set up Label
+            EditableLabel = new Label
+            {
+                Text = contenue,
                 AutoSize = true,
-                Location = new Point(0,0),
-                Size =  size,
-
-                BorderStyle = BorderStyle.FixedSingle,
+                Location = new Point(2, 2),
+                MaximumSize = new Size(size.Width, 0),
+                Size = size,
+                BorderStyle = BorderStyle.None,
                 Font = new Font("Candara", 24F, FontStyle.Regular, GraphicsUnit.Point, 0)
-
             };
-            this.Controls.Add(editableLabel);
 
             // Create and set up TextBox (initially hidden)
-            editTextBox = new TextBox
+            EditTextBox = new TextBox
             {
                 Visible = false,
-                Location = editableLabel.Location,
-                Width = 150,
-                Multiline = true,
+                Location = new Point(2, 2),
+                Multiline = multiline,
+                Size = size,
+                MaxLength = MaxChar,
+                AutoSize = false,
                 Font = new Font("Candara", 24F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
-            this.Controls.Add(editTextBox);
-            editTextBox.MaxLength = maxChar;
+            EditTextBox.Width = Size.Width;
+            Console.WriteLine(Size.Width);
+            this.Controls.Add(EditableLabel);
+            this.Controls.Add(EditTextBox);
 
             // Events
-            editableLabel.Click += EditableLabel_Click;
-            editTextBox.KeyDown += EditTextBox_KeyDown;
-            editTextBox.LostFocus += EditTextBox_LostFocus;
-            editTextBox.TextChanged += EditTextBox_TextChanged; // Auto-resize on text change
+            EditableLabel.Click += EditableLabel_Click;
+            EditTextBox.KeyDown += EditTextBox_KeyDown;
+            EditTextBox.LostFocus += EditTextBox_LostFocus;
+            EditTextBox.TextChanged += EditTextBox_TextChanged;
         }
 
         // When label is clicked, swap to TextBox
         private void EditableLabel_Click(object sender, EventArgs e)
         {
-            editTextBox.Text = editableLabel.Text;
-            editTextBox.Location = editableLabel.Location;
-            editTextBox.Width = editableLabel.Width;
-            editTextBox.Visible = true;
-            editableLabel.Visible = false;
-            editTextBox.Focus();
-            editTextBox.SelectAll(); // Optional: Select all text for easy editing
+            EditTextBox.Text = EditableLabel.Text;
+            //EditTextBox.Width = EditableLabel.Width;
+            EditTextBox.Visible = true;
+            EditableLabel.Visible = false;
+            EditTextBox.Focus();
         }
 
         
         private void EditTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            
+        {  
             if (e.KeyCode == Keys.Escape)
             {
+                e.SuppressKeyPress = true; // couper le son windows
                 SaveEdit();
-            }
-            
+            }   
         }
 
         // When focus is lost, apply the change
@@ -87,16 +97,13 @@ namespace deepFake.Elements
         // Save changes and swap back to Label
         private void SaveEdit()
         {
-            editableLabel.Text = editTextBox.Text;
-            editTextBox.Visible = false;
-            editableLabel.Visible = true;
-        }
+            if(Multined)
+                EditableLabel.Text = Algorithme.StringToLinedString(EditTextBox.Text, MaxChar);
+            else
+                EditableLabel.Text = EditTextBox.Text;
 
-        // Cancel editing (keep original text)
-        private void CancelEdit()
-        {
-            editTextBox.Visible = false;
-            editableLabel.Visible = true;
+            EditTextBox.Visible = false;
+            EditableLabel.Visible = true;
         }
 
         private void EditTextBox_TextChanged(object sender, EventArgs e)
@@ -107,20 +114,12 @@ namespace deepFake.Elements
         // Resize logic
         private void ResizeTextBoxToFitText()
         {
-            var text = editTextBox.Text;
-            Size textSize = TextRenderer.MeasureText(text + " ", editTextBox.Font); // " " for padding
-            int newWidth = Math.Max(minTextBoxWidth, textSize.Width);
-            newWidth = Math.Min(maxTextBoxWidth, newWidth); // Optional: max width limit
+            var text = EditTextBox.Text;
+            Size textSize = TextRenderer.MeasureText(text + " ", EditTextBox.Font); // " " for padding
+            int newWidth = Math.Max(50, textSize.Width);
+            newWidth = Math.Min(this.Width, newWidth); // Optional: max width limit
 
-            editTextBox.Width = newWidth;
-            this.Width = newWidth;
-            
-            int newHeight = Math.Max(minTextBoxWidth, textSize.Width);
-            newWidth = Math.Min(maxTextBoxWidth, newWidth); // Optional: max width limit
-
-            editTextBox.Width = newWidth;
-            this.Width = newWidth;
-
+            EditTextBox.Width = 800;
         }
     } 
 }

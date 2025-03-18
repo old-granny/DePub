@@ -20,7 +20,6 @@ namespace deepFake
     {
         private List<InputTexte> inputTexteList = new List<InputTexte>();
 
-
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
 
@@ -30,13 +29,13 @@ namespace deepFake
 
 
         private int Pos = 0;
-        //
+        
+        // Attribut
         private Acceuil Main;
         private ComPostSQL Handle;
-        InputTexte Input1;
-        InputTexte Input2;
-        InputTexte Input3;
 
+        // Element contenue
+        private InputTexte InputeTitre;
         private AddElement Element1;
 
         public PublierPost(Acceuil acceuil)
@@ -51,11 +50,13 @@ namespace deepFake
         private void InitializeElement()
         {
             Point pos = new Point(200, 100);
-            Size size = new Size(200, 100);
-            Input1 = new InputTexte("Input title", pos, size, 50, 850);
-            Input1.Name = "texte1";
+            Size size = new Size(800, 50);
 
-            ScrollablePanel.Controls.Add(Input1);
+            InputeTitre = new InputTexte("Input title", size, 50, false, false);
+            InputeTitre.Location = pos;
+            InputeTitre.Name = "texte1";
+
+            ScrollablePanel.Controls.Add(InputeTitre);
 
             Element1 = new AddElement();
             Element1.Location = new Point(200, 200);
@@ -70,7 +71,8 @@ namespace deepFake
         {
             if (inputTexteList.Count < 3)
             {
-                InputTexte inputT = new InputTexte("input1", GetNextInputTextePoint(), new Size(200, 200), 200, 200);
+                InputTexte inputT = new InputTexte("input1", new Size(800, 200), 1000, true, true);
+                inputT.Location = GetNextInputTextePoint();
                 inputTexteList.Add(inputT);
                 ScrollablePanel.Controls.Add(inputT);
             }

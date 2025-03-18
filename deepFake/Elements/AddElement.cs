@@ -16,6 +16,7 @@ namespace deepFake.Elements
             this.Location = new Point(0, 0);
             this.Size = new Size(140, 80); 
             this.BorderStyle = BorderStyle.FixedSingle;
+
             InitializeCompenents();
         }
 

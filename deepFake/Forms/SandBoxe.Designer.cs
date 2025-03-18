@@ -31,6 +31,8 @@ namespace deepFake
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label1 = new Label();
+            textBox1 = new TextBox();
             pictureBox4 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -49,6 +51,8 @@ namespace deepFake
             // 
             panel1.AutoScroll = true;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(pictureBox4);
             panel1.Controls.Add(pictureBox3);
             panel1.Controls.Add(pictureBox2);
@@ -60,6 +64,22 @@ namespace deepFake
             panel1.Name = "panel1";
             panel1.Size = new Size(1920, 980);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(297, 408);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 7;
+            label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(349, 276);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(242, 23);
+            textBox1.TabIndex = 6;
             // 
             // pictureBox4
             // 
@@ -149,5 +169,7 @@ namespace deepFake
         private PictureBox pictureBox2;
         private Label label2;
         private Label Titre;
+        private TextBox textBox1;
+        private Label label1;
     }
 }

@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace deepFake
 {
@@ -172,6 +173,32 @@ namespace deepFake
         {
             using (HashAlgorithm algorithm = SHA256.Create())
                 return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+        }
+
+        public static string StringToLinedString(string inputString, int maxCharLine)
+        {
+            StringBuilder sb = new StringBuilder();
+            int pos = 0;
+            int nbCharAdded = 0;
+            while (sb.Length < inputString.Length)
+            {
+                sb.Append(inputString[pos]);
+                if(inputString[pos] == '\n')
+                {
+                    nbCharAdded = 0;
+                }
+                if (nbCharAdded % maxCharLine == 0 && nbCharAdded != 0)
+                {
+                    sb.Append('\n');
+                }
+                pos += 1;
+                nbCharAdded += 1;
+            }
+            if(pos % maxCharLine != 0)
+                sb.Append('\n');
+            string final = sb.ToString();
+            Console.WriteLine(final.Replace("\n", "\\n"));
+            return final;
         }
     }
 }
