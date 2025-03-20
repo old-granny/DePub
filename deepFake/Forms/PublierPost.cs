@@ -38,6 +38,9 @@ namespace deepFake
         private InputTexte InputeTitre;
         private AddElement Element1;
 
+        // int pour le scrolling
+        int Y_Max = 135, Y_Min = -325;
+
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
@@ -71,10 +74,12 @@ namespace deepFake
         {
             if (inputTexteList.Count < 3)
             {
-                InputTexte inputT = new InputTexte("input1", new Size(800, 200), 1000, true, true);
+                InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [200, 1000]);
                 inputT.Location = GetNextInputTextePoint();
                 inputTexteList.Add(inputT);
                 ScrollablePanel.Controls.Add(inputT);
+                Element1.Location = new Point(inputT.Location.X, inputT.Location.Y+300);
+                Y_Min -= 100;
             }
         }
         private Point GetNextInputTextePoint()
@@ -85,15 +90,15 @@ namespace deepFake
             {
                 case 0:
                     pt.X = 200;
-                    pt.Y = 400;
+                    pt.Y = 200;
                     break;
                 case 1:
                     pt.X = 200;
-                    pt.Y = 600;
+                    pt.Y = 400;
                     break;
                 case 2:
                     pt.X = 200;
-                    pt.Y = 800;
+                    pt.Y = 600;
                     break;
                 default:
                     return pt;
@@ -103,7 +108,8 @@ namespace deepFake
 
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            SmartPictureBoxe smart = new SmartPictureBoxe(new Point(200, 200), new Size(800, 400), [200, 1000], [200, 1000]);
+            ScrollablePanel.Controls.Add(smart);
         }
 
         private void Beautefull()
@@ -112,7 +118,16 @@ namespace deepFake
             PanelPost.BackColor = Color.White;
         }
 
-        
+        private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
+        {
+
+            int scrolled = e.Delta;
+
+            // Max en hauteur = 135 et min hauteur = -325
+            if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)
+                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
+        }
+
 
 
 
@@ -279,14 +294,6 @@ namespace deepFake
             return true;
         }
 
-        private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
-        {
-            
-            int scrolled = e.Delta;
-
-            // Max en hauteur = 135 et min hauteur = -325
-            if (ScrollablePanel.Location.Y + scrolled < 135 && ScrollablePanel.Location.Y + scrolled > -325)
-                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
-        }
+        
     }
 }

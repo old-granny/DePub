@@ -197,7 +197,6 @@ namespace deepFake
             if(pos % maxCharLine != 0)
                 sb.Append('\n');
             string final = sb.ToString();
-            Console.WriteLine(final.Replace("\n", "\\n"));
             return final;
         }
     }

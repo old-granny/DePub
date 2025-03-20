@@ -18,7 +18,20 @@ namespace deepFake.Elements
         public bool IsDraggable = false;
         
 
-        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable)
+        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable, int[] x_s, int[] y_s) : base(x_s, y_s)
+        {
+            this.Size = size;
+            MaxChar = maxChar;
+            Multined = multiline;
+            Create_InputText(texte, size, multiline);
+            if (draggable)
+            {
+                IsDraggable = true;
+                this.Set_Draggable();
+            }
+        }
+
+        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable) : base([0,0], [0,0])
         {
             this.Size = size;
             MaxChar = maxChar;
@@ -57,7 +70,6 @@ namespace deepFake.Elements
                 Font = new Font("Candara", 24F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
             EditTextBox.Width = Size.Width;
-            Console.WriteLine(Size.Width);
             this.Controls.Add(EditableLabel);
             this.Controls.Add(EditTextBox);
 

@@ -11,10 +11,17 @@ namespace deepFake.Elements
         private bool isDragging = false;
         private Point dragStartPoint;
         private int borderThickness = 5; // Border area for dragging
+        int Max_X, Min_X, Max_Y, Min_Y;
 
-        public DraggablePanel()
+        public bool Draggable = true;
+
+        public DraggablePanel(int[] x_s, int [] y_s)
         {
-            
+            Min_X = x_s[0];
+            Max_X = x_s[1];
+
+            Min_Y = y_s[0];
+            Max_Y = y_s[1];
         }
 
         /// <summary>
@@ -32,6 +39,8 @@ namespace deepFake.Elements
 
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
+            if (!Draggable) return;
+
             if (IsOnBorder(e.Location))
             {
                 isDragging = true;
@@ -42,23 +51,15 @@ namespace deepFake.Elements
 
         private void Panel_MouseMove(object sender, MouseEventArgs e)
         {
+            if(!Draggable) return;
             if (isDragging)
             {
                 // Calculate new panel position
-                if(this.Left + e.X - dragStartPoint.X > 0 && this.Right + e.X - dragStartPoint.X + 5 < Parent.Size.Width) 
+                if(this.Left + e.X - dragStartPoint.X > Min_X && this.Right + e.X - dragStartPoint.X + 5 < Max_X) 
                     this.Left += e.X - dragStartPoint.X;
-                else if (!(this.Top + e.Y - dragStartPoint.Y > 0 && this.Bottom + e.Y - dragStartPoint.Y + 5 < Parent.Size.Height))
-                {
-                    this.Cursor = Cursors.Default;
-                    isDragging = false;
-                }
-                if (this.Top + e.Y - dragStartPoint.Y > 0 && this.Bottom + e.Y - dragStartPoint.Y + 5 < Parent.Size.Height)
+                if (this.Top + e.Y - dragStartPoint.Y > Min_Y && this.Bottom + e.Y - dragStartPoint.Y + 5 < Max_Y)
                     this.Top += e.Y - dragStartPoint.Y;
-                else if(!(this.Left + e.X - dragStartPoint.X > 0 && this.Right + e.X - dragStartPoint.X + 5 < Parent.Size.Width))
-                {
-                    this.Cursor = Cursors.Default;
-                    isDragging = false;
-                }
+                
 
 
             }
