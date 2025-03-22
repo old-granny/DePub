@@ -200,4 +200,31 @@ namespace deepFake
             return final;
         }
     }
+
+    internal class Stack<T>
+    {
+        List<T> list;
+        public Stack()
+        {
+            list = new List<T>();
+        }
+
+
+        public void Push(T item) { 
+            list.Add(item);
+        }
+
+        public void Pop() {
+            if (list.Count > 0)
+            {
+                T element = list[list.Count - 1];
+                list.RemoveAt(list.Count - 1);
+            }
+        }
+
+        public T GetValue(int index) { 
+            return list[index];
+        }
+
+    }
 }

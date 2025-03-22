@@ -11,7 +11,7 @@ namespace deepFake.Elements
         private bool isDragging = false;
         private Point dragStartPoint;
         private int borderThickness = 5; // Border area for dragging
-        int Max_X, Min_X, Max_Y, Min_Y;
+        private int Max_X, Min_X, Max_Y, Min_Y;
 
         public bool Draggable = true;
 
@@ -80,6 +80,25 @@ namespace deepFake.Elements
         {
             return (mousePos.X <= borderThickness || mousePos.X >= this.Width - borderThickness ||
                     mousePos.Y <= borderThickness || mousePos.Y >= this.Height - borderThickness);
+        }
+
+
+        public void Increase_Y_S(int nb)
+        {
+            Max_Y += nb; 
+        }
+
+        public void Set_Y_S(int[] y_s)
+        {
+            Max_Y = y_s[1]; Min_Y = y_s[0];
+        }
+        public void Set_Y_S(int y_max)
+        {
+            Max_Y = y_max;
+        }
+        public void Set_X_S(int[] x_s)
+        {
+            Min_X = x_s[0]; Max_X = x_s[1];
         }
     }
 }

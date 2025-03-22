@@ -19,6 +19,7 @@ namespace deepFake
     public partial class PublierPost : Form
     {
         private List<InputTexte> inputTexteList = new List<InputTexte>();
+        private List<SmartPictureBoxe> smartPictureBoxes = new List<SmartPictureBoxe>();
 
         private List<String> AbsoluteImagePath = new List<String>();
         private List<String> ListImageDejaFlow = new List<String>();
@@ -27,6 +28,7 @@ namespace deepFake
         private List<Image> ListImagesEnvoyer = new List<Image>();
         private List<Panel> ListPanelsActive = new List<Panel>();
 
+        private Stack<Control> stackElement = new Stack<Control>();
 
         private int Pos = 0;
         
@@ -39,15 +41,37 @@ namespace deepFake
         private AddElement Element1;
 
         // int pour le scrolling
-        int Y_Max = 135, Y_Min = -325;
+        private int Y_Max = 135, Y_Min = 0;
+
+        // List des panel actif
+        private List<Control> ElementsActif = new List<Control>();
+        private Dictionary<Point, bool> dict_position_disponible = new Dictionary<Point, bool>(); // si true alors disponible
 
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
             Handle = new ComPostSQL();
+            InstancierLesPoint();
             InitializeComponent();
             InitializeElement();
             Beautefull();
+        }
+
+        private void InstancierLesPoint()
+        {
+            dict_position_disponible.Add(new Point(200, 300), true);
+            dict_position_disponible.Add(new Point(200, 600), true);
+            dict_position_disponible.Add(new Point(200, 900), true);
+            dict_position_disponible.Add(new Point(200, 1200), true);
+            dict_position_disponible.Add(new Point(200, 1500), true);
+            dict_position_disponible.Add(new Point(200, 1800), true);
+        }
+
+
+        private void Beautefull()
+        {
+            PanelContenue.BackColor = ColorTranslator.FromHtml("#E3DDE2");
+            PanelPost.BackColor = Color.White;
         }
 
         private void InitializeElement()
@@ -75,53 +99,63 @@ namespace deepFake
             if (inputTexteList.Count < 3)
             {
                 InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [200, 1000]);
-                inputT.Location = GetNextInputTextePoint();
+                inputT.Location = GetNextPosition();
                 inputTexteList.Add(inputT);
                 ScrollablePanel.Controls.Add(inputT);
                 Element1.Location = new Point(inputT.Location.X, inputT.Location.Y+300);
-                Y_Min -= 100;
+                Y_Min -= 300;
+                SetNewY_S();
             }
         }
-        private Point GetNextInputTextePoint()
+
+        private void SetNewY_S()
+        {
+            foreach (DraggablePanel draggableElement in inputTexteList) {
+                draggableElement.Set_Y_S(Element1.Location.Y);
+            }
+            foreach (DraggablePanel draggableElement in smartPictureBoxes)
+            {
+                draggableElement.Set_Y_S(Element1.Location.Y);
+            }
+        }
+
+
+        private Point GetNextPosition()
         {
             Point pt = new Point(-1000, -1000);
 
-            switch (inputTexteList.Count)
-            {
-                case 0:
-                    pt.X = 200;
-                    pt.Y = 200;
-                    break;
-                case 1:
-                    pt.X = 200;
-                    pt.Y = 400;
-                    break;
-                case 2:
-                    pt.X = 200;
-                    pt.Y = 600;
-                    break;
-                default:
-                    return pt;
+            foreach (Point p in dict_position_disponible.Keys) {
+                if (dict_position_disponible[p]) 
+                {
+                    dict_position_disponible[p] = false;
+                    return p;
+                }
+
             }
             return pt;
         }
 
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
         {
-            SmartPictureBoxe smart = new SmartPictureBoxe(new Point(200, 200), new Size(800, 400), [200, 1000], [200, 1000]);
-            ScrollablePanel.Controls.Add(smart);
-        }
-
-        private void Beautefull()
-        {
-            PanelContenue.BackColor = ColorTranslator.FromHtml("#E3DDE2");
-            PanelPost.BackColor = Color.White;
+            if(smartPictureBoxes.Count < 3)
+            {
+                SmartPictureBoxe smart = new SmartPictureBoxe(GetNextPosition(), new Size(800, 400), [200, 1000], [200, 1000]);
+                ScrollablePanel.Controls.Add(smart);
+                smartPictureBoxes.Add(smart);
+                Element1.Location = new Point(smart.Location.X, smart.Location.Y + 600);
+                Y_Min -= 300;
+                SetNewY_S();
+            }
         }
 
         private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
         {
 
             int scrolled = e.Delta;
+
+            Console.WriteLine(ScrollablePanel.Location.Y + scrolled);
+            Console.WriteLine(Element1.Location.Y);
+            Console.WriteLine(InputeTitre.Location.Y);
 
             // Max en hauteur = 135 et min hauteur = -325
             if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)

@@ -82,8 +82,8 @@ namespace deepFake.Elements
                     DeleteBTN.Location = new Point(DeleteBTN.Location.X + 70, DeleteBTN.Location.Y);
                 }
             }
-            
         }
+
         private void ModifyBTN_Click(object? sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

@@ -72,7 +72,7 @@
             // 
             ScrollablePanel.Location = new Point(3, 35);
             ScrollablePanel.Name = "ScrollablePanel";
-            ScrollablePanel.Size = new Size(1204, 1600);
+            ScrollablePanel.Size = new Size(1204, 2900);
             ScrollablePanel.TabIndex = 7;
             ScrollablePanel.MouseWheel += ScrollablePanel_MouseWheel;
             // 
