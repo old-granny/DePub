@@ -47,41 +47,46 @@
             PanelPrincipale.Controls.Add(PanelContenue);
             PanelPrincipale.Controls.Add(TetePNL);
             PanelPrincipale.Location = new Point(0, 0);
+            PanelPrincipale.Margin = new Padding(3, 4, 3, 4);
             PanelPrincipale.Name = "PanelPrincipale";
-            PanelPrincipale.Size = new Size(1920, 1045);
+            PanelPrincipale.Size = new Size(1920, 1393);
             PanelPrincipale.TabIndex = 5;
             // 
             // PanelContenue
             // 
             PanelContenue.Controls.Add(PanelPost);
             PanelContenue.Controls.Add(pictureBox1);
-            PanelContenue.Location = new Point(0, 123);
+            PanelContenue.Location = new Point(0, 100);
+            PanelContenue.Margin = new Padding(3, 4, 3, 4);
             PanelContenue.Name = "PanelContenue";
-            PanelContenue.Size = new Size(1944, 917);
+            PanelContenue.Size = new Size(1920, 1000);
             PanelContenue.TabIndex = 1;
             // 
             // PanelPost
             // 
             PanelPost.Controls.Add(ScrollablePanel);
-            PanelPost.Location = new Point(337, 55);
+            PanelPost.Location = new Point(285, 73);
+            PanelPost.Margin = new Padding(3, 4, 3, 4);
             PanelPost.Name = "PanelPost";
-            PanelPost.Size = new Size(1210, 810);
+            PanelPost.Size = new Size(1383, 1080);
             PanelPost.TabIndex = 7;
             // 
             // ScrollablePanel
             // 
-            ScrollablePanel.Location = new Point(3, 35);
+            ScrollablePanel.Location = new Point(3, 47);
+            ScrollablePanel.Margin = new Padding(3, 4, 3, 4);
             ScrollablePanel.Name = "ScrollablePanel";
-            ScrollablePanel.Size = new Size(1204, 2900);
+            ScrollablePanel.Size = new Size(1376, 3867);
             ScrollablePanel.TabIndex = 7;
             ScrollablePanel.MouseWheel += ScrollablePanel_MouseWheel;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.BigRectangle;
-            pictureBox1.Location = new Point(160, 44);
+            pictureBox1.Location = new Point(100, 59);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1604, 834);
+            pictureBox1.Size = new Size(1600, 800);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -89,18 +94,19 @@
             // TetePNL
             // 
             TetePNL.Location = new Point(0, 0);
+            TetePNL.Margin = new Padding(3, 4, 3, 4);
             TetePNL.Name = "TetePNL";
-            TetePNL.Size = new Size(1920, 117);
+            TetePNL.Size = new Size(2194, 100);
             TetePNL.TabIndex = 0;
             // 
             // PublierPost
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
+            AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1684, 791);
+            ClientSize = new Size(1540, 845);
+            this.Size = new Size(1920, 1080);
             Controls.Add(PanelPrincipale);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "PublierPost";
             Text = "PublierPost";
             PanelPrincipale.ResumeLayout(false);
