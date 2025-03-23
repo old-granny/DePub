@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace deepFake
@@ -198,6 +199,18 @@ namespace deepFake
                 sb.Append('\n');
             string final = sb.ToString();
             return final;
+        }
+
+        public static float DistanceBetween2Point(Point pt1, Point pt2) 
+        {
+            int dx = pt2.X - pt1.X;
+            int dy = pt2.Y - pt1.Y;
+            return (float)Math.Sqrt(dx * dx + dy * dy);
+        }
+
+        public static int GetMaxFx(int maxFx) {
+            if (maxFx <= 610) return 0;  // Below a threshold, return 0
+            return (int)Math.Round(-1.03125f * maxFx + 837.1875f);
         }
     }
 

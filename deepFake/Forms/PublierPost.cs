@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
+using System.Xml.Linq;
 using deepFake;
 using deepFake.Elements;
 using Org.BouncyCastle.Crypto.Parameters;
@@ -29,8 +30,11 @@ namespace deepFake
         private List<Panel> ListPanelsActive = new List<Panel>();
 
         private Stack<Control> stackElement = new Stack<Control>();
+        private List<Control> listDesElementActif = new List<Control>();
 
         private int Pos = 0;
+        private Point FirstPoint = new Point(10, 100);
+        private int DistanceEntre2Element = 20;
         
         // Attribut
         private Acceuil Main;
@@ -59,12 +63,12 @@ namespace deepFake
 
         private void InstancierLesPoint()
         {
-            dict_position_disponible.Add(new Point(200, 300), true);
-            dict_position_disponible.Add(new Point(200, 600), true);
-            dict_position_disponible.Add(new Point(200, 900), true);
-            dict_position_disponible.Add(new Point(200, 1200), true);
-            dict_position_disponible.Add(new Point(200, 1500), true);
-            dict_position_disponible.Add(new Point(200, 1800), true);
+            dict_position_disponible.Add(new Point(10, 100), true);
+            dict_position_disponible.Add(new Point(10, 400), true);
+            dict_position_disponible.Add(new Point(10, 700), true);
+            dict_position_disponible.Add(new Point(10, 1000), true);
+            dict_position_disponible.Add(new Point(10, 1300), true);
+            dict_position_disponible.Add(new Point(10, 1600), true);
         }
 
 
@@ -76,7 +80,7 @@ namespace deepFake
 
         private void InitializeElement()
         {
-            Point pos = new Point(200, 100);
+            Point pos = new Point(10, 10);
             Size size = new Size(800, 50);
 
             InputeTitre = new InputTexte("Input title", size, 50, false, false);
@@ -86,7 +90,7 @@ namespace deepFake
             ScrollablePanel.Controls.Add(InputeTitre);
 
             Element1 = new AddElement();
-            Element1.Location = new Point(200, 200);
+            Element1.Location = new Point(10, 200);
             ScrollablePanel.Controls.Add(Element1);
 
             Element1.ajouterImageBtn.Click += AjouterImageBtn_Click;
@@ -96,16 +100,44 @@ namespace deepFake
 
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
-            if (inputTexteList.Count < 3)
+            if (inputTexteList.Count > 3) return;
+
+            Point p = new Point(FirstPoint.X, FirstPoint.Y);
+            if (listDesElementActif.Count > 0)
             {
-                InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [200, 1000]);
-                inputT.Location = GetNextPosition();
-                inputTexteList.Add(inputT);
-                ScrollablePanel.Controls.Add(inputT);
-                Element1.Location = new Point(inputT.Location.X, inputT.Location.Y+300);
-                Y_Min -= 300;
-                SetNewY_S();
+                Control lastElement = listDesElementActif[listDesElementActif.Count - 1];
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
+
+            InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
+            inputT.Location = p;
+            inputTexteList.Add(inputT);
+            listDesElementActif.Add(inputT);
+            ScrollablePanel.Controls.Add(inputT);
+            Element1.Location = new Point(inputT.Location.X, inputT.Bottom+30);
+            if(listDesElementActif.Count != 1) Y_Min -= 200;
+            SetNewY_S();
+            
+        }
+        private void AjouterImageBtn_Click(object? sender, EventArgs e)
+        {
+            if (smartPictureBoxes.Count > 3) return;
+            
+            Point p = new Point(FirstPoint.X, FirstPoint.Y);
+            if (listDesElementActif.Count > 0)
+            {
+                Control lastElement = listDesElementActif[listDesElementActif.Count - 1];
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+            }
+            SmartPictureBoxe smart = new SmartPictureBoxe(p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
+            listDesElementActif.Add(smart);
+            ScrollablePanel.Controls.Add(smart);
+            smartPictureBoxes.Add(smart);
+            
+            Element1.Location = new Point(smart.Location.X, smart.Bottom + 30);
+            if(listDesElementActif.Count != 1) Y_Min-=400;
+            SetNewY_S();
+            
         }
 
         private void SetNewY_S()
@@ -119,53 +151,83 @@ namespace deepFake
             }
         }
 
-
-        private Point GetNextPosition()
-        {
-            Point pt = new Point(-1000, -1000);
-
-            foreach (Point p in dict_position_disponible.Keys) {
-                if (dict_position_disponible[p]) 
-                {
-                    dict_position_disponible[p] = false;
-                    return p;
-                }
-
-            }
-            return pt;
-        }
-
-        private void AjouterImageBtn_Click(object? sender, EventArgs e)
-        {
-            if(smartPictureBoxes.Count < 3)
-            {
-                SmartPictureBoxe smart = new SmartPictureBoxe(GetNextPosition(), new Size(800, 400), [200, 1000], [200, 1000]);
-                ScrollablePanel.Controls.Add(smart);
-                smartPictureBoxes.Add(smart);
-                Element1.Location = new Point(smart.Location.X, smart.Location.Y + 600);
-                Y_Min -= 300;
-                SetNewY_S();
-            }
-        }
-
         private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
         {
 
             int scrolled = e.Delta;
-
-            Console.WriteLine(ScrollablePanel.Location.Y + scrolled);
-            Console.WriteLine(Element1.Location.Y);
-            Console.WriteLine(InputeTitre.Location.Y);
-
+            Console.WriteLine(ScrollablePanel.Location.Y);
             // Max en hauteur = 135 et min hauteur = -325
             if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)
                 ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
         }
 
+        public void ElementRemoved(Control element)
+        {
+            if (element == null) return;
+            if(element.GetType() == typeof(InputTexte))
+            {
+                InputTexte inpute = element as InputTexte;
+                if (inpute != null) { 
+                    inputTexteList.Remove(inpute);
+                    listDesElementActif.Remove(inpute);
+                    inpute.Parent.Controls.Remove(element);
+                }
+            }
+            if (element.GetType() == typeof(SmartPictureBoxe))
+            {
+                SmartPictureBoxe smartPictureBoxe = element as SmartPictureBoxe;
+                if (smartPictureBoxe != null) {
+                    if (listDesElementActif.Count > 2)
+                    {
+                        ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + 400);
+                        Y_Min += 400;
+                    }
+                    if(listDesElementActif.Count == 2)
+                    {
+                        Y_Min += 400;
+                    }
+                    smartPictureBoxes.Remove(smartPictureBoxe);
+                    listDesElementActif.Remove(smartPictureBoxe);
+                    smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
+                }
 
+            }
+            PlaceWithList();
+        }
 
+        /// <summary>
+        /// Placer les elements dans le panel selon l'orde dans la list
+        /// Vas etre utiliser principalement quand l'usager veut enlever dequoi
+        /// </summary>
+        private void PlaceWithList()
+        {
+            Point first = new Point(FirstPoint.X, FirstPoint.Y);
+            Control lastElement = null;
+            for (int i = 0; i < listDesElementActif.Count; i++) {
+                Control element = listDesElementActif[i];
+                if (i == 0 && element.Location != first) {
+                    element.Location = first;
+                }
+                if (lastElement != null) 
+                {
+                    if (Algorithme.DistanceBetween2Point(lastElement.Location, element.Location) > DistanceEntre2Element+2) // le +2 pour la correction du float
+                    { 
+                           element.Location = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+                    }
+                }
+                if (i == listDesElementActif.Count - 1) {
+                    Element1.Location = new Point(element.Location.X, element.Bottom + 30);
+                }
+                lastElement = element;
+            }
+            if(listDesElementActif.Count == 0)
+            {
+                Element1.Location = new Point(10, 200);
+            }
+        }
 
-
+       
+        
 
 
 

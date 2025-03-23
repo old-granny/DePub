@@ -58,12 +58,6 @@ namespace deepFake.Elements
             ModifyBTN.Click += ModifyBTN_Click;
             DeleteBTN.Click += DeleteBTN_Click;
         }
-
-        private void DeleteBTN_Click(object? sender, EventArgs e)
-        {
-            this.Parent.Controls.Remove(this);
-        }
-
         private void Picture_Click(object? sender, EventArgs e)
         {
             if (!Already_Has_Image)
@@ -83,7 +77,6 @@ namespace deepFake.Elements
                 }
             }
         }
-
         private void ModifyBTN_Click(object? sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -114,15 +107,26 @@ namespace deepFake.Elements
             Picture.Image = img ?? Picture.Image; // si image null remet l'image original dedans
         }
 
-
         private void SetDefaultImage()
         {
             Default_image = Properties.Resources.AddImage;
             Picture.Image = Default_image;
         }
 
-
-
         public byte[] GetCurrentImage() => Current_Image_Data;
+
+        private void DeleteBTN_Click(object? sender, EventArgs e)
+        {
+            RemoveSmartBoxe();
+        }
+
+        public void RemoveSmartBoxe() 
+        {
+            PublierPost par = this.FindForm() as PublierPost;
+            par?.ElementRemoved(this);
+
+        }
+
+        
     }
 }

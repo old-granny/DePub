@@ -12,17 +12,20 @@ namespace deepFake.Elements
     {
         private Label EditableLabel;
         private TextBox EditTextBox;
+        private Button RemoveButton;
         private bool Multined;
 
         public int MaxChar;
         public bool IsDraggable = false;
+        public bool IsRemoveable = false;
         
 
-        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable, int[] x_s, int[] y_s) : base(x_s, y_s)
+        public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable, int[] x_s, int[] y_s, bool removable) : base(x_s, y_s)
         {
             this.Size = size;
             MaxChar = maxChar;
             Multined = multiline;
+            IsRemoveable = removable;
             Create_InputText(texte, size, multiline);
             if (draggable)
             {
@@ -36,6 +39,7 @@ namespace deepFake.Elements
             this.Size = size;
             MaxChar = maxChar;
             Multined = multiline;
+            IsRemoveable = false;
             Create_InputText(texte, size, multiline);
             if (draggable)
             {
@@ -69,6 +73,20 @@ namespace deepFake.Elements
                 AutoSize = false,
                 Font = new Font("Candara", 24F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
+            if (IsRemoveable) 
+            {
+                RemoveButton = new Button
+                {
+                    Location = new Point(5, this.Bottom - 35),
+                    Size = new Size(80, 30),
+                    Text = "Remove",
+                    Font = new Font("Candara", 12F, FontStyle.Regular, GraphicsUnit.Point, 0)
+                };
+                this.Controls.Add(RemoveButton);
+                RemoveButton.Click += RemoveButton_Click;
+
+            }
+
             EditTextBox.Width = Size.Width;
             this.Controls.Add(EditableLabel);
             this.Controls.Add(EditTextBox);
@@ -78,6 +96,11 @@ namespace deepFake.Elements
             EditTextBox.KeyDown += EditTextBox_KeyDown;
             EditTextBox.LostFocus += EditTextBox_LostFocus;
             EditTextBox.TextChanged += EditTextBox_TextChanged;
+        }
+
+        private void RemoveButton_Click(object? sender, EventArgs e)
+        {
+            RemoveInputTexte();
         }
 
         // When label is clicked, swap to TextBox
@@ -132,6 +155,12 @@ namespace deepFake.Elements
             newWidth = Math.Min(this.Width, newWidth); // Optional: max width limit
 
             EditTextBox.Width = 800;
+        }
+
+        public void RemoveInputTexte()
+        {
+            PublierPost par = this.FindForm() as PublierPost;
+            par?.ElementRemoved(this);
         }
     } 
 }

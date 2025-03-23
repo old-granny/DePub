@@ -3054,23 +3054,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\raphb\\.nuget\\packages\\": {},
+    "C:\\Users\\-_-\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\deepFake.csproj",
+      "projectUniqueName": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\deepFake.csproj",
       "projectName": "deepFake",
-      "projectPath": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\deepFake.csproj",
-      "packagesPath": "C:\\Users\\raphb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\raphb\\Documents\\DeepFake\\deepFake\\obj\\",
+      "projectPath": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\deepFake.csproj",
+      "packagesPath": "C:\\Users\\-_-\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\raphb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\-_-\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3095,7 +3095,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -3135,7 +3135,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -65,28 +65,28 @@
             // PanelPost
             // 
             PanelPost.Controls.Add(ScrollablePanel);
-            PanelPost.Location = new Point(285, 73);
+            PanelPost.Location = new Point(398, 86);
             PanelPost.Margin = new Padding(3, 4, 3, 4);
             PanelPost.Name = "PanelPost";
-            PanelPost.Size = new Size(1383, 1080);
+            PanelPost.Size = new Size(974, 749);
             PanelPost.TabIndex = 7;
             // 
             // ScrollablePanel
             // 
-            ScrollablePanel.Location = new Point(3, 47);
+            ScrollablePanel.Location = new Point(3, 15);
             ScrollablePanel.Margin = new Padding(3, 4, 3, 4);
             ScrollablePanel.Name = "ScrollablePanel";
-            ScrollablePanel.Size = new Size(1376, 3867);
+            ScrollablePanel.Size = new Size(968, 3899);
             ScrollablePanel.TabIndex = 7;
             ScrollablePanel.MouseWheel += ScrollablePanel_MouseWheel;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.BigRectangle;
-            pictureBox1.Location = new Point(100, 59);
+            pictureBox1.Location = new Point(259, 59);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1600, 800);
+            pictureBox1.Size = new Size(1169, 800);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -103,8 +103,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1540, 845);
-            this.Size = new Size(1920, 1080);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(PanelPrincipale);
             Margin = new Padding(3, 4, 3, 4);
             Name = "PublierPost";

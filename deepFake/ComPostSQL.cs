@@ -24,7 +24,7 @@ namespace deepFake
         {
             
             if (!connectionDataBase()) { // Si la connection n'a pas fonctionner
-                throw new Exception("Erreur de connection");
+                throw new Exception("Tes con");
             }
 
         }
