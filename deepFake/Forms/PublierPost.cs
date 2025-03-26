@@ -83,7 +83,7 @@ namespace deepFake
             Point pos = new Point(10, 10);
             Size size = new Size(800, 50);
 
-            InputeTitre = new InputTexte("Input title", size, 50, false, false);
+            InputeTitre = new InputTexte("Input title", size, 50, false);
             InputeTitre.Location = pos;
             InputeTitre.Name = "texte1";
 
@@ -100,6 +100,8 @@ namespace deepFake
 
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
+            listDesElementActif = Algorithme.OrderListWithLocation(listDesElementActif);
+
             if (inputTexteList.Count > 3) return;
 
             Point p = new Point(FirstPoint.X, FirstPoint.Y);
@@ -108,7 +110,6 @@ namespace deepFake
                 Control lastElement = listDesElementActif[listDesElementActif.Count - 1];
                 p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
-
             InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
             inputT.Location = p;
             inputTexteList.Add(inputT);
@@ -121,6 +122,8 @@ namespace deepFake
         }
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
         {
+            listDesElementActif = Algorithme.OrderListWithLocation(listDesElementActif);
+
             if (smartPictureBoxes.Count > 3) return;
             
             Point p = new Point(FirstPoint.X, FirstPoint.Y);

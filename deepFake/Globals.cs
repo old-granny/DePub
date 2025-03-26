@@ -212,6 +212,18 @@ namespace deepFake
             if (maxFx <= 610) return 0;  // Below a threshold, return 0
             return (int)Math.Round(-1.03125f * maxFx + 837.1875f);
         }
+
+
+        public static bool isWithinControl(Point top_left, Point bottom_right, Point pt)
+        {
+            return pt.X >= top_left.X && pt.X <= bottom_right.X &&
+                   pt.Y >= top_left.Y && pt.Y <= bottom_right.Y;
+        }
+        public static List<Control> OrderListWithLocation(List<Control> controls)
+        {
+            return controls.OrderBy(c => c.Location.Y).ThenBy(c => c.Location.X).ToList();
+        }
+
     }
 
     internal class Stack<T>

@@ -46,9 +46,10 @@ namespace deepFake.Elements
 
             Picture = new PictureBox()
             {
-                Location = new Point(2,2),
-                Size = new Size(size.Width-4, size.Height-4),
+                Location = new Point(4, 4),
+                Size = new Size(size.Width-10, size.Height-10),
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                BorderStyle = BorderStyle.FixedSingle,
             }; SetDefaultImage();
             
             this.Controls.Add(Picture);
@@ -122,8 +123,13 @@ namespace deepFake.Elements
 
         public void RemoveSmartBoxe() 
         {
-            PublierPost par = this.FindForm() as PublierPost;
-            par?.ElementRemoved(this);
+            if(this.FindForm().GetType() == typeof(PublierPost))
+            {
+                Remove_Draggable_Panel();
+                PublierPost par = this.FindForm() as PublierPost;
+                par?.ElementRemoved(this);
+            }
+            
 
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using ZstdSharp.Unsafe;
@@ -32,6 +33,7 @@ namespace deepFake.Elements
                 IsDraggable = true;
                 this.Set_Draggable();
             }
+            else IsDraggable = false;
         }
 
         public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable) : base([0,0], [0,0])
@@ -46,6 +48,15 @@ namespace deepFake.Elements
                 IsDraggable = true;
                 this.Set_Draggable();
             }
+        }
+
+        public InputTexte(string texte, Size size, int maxChar, bool multiline) : base()
+        {
+            this.Size = size;
+            MaxChar = maxChar;
+            Multined = multiline;
+            IsRemoveable = false;
+            Create_InputText(texte, size, multiline);
         }
 
         private void Create_InputText(string contenue, Size size, bool multiline)
@@ -159,8 +170,12 @@ namespace deepFake.Elements
 
         public void RemoveInputTexte()
         {
-            PublierPost par = this.FindForm() as PublierPost;
-            par?.ElementRemoved(this);
+            if(this.FindForm().GetType() == typeof(PublierPost))
+            {
+                PublierPost par = this.FindForm() as PublierPost;
+                this.Remove_Draggable_Panel();
+                par?.ElementRemoved(this);
+            }
         }
     } 
 }

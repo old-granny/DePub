@@ -10,18 +10,31 @@ namespace deepFake.Elements
     {
         private bool isDragging = false;
         private Point dragStartPoint;
+        private Point dragElementStartPoint;
         private int borderThickness = 5; // Border area for dragging
         private int Max_X, Min_X, Max_Y, Min_Y;
 
         public bool Draggable = true;
 
+        static List<DraggablePanel> ActiveDraggablePanels = new List<DraggablePanel>();
+
         public DraggablePanel(int[] x_s, int [] y_s)
         {
             Min_X = x_s[0];
             Max_X = x_s[1];
-
             Min_Y = y_s[0];
             Max_Y = y_s[1];
+            
+            ActiveDraggablePanels.Add(this);
+        }
+
+        /// <summary>
+        /// Quand on est oubliger de rendre le truc draggable car inputTexte est draggable mais on veut pas qui soit draggable
+        /// Un peu contre intuitif mais fonction HAHAHAHAHA!!!
+        /// </summary>
+        public DraggablePanel() 
+        {
+            Draggable = false;
         }
 
         /// <summary>
@@ -37,6 +50,10 @@ namespace deepFake.Elements
             this.MouseUp += Panel_MouseUp;
         }
 
+        public void Remove_Draggable_Panel()
+        {
+            ActiveDraggablePanels.Remove(this);
+        }
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
             if (!Draggable) return;
@@ -45,6 +62,7 @@ namespace deepFake.Elements
             {
                 isDragging = true;
                 dragStartPoint = e.Location;
+                dragElementStartPoint = this.Location;
                 this.Cursor = Cursors.SizeAll; // Change cursor to indicate dragging
             }
         }
@@ -52,6 +70,8 @@ namespace deepFake.Elements
         private void Panel_MouseMove(object sender, MouseEventArgs e)
         {
             if(!Draggable) return;
+            if (ActiveDraggablePanels.Count <= 1) return; 
+           
             if (isDragging)
             {
                 // Calculate new panel position
@@ -59,9 +79,6 @@ namespace deepFake.Elements
                     this.Left += e.X - dragStartPoint.X;
                 if (this.Top + e.Y - dragStartPoint.Y > Min_Y && this.Bottom + e.Y - dragStartPoint.Y + 5 < Max_Y)
                     this.Top += e.Y - dragStartPoint.Y;
-                
-
-
             }
             else
             {
@@ -74,6 +91,16 @@ namespace deepFake.Elements
         {
             isDragging = false;
             this.Cursor = Cursors.Default;
+            DraggablePanel pan = OverWith(new Point(this.Location.X, this.Location.Y));
+            if (pan != null)
+            {
+                this.Location = pan.Location;
+                pan.Location = new Point(this.Location.X, this.Bottom+20);
+            }
+            else
+            {
+                this.Location = dragElementStartPoint;
+            }
         }
 
         private bool IsOnBorder(Point mousePos)
@@ -99,6 +126,22 @@ namespace deepFake.Elements
         public void Set_X_S(int[] x_s)
         {
             Min_X = x_s[0]; Max_X = x_s[1];
+        }
+
+        public DraggablePanel OverWith(Point tocheck)
+        {
+            DraggablePanel panelOver = null;
+            foreach(DraggablePanel panel in ActiveDraggablePanels)
+            {
+                if(panel != this && panel.Draggable)
+                {
+                    if (Algorithme.isWithinControl(new Point(panel.Left, panel.Top), new Point(panel.Right, panel.Bottom), tocheck))
+                    {
+                        panelOver = panel; break;
+                    }
+                }
+            }
+            return panelOver;
         }
     }
 }
