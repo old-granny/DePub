@@ -30,7 +30,6 @@ namespace deepFake
         private List<Panel> ListPanelsActive = new List<Panel>();
 
         private Stack<Control> stackElement = new Stack<Control>();
-        private List<Control> listDesElementActif = new List<Control>();
 
         private int Pos = 0;
         private Point FirstPoint = new Point(10, 100);
@@ -100,45 +99,48 @@ namespace deepFake
 
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
-            listDesElementActif = Algorithme.OrderListWithLocation(listDesElementActif);
+            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
 
             if (inputTexteList.Count > 3) return;
 
             Point p = new Point(FirstPoint.X, FirstPoint.Y);
-            if (listDesElementActif.Count > 0)
+            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
             {
-                Control lastElement = listDesElementActif[listDesElementActif.Count - 1];
+                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
                 p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
             InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
             inputT.Location = p;
             inputTexteList.Add(inputT);
-            listDesElementActif.Add(inputT);
+            DraggablePanel.ActiveDraggablePanels.Add(inputT);
+            inputT.Name = $"Input {inputTexteList.Count - 1}";
+
             ScrollablePanel.Controls.Add(inputT);
             Element1.Location = new Point(inputT.Location.X, inputT.Bottom+30);
-            if(listDesElementActif.Count != 1) Y_Min -= 200;
+            if(DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 200;
             SetNewY_S();
             
         }
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
         {
-            listDesElementActif = Algorithme.OrderListWithLocation(listDesElementActif);
+            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
 
             if (smartPictureBoxes.Count > 3) return;
             
             Point p = new Point(FirstPoint.X, FirstPoint.Y);
-            if (listDesElementActif.Count > 0)
+            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
             {
-                Control lastElement = listDesElementActif[listDesElementActif.Count - 1];
+                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
                 p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
             SmartPictureBoxe smart = new SmartPictureBoxe(p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
-            listDesElementActif.Add(smart);
+            DraggablePanel.ActiveDraggablePanels.Add(smart);
+            smart.Name = $"Image {smartPictureBoxes.Count - 1}";
             ScrollablePanel.Controls.Add(smart);
             smartPictureBoxes.Add(smart);
             
             Element1.Location = new Point(smart.Location.X, smart.Bottom + 30);
-            if(listDesElementActif.Count != 1) Y_Min-=400;
+            if(DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min-=400;
             SetNewY_S();
             
         }
@@ -158,7 +160,6 @@ namespace deepFake
         {
 
             int scrolled = e.Delta;
-            Console.WriteLine(ScrollablePanel.Location.Y);
             // Max en hauteur = 135 et min hauteur = -325
             if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)
                 ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
@@ -172,7 +173,7 @@ namespace deepFake
                 InputTexte inpute = element as InputTexte;
                 if (inpute != null) { 
                     inputTexteList.Remove(inpute);
-                    listDesElementActif.Remove(inpute);
+                    DraggablePanel.ActiveDraggablePanels.Remove(inpute);
                     inpute.Parent.Controls.Remove(element);
                 }
             }
@@ -180,17 +181,17 @@ namespace deepFake
             {
                 SmartPictureBoxe smartPictureBoxe = element as SmartPictureBoxe;
                 if (smartPictureBoxe != null) {
-                    if (listDesElementActif.Count > 2)
+                    if (DraggablePanel.ActiveDraggablePanels.Count > 2)
                     {
                         ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + 400);
                         Y_Min += 400;
                     }
-                    if(listDesElementActif.Count == 2)
+                    if(DraggablePanel.ActiveDraggablePanels.Count == 2)
                     {
                         Y_Min += 400;
                     }
                     smartPictureBoxes.Remove(smartPictureBoxe);
-                    listDesElementActif.Remove(smartPictureBoxe);
+                    DraggablePanel.ActiveDraggablePanels.Remove(smartPictureBoxe);
                     smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
                 }
 
@@ -206,8 +207,8 @@ namespace deepFake
         {
             Point first = new Point(FirstPoint.X, FirstPoint.Y);
             Control lastElement = null;
-            for (int i = 0; i < listDesElementActif.Count; i++) {
-                Control element = listDesElementActif[i];
+            for (int i = 0; i < DraggablePanel.ActiveDraggablePanels.Count; i++) {
+                Control element = DraggablePanel.ActiveDraggablePanels[i];
                 if (i == 0 && element.Location != first) {
                     element.Location = first;
                 }
@@ -218,12 +219,12 @@ namespace deepFake
                            element.Location = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
                     }
                 }
-                if (i == listDesElementActif.Count - 1) {
+                if (i == DraggablePanel.ActiveDraggablePanels.Count - 1) {
                     Element1.Location = new Point(element.Location.X, element.Bottom + 30);
                 }
                 lastElement = element;
             }
-            if(listDesElementActif.Count == 0)
+            if(DraggablePanel.ActiveDraggablePanels.Count == 0)
             {
                 Element1.Location = new Point(10, 200);
             }

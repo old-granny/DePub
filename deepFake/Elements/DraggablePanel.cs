@@ -16,7 +16,7 @@ namespace deepFake.Elements
 
         public bool Draggable = true;
 
-        static List<DraggablePanel> ActiveDraggablePanels = new List<DraggablePanel>();
+        public static List<DraggablePanel> ActiveDraggablePanels = new List<DraggablePanel>();
 
         public DraggablePanel(int[] x_s, int [] y_s)
         {
@@ -24,8 +24,6 @@ namespace deepFake.Elements
             Max_X = x_s[1];
             Min_Y = y_s[0];
             Max_Y = y_s[1];
-            
-            ActiveDraggablePanels.Add(this);
         }
 
         /// <summary>
@@ -91,16 +89,30 @@ namespace deepFake.Elements
         {
             isDragging = false;
             this.Cursor = Cursors.Default;
-            DraggablePanel pan = OverWith(new Point(this.Location.X, this.Location.Y));
+            DraggablePanel pan = (DraggablePanel)Algorithme.OverWith(this, ActiveDraggablePanels, 20);
+            
             if (pan != null)
             {
-                this.Location = pan.Location;
-                pan.Location = new Point(this.Location.X, this.Bottom+20);
+                if (pan.Draggable)
+                {
+                    if (Algorithme.isUnderControl(this, pan))
+                    {
+                        this.Location = pan.Location;
+                        pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);   
+                    }
+                    else
+                    {
+                        this.Location = pan.Location;
+                        pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);
+                    }
+                    PlaceWithList();
+                }
             }
             else
             {
                 this.Location = dragElementStartPoint;
             }
+            
         }
 
         private bool IsOnBorder(Point mousePos)
@@ -128,20 +140,28 @@ namespace deepFake.Elements
             Min_X = x_s[0]; Max_X = x_s[1];
         }
 
-        public DraggablePanel OverWith(Point tocheck)
+        private void PlaceWithList()
         {
-            DraggablePanel panelOver = null;
+            Point FirstPoint = new Point(10, 100);
+            Control lastElement = ActiveDraggablePanels[0];
+            ActiveDraggablePanels = Algorithme.OrderListWithLocation(ActiveDraggablePanels);
+            Console.WriteLine("Called");
             foreach(DraggablePanel panel in ActiveDraggablePanels)
             {
-                if(panel != this && panel.Draggable)
+                if(panel == ActiveDraggablePanels[0])
                 {
-                    if (Algorithme.isWithinControl(new Point(panel.Left, panel.Top), new Point(panel.Right, panel.Bottom), tocheck))
-                    {
-                        panelOver = panel; break;
-                    }
+                    lastElement.Location = FirstPoint;
+                    lastElement = panel;
                 }
+                else
+                {
+                    panel.Location = new Point(lastElement.Location.X, lastElement.Bottom + 20);
+                    lastElement = panel;
+                }
+                Console.WriteLine(panel.Name);
             }
-            return panelOver;
+            Console.WriteLine("end");
+
         }
     }
 }

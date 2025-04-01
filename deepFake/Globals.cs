@@ -1,4 +1,6 @@
-﻿using System;
+﻿using deepFake.Elements;
+using Org.BouncyCastle.Asn1.Crmf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -154,7 +156,7 @@ namespace deepFake
 
 
 
-        
+
 
         /// <summary>
         /// The fonction will hash the password using SHA256
@@ -184,7 +186,7 @@ namespace deepFake
             while (sb.Length < inputString.Length)
             {
                 sb.Append(inputString[pos]);
-                if(inputString[pos] == '\n')
+                if (inputString[pos] == '\n')
                 {
                     nbCharAdded = 0;
                 }
@@ -195,13 +197,13 @@ namespace deepFake
                 pos += 1;
                 nbCharAdded += 1;
             }
-            if(pos % maxCharLine != 0)
+            if (pos % maxCharLine != 0)
                 sb.Append('\n');
             string final = sb.ToString();
             return final;
         }
 
-        public static float DistanceBetween2Point(Point pt1, Point pt2) 
+        public static float DistanceBetween2Point(Point pt1, Point pt2)
         {
             int dx = pt2.X - pt1.X;
             int dy = pt2.Y - pt1.Y;
@@ -214,15 +216,77 @@ namespace deepFake
         }
 
 
-        public static bool isWithinControl(Point top_left, Point bottom_right, Point pt)
+        /// <summary>
+        /// Checks if any part of to_check is within original.
+        /// </summary>
+        /// <param name="original">The original control.</param>
+        /// <param name="to_check">The control to check.</param>
+        /// <returns>True if any part of to_check is within original, otherwise false.</returns>
+        public static bool IsWithinControl(Control original, Control to_check)
         {
-            return pt.X >= top_left.X && pt.X <= bottom_right.X &&
-                   pt.Y >= top_left.Y && pt.Y <= bottom_right.Y;
+            if (to_check == null || original == null) return false;
+
+            Rectangle originalBounds = new Rectangle(original.Location, original.Size);
+            Rectangle toCheckBounds = new Rectangle(to_check.Location, to_check.Size);
+
+            return originalBounds.IntersectsWith(toCheckBounds);
         }
+
+        /// <summary>
+        /// Check if control Y is higher (so lower on the UI) than the check
+        /// </summary>
+        /// <param name="ctrl1">the element</param>
+        /// <param name="to_check"> if this element is under ctrl1 than true, else false</param>
+        /// <returns></returns>
+        public static bool isUnderControl(Control ctrl1, Control to_check)
+        {
+            if (ctrl1.Location.Y < to_check.Location.Y) return true;
+            else return false;
+        }
+
+
         public static List<Control> OrderListWithLocation(List<Control> controls)
         {
             return controls.OrderBy(c => c.Location.Y).ThenBy(c => c.Location.X).ToList();
         }
+
+        public static List<DraggablePanel> OrderListWithLocation(List<DraggablePanel> draggablePanels)
+        {
+            return draggablePanels.OrderBy(c => c.Location.Y).ToList();
+        }
+        public static Control OverWith(Control original, List<DraggablePanel> to_check, int range)
+        {
+            Control panelOver = null;
+            foreach (Control panel in to_check)
+            {
+                if (panel != original)
+                {
+                    if (Algorithme.IsWithinControl(original, panel))
+                    {
+                        panelOver = panel; break;
+                    }
+                }
+            }
+            return panelOver;
+        }
+
+        public static Control OverWith(Control original, List<Control> to_check, int range)
+        {
+            Control panelOver = null;
+            foreach (Control panel in to_check)
+            {
+                if (panel != original)
+                {
+                    if (Algorithme.IsWithinControl(original, panel))
+                    {
+                        panelOver = panel; break;
+                    }
+                }
+            }
+            return panelOver;
+        }
+
+        
 
     }
 
