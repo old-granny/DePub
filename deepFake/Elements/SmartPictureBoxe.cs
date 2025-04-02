@@ -20,6 +20,47 @@ namespace deepFake.Elements
         private Button ModifyBTN;
         private Button DeleteBTN;
 
+        public SmartPictureBoxe(string nom, Point pt, Size size, int[] x_s, int[] y_s) : base(x_s, y_s)
+        {
+            // this
+            {
+                Name = nom;
+                Location = pt;
+                Size = size;
+                BorderStyle = BorderStyle.FixedSingle;
+                Draggable = true;
+            }; Set_Draggable();
+
+            ModifyBTN = new Button()
+            {
+                Location = new Point(10, size.Height - 40),
+                Size = new Size(60, 30),
+                Text = "Modify"
+            };
+            DeleteBTN = new Button()
+            {
+                Location = new Point(10, size.Height - 40),
+                Size = new Size(60, 30),
+                Text = "Remove"
+            };
+
+
+            Picture = new PictureBox()
+            {
+                Location = new Point(4, 4),
+                Size = new Size(size.Width - 10, size.Height - 10),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BorderStyle = BorderStyle.FixedSingle,
+            }; SetDefaultImage();
+
+            this.Controls.Add(Picture);
+            Picture.Controls.Add(DeleteBTN);
+
+            Picture.Click += Picture_Click;
+            ModifyBTN.Click += ModifyBTN_Click;
+            DeleteBTN.Click += DeleteBTN_Click;
+        }
+
         public SmartPictureBoxe(Point pt, Size size, int[] x_s, int[] y_s) : base(x_s, y_s)
         {
             // this

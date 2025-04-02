@@ -36,6 +36,23 @@ namespace deepFake.Elements
             else IsDraggable = false;
         }
 
+        public InputTexte(string name, Point StartLocation, string texte, Size size, int maxChar, bool multiline, bool draggable, int[] x_s, int[] y_s, bool removable) : base(x_s, y_s)
+        {
+            this.Name = name;
+            this.Location = StartLocation;
+            this.Size = size;
+            MaxChar = maxChar;
+            Multined = multiline;
+            IsRemoveable = removable;
+            Create_InputText(texte, size, multiline);
+            if (draggable)
+            {
+                IsDraggable = true;
+                this.Set_Draggable();
+            }
+            else IsDraggable = false;
+        }
+
         public InputTexte(string texte, Size size, int maxChar, bool multiline, bool draggable) : base([0,0], [0,0])
         {
             this.Size = size;

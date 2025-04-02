@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ using System.Xml.Linq;
 using deepFake;
 using deepFake.Elements;
 using Org.BouncyCastle.Crypto.Parameters;
+using static Azure.Core.HttpHeader;
 
 namespace deepFake
 {
@@ -27,9 +29,7 @@ namespace deepFake
 
         private Dictionary<Panel, byte[]> PanelImageDict = new Dictionary<Panel, byte[]>();
         private List<Image> ListImagesEnvoyer = new List<Image>();
-        private List<Panel> ListPanelsActive = new List<Panel>();
-
-        private Stack<Control> stackElement = new Stack<Control>();
+    
 
         private int Pos = 0;
         private Point FirstPoint = new Point(10, 100);
@@ -42,33 +42,22 @@ namespace deepFake
         // Element contenue
         private InputTexte InputeTitre;
         private AddElement Element1;
+        private Button SubmitButton;
 
         // int pour le scrolling
         private int Y_Max = 135, Y_Min = 0;
 
-        // List des panel actif
-        private List<Control> ElementsActif = new List<Control>();
-        private Dictionary<Point, bool> dict_position_disponible = new Dictionary<Point, bool>(); // si true alors disponible
+        
 
         public PublierPost(Acceuil acceuil)
         {
             Main = acceuil;
             Handle = new ComPostSQL();
-            InstancierLesPoint();
             InitializeComponent();
             InitializeElement();
             Beautefull();
         }
 
-        private void InstancierLesPoint()
-        {
-            dict_position_disponible.Add(new Point(10, 100), true);
-            dict_position_disponible.Add(new Point(10, 400), true);
-            dict_position_disponible.Add(new Point(10, 700), true);
-            dict_position_disponible.Add(new Point(10, 1000), true);
-            dict_position_disponible.Add(new Point(10, 1300), true);
-            dict_position_disponible.Add(new Point(10, 1600), true);
-        }
 
 
         private void Beautefull()
@@ -95,55 +84,17 @@ namespace deepFake
             Element1.ajouterImageBtn.Click += AjouterImageBtn_Click;
             Element1.ajouterTexteBtn.Click += AjouterTexteBtn_Click;
 
-        }
-
-        private void AjouterTexteBtn_Click(object? sender, EventArgs e)
-        {
-            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
-
-            if (inputTexteList.Count > 3) return;
-
-            Point p = new Point(FirstPoint.X, FirstPoint.Y);
-            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
+            SubmitButton = new Button()
             {
-                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
-                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
-            }
-            InputTexte inputT = new InputTexte($"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
-            inputT.Location = p;
-            inputTexteList.Add(inputT);
-            DraggablePanel.ActiveDraggablePanels.Add(inputT);
-            inputT.Name = $"Input {inputTexteList.Count - 1}";
-
-            ScrollablePanel.Controls.Add(inputT);
-            Element1.Location = new Point(inputT.Location.X, inputT.Bottom+30);
-            if(DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 200;
-            SetNewY_S();
-            
+                Location = new Point(Element1.Location.X, Element1.Bottom + 30),
+                Text = "Submit",
+                Size = new Size(100, 40),
+                Font = new Font("Candara", 16F, FontStyle.Regular, GraphicsUnit.Point, 0)
+            };
+            SubmitButton.Click += SubmitButton_Click;
+            ScrollablePanel.Controls.Add(SubmitButton);
         }
-        private void AjouterImageBtn_Click(object? sender, EventArgs e)
-        {
-            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
 
-            if (smartPictureBoxes.Count > 3) return;
-            
-            Point p = new Point(FirstPoint.X, FirstPoint.Y);
-            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
-            {
-                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
-                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
-            }
-            SmartPictureBoxe smart = new SmartPictureBoxe(p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
-            DraggablePanel.ActiveDraggablePanels.Add(smart);
-            smart.Name = $"Image {smartPictureBoxes.Count - 1}";
-            ScrollablePanel.Controls.Add(smart);
-            smartPictureBoxes.Add(smart);
-            
-            Element1.Location = new Point(smart.Location.X, smart.Bottom + 30);
-            if(DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min-=400;
-            SetNewY_S();
-            
-        }
 
         private void SetNewY_S()
         {
@@ -155,16 +106,6 @@ namespace deepFake
                 draggableElement.Set_Y_S(Element1.Location.Y);
             }
         }
-
-        private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
-        {
-
-            int scrolled = e.Delta;
-            // Max en hauteur = 135 et min hauteur = -325
-            if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)
-                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
-        }
-
         public void ElementRemoved(Control element)
         {
             if (element == null) return;
@@ -221,21 +162,82 @@ namespace deepFake
                 }
                 if (i == DraggablePanel.ActiveDraggablePanels.Count - 1) {
                     Element1.Location = new Point(element.Location.X, element.Bottom + 30);
+                    SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
                 }
                 lastElement = element;
             }
             if(DraggablePanel.ActiveDraggablePanels.Count == 0)
             {
                 Element1.Location = new Point(10, 200);
+                SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
             }
         }
 
-       
-        
 
+        private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
+        {
 
+            int scrolled = e.Delta;
+            // Max en hauteur = 135 et min hauteur = -325
+            if (ScrollablePanel.Location.Y + scrolled < Y_Max && ScrollablePanel.Location.Y + scrolled > Y_Min)
+                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + scrolled);
+        }
 
+        private void AjouterImageBtn_Click(object? sender, EventArgs e)
+        {
+            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
 
+            if (smartPictureBoxes.Count > 2) return;
+
+            Point p = new Point(FirstPoint.X, FirstPoint.Y);
+            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
+            {
+                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+            }
+            SmartPictureBoxe smart = new SmartPictureBoxe($"Image {smartPictureBoxes.Count}", p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
+
+            DraggablePanel.ActiveDraggablePanels.Add(smart);
+            ScrollablePanel.Controls.Add(smart);
+            smartPictureBoxes.Add(smart);
+
+            Element1.Location = new Point(smart.Location.X, smart.Bottom + 30);
+            SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+
+            if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 400;
+            SetNewY_S();
+
+        }
+
+        private void AjouterTexteBtn_Click(object? sender, EventArgs e)
+        {
+
+            if (inputTexteList.Count > 3) return;
+
+            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
+
+            Point p = FirstPoint;
+            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
+            {
+                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+            }
+            InputTexte inputT = new InputTexte($"Input {inputTexteList.Count}", p, $"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
+
+            DraggablePanel.ActiveDraggablePanels.Add(inputT);
+            inputTexteList.Add(inputT);
+            ScrollablePanel.Controls.Add(inputT);
+
+            Element1.Location = new Point(inputT.Location.X, inputT.Bottom + 30);
+            SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+            if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 300;
+            SetNewY_S();
+
+        }
+        private void SubmitButton_Click(object? sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
 
 
