@@ -12,7 +12,7 @@ namespace deepFake.Elements
     internal class SmartPictureBoxe : DraggablePanel
     {
         private Image Default_image;
-        private byte[] Current_Image_Data;
+        public byte[] Current_Image_Data;
         private bool Already_Has_Image = false;
 
 

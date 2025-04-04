@@ -140,7 +140,7 @@ namespace deepFake.Elements
             Min_X = x_s[0]; Max_X = x_s[1];
         }
 
-        private void PlaceWithList()
+        static public void PlaceWithList()
         {
             Point FirstPoint = new Point(10, 100);
             Control lastElement = ActiveDraggablePanels[0];

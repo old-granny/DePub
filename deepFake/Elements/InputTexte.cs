@@ -194,5 +194,10 @@ namespace deepFake.Elements
                 par?.ElementRemoved(this);
             }
         }
+
+        public string GetContentOfInput()
+        {
+            return EditableLabel.Text;
+        }
     } 
 }

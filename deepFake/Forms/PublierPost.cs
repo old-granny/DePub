@@ -14,24 +14,15 @@ using System.Windows.Forms.Design;
 using System.Xml.Linq;
 using deepFake;
 using deepFake.Elements;
-using Org.BouncyCastle.Crypto.Parameters;
-using static Azure.Core.HttpHeader;
+
 
 namespace deepFake
 {
     public partial class PublierPost : Form
     {
-        private List<InputTexte> inputTexteList = new List<InputTexte>();
-        private List<SmartPictureBoxe> smartPictureBoxes = new List<SmartPictureBoxe>();
+        private List<InputTexte> inputTexteList = new List<InputTexte>(); // Vas garder en memoire le nombre de TexteList que le form contient
+        private List<SmartPictureBoxe> smartPictureBoxes = new List<SmartPictureBoxe>(); // Garder en memoire les smartPictureBox contenue dans le form
 
-        private List<String> AbsoluteImagePath = new List<String>();
-        private List<String> ListImageDejaFlow = new List<String>();
-
-        private Dictionary<Panel, byte[]> PanelImageDict = new Dictionary<Panel, byte[]>();
-        private List<Image> ListImagesEnvoyer = new List<Image>();
-    
-
-        private int Pos = 0;
         private Point FirstPoint = new Point(10, 100);
         private int DistanceEntre2Element = 20;
         
@@ -41,13 +32,12 @@ namespace deepFake
 
         // Element contenue
         private InputTexte InputeTitre;
-        private AddElement Element1;
+        private AddElement AddsElements;
         private Button SubmitButton;
 
         // int pour le scrolling
         private int Y_Max = 135, Y_Min = 0;
 
-        
 
         public PublierPost(Acceuil acceuil)
         {
@@ -58,8 +48,6 @@ namespace deepFake
             Beautefull();
         }
 
-
-
         private void Beautefull()
         {
             PanelContenue.BackColor = ColorTranslator.FromHtml("#E3DDE2");
@@ -68,76 +56,77 @@ namespace deepFake
 
         private void InitializeElement()
         {
-            Point pos = new Point(10, 10);
-            Size size = new Size(800, 50);
 
-            InputeTitre = new InputTexte("Input title", size, 50, false);
-            InputeTitre.Location = pos;
-            InputeTitre.Name = "texte1";
-
-            ScrollablePanel.Controls.Add(InputeTitre);
-
-            Element1 = new AddElement();
-            Element1.Location = new Point(10, 200);
-            ScrollablePanel.Controls.Add(Element1);
-
-            Element1.ajouterImageBtn.Click += AjouterImageBtn_Click;
-            Element1.ajouterTexteBtn.Click += AjouterTexteBtn_Click;
-
+            InputeTitre = new InputTexte("Input title", new Size(800, 50), 50, false) 
+            {
+                Location = new Point(10, 10),
+                Name = "texte1"
+            };
+            AddsElements = new AddElement()
+            {
+                Location = new Point(10, 200),
+            };
             SubmitButton = new Button()
             {
-                Location = new Point(Element1.Location.X, Element1.Bottom + 30),
+                Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30),
                 Text = "Submit",
                 Size = new Size(100, 40),
                 Font = new Font("Candara", 16F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
+            
+            AddsElements.ajouterImageBtn.Click += AjouterImageBtn_Click;
+            AddsElements.ajouterTexteBtn.Click += AjouterTexteBtn_Click;
             SubmitButton.Click += SubmitButton_Click;
-            ScrollablePanel.Controls.Add(SubmitButton);
-        }
 
+
+            ScrollablePanel.Controls.Add(AddsElements);
+            ScrollablePanel.Controls.Add(InputeTitre);
+            ScrollablePanel.Controls.Add(SubmitButton);
+
+        }
 
         private void SetNewY_S()
         {
             foreach (DraggablePanel draggableElement in inputTexteList) {
-                draggableElement.Set_Y_S(Element1.Location.Y);
+                draggableElement.Set_Y_S(AddsElements.Location.Y);
             }
             foreach (DraggablePanel draggableElement in smartPictureBoxes)
             {
-                draggableElement.Set_Y_S(Element1.Location.Y);
+                draggableElement.Set_Y_S(AddsElements.Location.Y);
             }
         }
         public void ElementRemoved(Control element)
         {
             if (element == null) return;
-            if(element.GetType() == typeof(InputTexte))
-            {
-                InputTexte inpute = element as InputTexte;
-                if (inpute != null) { 
-                    inputTexteList.Remove(inpute);
-                    DraggablePanel.ActiveDraggablePanels.Remove(inpute);
-                    inpute.Parent.Controls.Remove(element);
-                }
-            }
-            if (element.GetType() == typeof(SmartPictureBoxe))
-            {
-                SmartPictureBoxe smartPictureBoxe = element as SmartPictureBoxe;
-                if (smartPictureBoxe != null) {
-                    if (DraggablePanel.ActiveDraggablePanels.Count > 2)
-                    {
-                        ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + 400);
-                        Y_Min += 400;
-                    }
-                    if(DraggablePanel.ActiveDraggablePanels.Count == 2)
-                    {
-                        Y_Min += 400;
-                    }
-                    smartPictureBoxes.Remove(smartPictureBoxe);
-                    DraggablePanel.ActiveDraggablePanels.Remove(smartPictureBoxe);
-                    smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
-                }
+            int toMove = 0;   
 
+            if(element is InputTexte input)
+            {
+                inputTexteList.Remove(input);
+                DraggablePanel.ActiveDraggablePanels.Remove(input);
+                input.Parent.Controls.Remove(input);
+                toMove = 300;
             }
-            PlaceWithList();
+
+            if (element is SmartPictureBoxe smartPictureBoxe)
+            {
+                smartPictureBoxes.Remove(smartPictureBoxe);
+                DraggablePanel.ActiveDraggablePanels.Remove(smartPictureBoxe);
+                smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
+                toMove = 400;
+            }
+
+            if (DraggablePanel.ActiveDraggablePanels.Count > 2)
+            {
+                ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + toMove);
+                Y_Min += toMove;
+            }
+            if (DraggablePanel.ActiveDraggablePanels.Count == 2)
+            {
+                Y_Min += toMove;
+            }
+
+            DraggablePanel.PlaceWithList();
         }
 
         /// <summary>
@@ -148,6 +137,7 @@ namespace deepFake
         {
             Point first = new Point(FirstPoint.X, FirstPoint.Y);
             Control lastElement = null;
+            
             for (int i = 0; i < DraggablePanel.ActiveDraggablePanels.Count; i++) {
                 Control element = DraggablePanel.ActiveDraggablePanels[i];
                 if (i == 0 && element.Location != first) {
@@ -161,15 +151,15 @@ namespace deepFake
                     }
                 }
                 if (i == DraggablePanel.ActiveDraggablePanels.Count - 1) {
-                    Element1.Location = new Point(element.Location.X, element.Bottom + 30);
-                    SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+                    AddsElements.Location = new Point(element.Location.X, element.Bottom + 30);
+                    SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
                 }
                 lastElement = element;
             }
             if(DraggablePanel.ActiveDraggablePanels.Count == 0)
             {
-                Element1.Location = new Point(10, 200);
-                SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+                AddsElements.Location = new Point(10, 200);
+                SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
             }
         }
 
@@ -201,8 +191,8 @@ namespace deepFake
             ScrollablePanel.Controls.Add(smart);
             smartPictureBoxes.Add(smart);
 
-            Element1.Location = new Point(smart.Location.X, smart.Bottom + 30);
-            SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+            AddsElements.Location = new Point(smart.Location.X, smart.Bottom + 30);
+            SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
 
             if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 400;
             SetNewY_S();
@@ -228,167 +218,52 @@ namespace deepFake
             inputTexteList.Add(inputT);
             ScrollablePanel.Controls.Add(inputT);
 
-            Element1.Location = new Point(inputT.Location.X, inputT.Bottom + 30);
-            SubmitButton.Location = new Point(Element1.Location.X, Element1.Bottom + 30);
+            AddsElements.Location = new Point(inputT.Location.X, inputT.Bottom + 30);
+            SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
             if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 300;
             SetNewY_S();
 
         }
-        private void SubmitButton_Click(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private Panel CreatePanaelImage(string filename)
-        {
-            Panel panaelImage = new Panel();
-            Label label = new Label();
-            byte[] img_bytes = File.ReadAllBytes(filename);
-            Image img = (Bitmap)((new ImageConverter()).ConvertFrom(img_bytes));
-            //Image img = Image.FromFile(filename);
-            PictureBox pic = createPictureBoxe(img);
-            // 
-            // pictureBox1
-            // 
-            pic.Location = new Point(0, 3);
-            pic.Size = new Size(473, 269);
-            // 
-            // label1
-            // 
-            label.AutoSize = true;
-            label.BorderStyle = BorderStyle.FixedSingle;
-            label.Location = new Point(457, 0);
-            label.Name = filename + Pos.ToString();
-            label.Size = new Size(20, 22);
-            label.TabIndex = 1;
-            label.Text = "X";
-
-            panaelImage.Controls.Add(label);
-            panaelImage.Controls.Add(pic);
-            panaelImage.Location = new Point(12, 12);
-            panaelImage.Name = $"panel{Pos}";
-            panaelImage.Size = new Size(477, 276);
-            panaelImage.TabIndex = 0;
-
-            label.Click += LabelDeleteClick;
-
-            PanelImageDict.Add(panaelImage, img_bytes);
-            Pos += 1;
-            return panaelImage;
-        }
-
-        private PictureBox createPictureBoxe(Image img)
-        {
-            PictureBox pic = new PictureBox();
-            pic.SizeMode = PictureBoxSizeMode.Zoom;
-            pic.Size = new Size(300, 300);
-            pic.Name = $"pict{Pos}";
-            pic.TabIndex = 0;
-            pic.Image = img;
-            ListImagesEnvoyer.Add(img);
-
-            return pic;
-        }
-
-        private void boutonPost_Click(object sender, EventArgs e)
+        private void SubmitButton_Click(object sender, EventArgs e)
         {
             // manque de verification
             // Checker si le size est acceptable
             // Max 16 777 216 bits 
 
             //string title = Contenu1LBL.Text;
-         
+            List<string> inputBoxConent = GetStringContentOfPage();
+            List<byte[]> pictureBoxContent = GetPictureBoxContent();
 
 
-            byte[] img1 = null;
-            byte[] img2 = null;
-            byte[] img3 = null;
-            if (PanelImageDict.Count >= 1)
-            {
-                img1 = PanelImageDict.ElementAt(0).Value;
-            }
-            if (PanelImageDict.Count >= 2)
-            {
-                img2 = PanelImageDict.ElementAt(1).Value;
-            }
-            if (PanelImageDict.Count >= 3)
-            {
-                img3 = PanelImageDict.ElementAt(2).Value;
-            }
-            //Handle.insertIntoData(title, content, img1, img2, img3);
+
+
+            //Handle.insertIntoData(title, content, images[0], images[1], images[2]);
             Main.LoadFrontPage();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private List<string> GetStringContentOfPage()
         {
-            if (Pos > 2)
+            List<string> contents = new List<string>();
+            foreach (InputTexte inp in inputTexteList)
             {
-                // Checker exede le nombre d'image permisse
-                Console.WriteLine("Nb image exceed");
-                return;
+                contents.Add(inp.GetContentOfInput());
             }
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.CheckFileExists = true;
-            ofd.AddExtension = true;
-            ofd.Multiselect = true;
-            ofd.Filter = "All Files|*.png;*.jpeg;*.jpg;";
+            return contents;   
+        }
+        private List<byte[]> GetPictureBoxContent()
+        {
+            List<byte[]> images = new List<byte[]>();
 
-            if (ofd.ShowDialog() == DialogResult.OK)
+            foreach (SmartPictureBoxe pic in smartPictureBoxes)
             {
-                foreach (string fileName in ofd.FileNames)
-                {
-                    if (Pos > 2)
-                    {
-                        Console.WriteLine("Nb image exceed");
-                    }
-                    else
-                    {
-                        AbsoluteImagePath.Add(fileName);
-                        UpdateLabelimage(fileName);
-
-                    }
-                }
-
+                images.Add(pic.Current_Image_Data);
             }
+            return images;
         }
 
-        private void UpdateLabelimage(string filename)
-        {
-            Panel pan = CreatePanaelImage(filename);
-            PanelPost.Controls.Add(pan);
-        }
         private void CancelBTN_Click(object sender, EventArgs e)
         {
             Main.LoadFrontPage();
-        }
-
-        private void LabelDeleteClick(object sender, EventArgs e)
-        {
-            Label clickedLabel = sender as Label;
-            Panel parent = clickedLabel.Parent as Panel;
-            if (parent != null)
-            {
-                PanelPost.Controls.Remove(parent);
-                parent.Dispose();
-                PanelImageDict.Remove(parent);
-                Pos -= 1;
-            }
         }
 
         public bool Cleanup()
