@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\frontpageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\frontpageloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\compostsql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\forms\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\forms\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\inputtexte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\elements\\inputtexte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\draggablepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\elements\\draggablepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\forms\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\forms\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\smartpictureboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\elements\\smartpictureboxe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\draggablepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\elements\\draggablepanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,6 +33,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\forms\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\forms\\publierpost.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\inputtexte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\elements\\inputtexte.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\forms\\acceuil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\forms\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|solutionrelative:deepfake\\forms\\frontpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6765D8CA-31EE-4674-8E80-4E94E9086752}|deepFake\\deepFake.csproj|c:\\users\\-_-\\documents\\projetdeepfake\\deepfake\\deepfake\\elements\\addelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,45 +83,70 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FrontPageLoader.cs",
+              "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\FrontPageLoader.cs",
+              "RelativeDocumentMoniker": "deepFake\\FrontPageLoader.cs",
+              "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\FrontPageLoader.cs",
+              "RelativeToolTip": "deepFake\\FrontPageLoader.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAIwCwAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-06T06:33:05.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ComPostSQL.cs",
+              "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\ComPostSQL.cs",
+              "RelativeDocumentMoniker": "deepFake\\ComPostSQL.cs",
+              "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\ComPostSQL.cs",
+              "RelativeToolTip": "deepFake\\ComPostSQL.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAADgvz0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-05T06:28:15.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PublierPost.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\PublierPost.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\PublierPost.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\PublierPost.cs",
               "RelativeToolTip": "deepFake\\Forms\\PublierPost.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAYwH8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAMcAAAAAAAAAAAAuwNIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T05:02:22.494Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "InputTexte.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\InputTexte.cs",
               "RelativeDocumentMoniker": "deepFake\\Elements\\InputTexte.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\InputTexte.cs",
               "RelativeToolTip": "deepFake\\Elements\\InputTexte.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAwCkAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAALIAAAAAAAAAAAAmwMAAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T05:02:22.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-29T05:02:22.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "SmartPictureBoxe.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\SmartPictureBoxe.cs",
               "RelativeDocumentMoniker": "deepFake\\Elements\\SmartPictureBoxe.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\SmartPictureBoxe.cs",
               "RelativeToolTip": "deepFake\\Elements\\SmartPictureBoxe.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAAAA4AAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAmwKwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T05:02:22.498Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "FrontPage.Designer.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\FrontPage.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\FrontPage.Designer.cs",
@@ -125,33 +158,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Globals.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Globals.cs",
               "RelativeDocumentMoniker": "deepFake\\Globals.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Globals.cs",
               "RelativeToolTip": "deepFake\\Globals.cs",
-              "ViewState": "AgIAALcAAAAAAAAAAAAAALcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAkwAYBAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T05:02:22.766Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "DraggablePanel.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\DraggablePanel.cs",
               "RelativeDocumentMoniker": "deepFake\\Elements\\DraggablePanel.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\DraggablePanel.cs",
               "RelativeToolTip": "deepFake\\Elements\\DraggablePanel.cs",
-              "ViewState": "AgIAAIYAAAAAAAAAAAAQwI8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAswGoAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-29T05:02:22.778Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "Acceuil.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\Acceuil.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\Acceuil.cs",
@@ -163,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "Signing.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\Signing.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\Signing.cs",
@@ -175,19 +208,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "FrontPage.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\FrontPage.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\FrontPage.cs",
               "ToolTip": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\FrontPage.cs",
               "RelativeToolTip": "deepFake\\Forms\\FrontPage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAiwFkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-29T05:02:22.49Z"
+              "WhenOpened": "2025-03-29T05:02:22.49Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "Signup.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\Signup.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\Signup.cs",
@@ -199,7 +233,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Program.cs",
               "RelativeDocumentMoniker": "deepFake\\Program.cs",
@@ -211,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "AddElement.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Elements\\AddElement.cs",
               "RelativeDocumentMoniker": "deepFake\\Elements\\AddElement.cs",
@@ -223,7 +257,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Signing.Designer.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\Signing.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\Signing.Designer.cs",
@@ -235,7 +269,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "Signup.Designer.cs",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\Signup.Designer.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\Signup.Designer.cs",
@@ -282,7 +316,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "PublierPost.cs [Conception]",
               "DocumentMoniker": "C:\\Users\\-_-\\Documents\\ProjetDeepFake\\deepFake\\deepFake\\Forms\\PublierPost.cs",
               "RelativeDocumentMoniker": "deepFake\\Forms\\PublierPost.cs",

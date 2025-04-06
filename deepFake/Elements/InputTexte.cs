@@ -190,7 +190,7 @@ namespace deepFake.Elements
             if(this.FindForm().GetType() == typeof(PublierPost))
             {
                 PublierPost par = this.FindForm() as PublierPost;
-                this.Remove_Draggable_Panel();
+                this.Remove_Draggable_Panel(par.ActivePanelsDraggables);
                 par?.ElementRemoved(this);
             }
         }

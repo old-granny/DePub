@@ -50,36 +50,44 @@ namespace deepFake
         /// </summary>
         /// <param name="title"> le titre </param>
         /// <param name="content"> le contenue </param>
-        /// <param name="img0"> image en byte</param>
-        /// <param name="img1"> image en byte </param>
-        /// <param name="img2"> image en byte </param>
+        /// <param name="images"> image en byte</param>
         /// <returns> true si les donnees securitere sinon false </returns>
-        public static bool IsPostDataSecure(string title, string content, byte[] img0, byte[] img1, byte[] img2)
+        public static bool IsPostDataSecure(string title, List<string> content, List<byte[]> images)
         {
-            // Vérifier si les champs ne sont pas vides ou trop longs
-            if (string.IsNullOrWhiteSpace(title) || title.Length > 255)
-                return false;
+            if(content.Count == 0) return false;
+            if (!Algorithme.IsTexteSecure(title, 250)) return false;
+            
+            foreach(string cont in content)
+                if (!Algorithme.IsTexteSecure(cont, 10000)) return false;
+            
+            foreach (byte[] img in images)
+                if(Algorithme.IsImageSecure(img)) return false;
 
-            if (string.IsNullOrWhiteSpace(content) || content.Length > 10000) // Augmenté pour permettre du texte long
-                return false;
+            return true;
+            
+        }
 
+        static public bool IsTexteSecure(string content, int maxChar)
+        {
+            if(content == null) return false;
+            if (string.IsNullOrWhiteSpace(content) || content.Length > 255)
+                return false;
             // Vérifier la présence de caractères "bizarres" qui pourraient causer des bugs (ex: null byte)
-            if (title.Contains('\0') || content.Contains('\0'))
+            if (content.Contains('\0') || content.Contains('\0'))
                 return false;
-
-
-            // Vérifier la taille des images (éviter des fichiers trop volumineux)
-            const int maxImageSize = 16_777_210; // 16 Mo par image
-            if ((img0 != null && img0.Length > maxImageSize) ||
-                 (img1 != null && img1.Length > maxImageSize) ||
-                 (img2 != null && img2.Length > maxImageSize))
-            {
-                return false;
-            }
 
             return true;
         }
 
+        static public bool IsImageSecure(byte[] image)
+        {
+            const int maxImageSize = 16_777_210; // 16 Mo par image
+
+            if (image == null) return false;
+            if (image.Length > maxImageSize) return false;
+            
+            return true;
+        }
         /// <summary>
         /// Will check whenever the use want to signing
         /// </summary>
@@ -245,12 +253,12 @@ namespace deepFake
         }
 
 
-        public static List<Control> OrderListWithLocation(List<Control> controls)
+        public static void OrderListWithLocation(ref List<Control> controls)
         {
-            return controls.OrderBy(c => c.Location.Y).ThenBy(c => c.Location.X).ToList();
+            controls.OrderBy(c => c.Location.Y).ThenBy(c => c.Location.X).ToList();
         }
 
-        public static List<DraggablePanel> OrderListWithLocation(List<DraggablePanel> draggablePanels)
+        public static List<DraggablePanel> OrderListWithLocation(ref List<DraggablePanel> draggablePanels)
         {
             return draggablePanels.OrderBy(c => c.Location.Y).ToList();
         }

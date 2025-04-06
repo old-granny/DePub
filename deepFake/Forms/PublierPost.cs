@@ -14,6 +14,7 @@ using System.Windows.Forms.Design;
 using System.Xml.Linq;
 using deepFake;
 using deepFake.Elements;
+using Mysqlx.Crud;
 
 
 namespace deepFake
@@ -22,6 +23,8 @@ namespace deepFake
     {
         private List<InputTexte> inputTexteList = new List<InputTexte>(); // Vas garder en memoire le nombre de TexteList que le form contient
         private List<SmartPictureBoxe> smartPictureBoxes = new List<SmartPictureBoxe>(); // Garder en memoire les smartPictureBox contenue dans le form
+
+        public List<DraggablePanel> ActivePanelsDraggables = new List<DraggablePanel>();
 
         private Point FirstPoint = new Point(10, 100);
         private int DistanceEntre2Element = 20;
@@ -37,6 +40,8 @@ namespace deepFake
 
         // int pour le scrolling
         private int Y_Max = 135, Y_Min = 0;
+
+        private const int MAX_PICTURE = 2, MAX_INPUT = 3;
 
 
         public PublierPost(Acceuil acceuil)
@@ -85,16 +90,7 @@ namespace deepFake
 
         }
 
-        private void SetNewY_S()
-        {
-            foreach (DraggablePanel draggableElement in inputTexteList) {
-                draggableElement.Set_Y_S(AddsElements.Location.Y);
-            }
-            foreach (DraggablePanel draggableElement in smartPictureBoxes)
-            {
-                draggableElement.Set_Y_S(AddsElements.Location.Y);
-            }
-        }
+        
         public void ElementRemoved(Control element)
         {
             if (element == null) return;
@@ -103,7 +99,7 @@ namespace deepFake
             if(element is InputTexte input)
             {
                 inputTexteList.Remove(input);
-                DraggablePanel.ActiveDraggablePanels.Remove(input);
+                ActivePanelsDraggables.Remove(input);
                 input.Parent.Controls.Remove(input);
                 toMove = 300;
             }
@@ -111,59 +107,25 @@ namespace deepFake
             if (element is SmartPictureBoxe smartPictureBoxe)
             {
                 smartPictureBoxes.Remove(smartPictureBoxe);
-                DraggablePanel.ActiveDraggablePanels.Remove(smartPictureBoxe);
+                ActivePanelsDraggables.Remove(smartPictureBoxe);
                 smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
                 toMove = 400;
             }
 
-            if (DraggablePanel.ActiveDraggablePanels.Count > 2)
+            if (ActivePanelsDraggables.Count > 2)
             {
                 ScrollablePanel.Location = new Point(ScrollablePanel.Location.X, ScrollablePanel.Location.Y + toMove);
                 Y_Min += toMove;
             }
-            if (DraggablePanel.ActiveDraggablePanels.Count == 2)
+            if (ActivePanelsDraggables.Count == 2)
             {
                 Y_Min += toMove;
             }
 
-            DraggablePanel.PlaceWithList();
+            DraggablePanel.PlaceWithList(ActivePanelsDraggables);
+            SetLocationElementSubmit();
+
         }
-
-        /// <summary>
-        /// Placer les elements dans le panel selon l'orde dans la list
-        /// Vas etre utiliser principalement quand l'usager veut enlever dequoi
-        /// </summary>
-        private void PlaceWithList()
-        {
-            Point first = new Point(FirstPoint.X, FirstPoint.Y);
-            Control lastElement = null;
-            
-            for (int i = 0; i < DraggablePanel.ActiveDraggablePanels.Count; i++) {
-                Control element = DraggablePanel.ActiveDraggablePanels[i];
-                if (i == 0 && element.Location != first) {
-                    element.Location = first;
-                }
-                if (lastElement != null) 
-                {
-                    if (Algorithme.DistanceBetween2Point(lastElement.Location, element.Location) > DistanceEntre2Element+2) // le +2 pour la correction du float
-                    { 
-                           element.Location = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
-                    }
-                }
-                if (i == DraggablePanel.ActiveDraggablePanels.Count - 1) {
-                    AddsElements.Location = new Point(element.Location.X, element.Bottom + 30);
-                    SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
-                }
-                lastElement = element;
-            }
-            if(DraggablePanel.ActiveDraggablePanels.Count == 0)
-            {
-                AddsElements.Location = new Point(10, 200);
-                SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
-            }
-        }
-
-
         private void ScrollablePanel_MouseWheel(object sender, MouseEventArgs e)
         {
 
@@ -175,26 +137,27 @@ namespace deepFake
 
         private void AjouterImageBtn_Click(object? sender, EventArgs e)
         {
-            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
 
-            if (smartPictureBoxes.Count > 2) return;
+            // Placer les element actif en ordre de vue
+            Algorithme.OrderListWithLocation(ref ActivePanelsDraggables);
+            
+            if (smartPictureBoxes.Count > MAX_PICTURE-1) return; // si execed le nombre de picture
 
             Point p = new Point(FirstPoint.X, FirstPoint.Y);
-            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
+            if (ActivePanelsDraggables.Count > 0)
             {
-                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
+                Control lastElement = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1];
                 p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
             SmartPictureBoxe smart = new SmartPictureBoxe($"Image {smartPictureBoxes.Count}", p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
 
-            DraggablePanel.ActiveDraggablePanels.Add(smart);
+            ActivePanelsDraggables.Add(smart);
             ScrollablePanel.Controls.Add(smart);
             smartPictureBoxes.Add(smart);
 
-            AddsElements.Location = new Point(smart.Location.X, smart.Bottom + 30);
-            SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
+            SetLocationElementSubmit();
 
-            if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 400;
+            if (ActivePanelsDraggables.Count != 1) Y_Min -= 400;
             SetNewY_S();
 
         }
@@ -202,25 +165,25 @@ namespace deepFake
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
 
-            if (inputTexteList.Count > 3) return;
+            if (inputTexteList.Count > MAX_INPUT-1) return;
 
-            DraggablePanel.ActiveDraggablePanels = Algorithme.OrderListWithLocation(DraggablePanel.ActiveDraggablePanels);
+            Algorithme.OrderListWithLocation(ref ActivePanelsDraggables);
 
             Point p = FirstPoint;
-            if (DraggablePanel.ActiveDraggablePanels.Count > 0)
+            if (ActivePanelsDraggables.Count > 0)
             {
-                Control lastElement = DraggablePanel.ActiveDraggablePanels[DraggablePanel.ActiveDraggablePanels.Count - 1];
+                Control lastElement = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1];
                 p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
             }
             InputTexte inputT = new InputTexte($"Input {inputTexteList.Count}", p, $"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
 
-            DraggablePanel.ActiveDraggablePanels.Add(inputT);
+            ActivePanelsDraggables.Add(inputT);
             inputTexteList.Add(inputT);
             ScrollablePanel.Controls.Add(inputT);
 
-            AddsElements.Location = new Point(inputT.Location.X, inputT.Bottom + 30);
-            SubmitButton.Location = new Point(AddsElements.Location.X, AddsElements.Bottom + 30);
-            if (DraggablePanel.ActiveDraggablePanels.Count != 1) Y_Min -= 300;
+            SetLocationElementSubmit();
+
+            if (ActivePanelsDraggables.Count != 1) Y_Min -= 300;
             SetNewY_S();
 
         }
@@ -231,14 +194,24 @@ namespace deepFake
             // Max 16 777 216 bits 
 
             //string title = Contenu1LBL.Text;
-            List<string> inputBoxConent = GetStringContentOfPage();
+            List<string> inputBoxContent = GetStringContentOfPage();
             List<byte[]> pictureBoxContent = GetPictureBoxContent();
 
+            List<string> positionElement = GetOrderOfElements();
+            Algorithme.OrderListWithLocation(ref ActivePanelsDraggables);
+            StringBuilder order = new StringBuilder();
+            foreach (DraggablePanel pan in ActivePanelsDraggables)
+            {
+                order.Append(pan.Name);
+                order.Append(";");
+            }
 
-
-
-            //Handle.insertIntoData(title, content, images[0], images[1], images[2]);
-            Main.LoadFrontPage();
+            if(Handle.insertIntoData(order.ToString(), InputeTitre.GetContentOfInput(), inputBoxContent, pictureBoxContent))
+                Main.LoadFrontPage();
+            else
+            {
+                Console.WriteLine("ERROR");
+            }
         }
 
         private List<string> GetStringContentOfPage()
@@ -260,6 +233,16 @@ namespace deepFake
             }
             return images;
         }
+        private List<string> GetOrderOfElements()
+        {
+            List<string> order = new List<string>();
+
+            foreach (Control con in ActivePanelsDraggables)
+            {
+                order.Add(con.Name);
+            }
+            return order;
+        }
 
         private void CancelBTN_Click(object sender, EventArgs e)
         {
@@ -271,6 +254,24 @@ namespace deepFake
             return true;
         }
 
-        
+        private void SetNewY_S()
+        {
+            foreach (DraggablePanel draggableElement in ActivePanelsDraggables)
+            {
+                draggableElement.Set_Y_S(AddsElements.Location.Y);
+            }
+        }
+
+        private void SetLocationElementSubmit()
+        {
+            if (ActivePanelsDraggables.Count == 0) return;
+            int X = ActivePanelsDraggables[ActivePanelsDraggables.Count-1].Location.X;
+            int Y = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1].Bottom;
+
+
+            AddsElements.Location = new Point(X, Y + 30);
+            SubmitButton.Location = new Point(X, Y + 120);
+        }
+
     }
 }

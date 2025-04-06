@@ -16,7 +16,7 @@ namespace deepFake.Elements
 
         public bool Draggable = true;
 
-        public static List<DraggablePanel> ActiveDraggablePanels = new List<DraggablePanel>();
+        //public List<DraggablePanel> ActiveDraggablePanels = new List<DraggablePanel>();
 
         public DraggablePanel(int[] x_s, int [] y_s)
         {
@@ -48,9 +48,9 @@ namespace deepFake.Elements
             this.MouseUp += Panel_MouseUp;
         }
 
-        public void Remove_Draggable_Panel()
+        public void Remove_Draggable_Panel(List<DraggablePanel> panelsDraggable)
         {
-            ActiveDraggablePanels.Remove(this);
+            panelsDraggable.Remove(this);
         }
         private void Panel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -68,8 +68,6 @@ namespace deepFake.Elements
         private void Panel_MouseMove(object sender, MouseEventArgs e)
         {
             if(!Draggable) return;
-            if (ActiveDraggablePanels.Count <= 1) return; 
-           
             if (isDragging)
             {
                 // Calculate new panel position
@@ -87,32 +85,43 @@ namespace deepFake.Elements
 
         private void Panel_MouseUp(object sender, MouseEventArgs e)
         {
-            isDragging = false;
-            this.Cursor = Cursors.Default;
-            DraggablePanel pan = (DraggablePanel)Algorithme.OverWith(this, ActiveDraggablePanels, 20);
             
-            if (pan != null)
+            if (this.FindForm().GetType() == typeof(PublierPost))
             {
-                if (pan.Draggable)
+                isDragging = false;
+                this.Cursor = Cursors.Default;
+                DraggablePanel pan = (DraggablePanel)Algorithme.OverWith(this, ((PublierPost)this.FindForm()).ActivePanelsDraggables, 20);
+
+                if (pan != null)
                 {
-                    if (Algorithme.isUnderControl(this, pan))
+                    if (pan.Draggable)
                     {
-                        this.Location = pan.Location;
-                        pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);   
+                        if (Algorithme.isUnderControl(this, pan))
+                        {
+                            this.Location = pan.Location;
+                            pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);
+                        }
+                        else
+                        {
+                            this.Location = pan.Location;
+                            pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);
+                        }
+                        PlaceWithList(((PublierPost)this.FindForm()).ActivePanelsDraggables);
                     }
-                    else
-                    {
-                        this.Location = pan.Location;
-                        pan.Location = new Point(dragElementStartPoint.X, dragElementStartPoint.Y);
-                    }
-                    PlaceWithList();
                 }
+                else
+                {
+                    this.Location = dragElementStartPoint;
+                }
+
             }
+
             else
             {
                 this.Location = dragElementStartPoint;
             }
-            
+
+
         }
 
         private bool IsOnBorder(Point mousePos)
@@ -140,15 +149,14 @@ namespace deepFake.Elements
             Min_X = x_s[0]; Max_X = x_s[1];
         }
 
-        static public void PlaceWithList()
+        static public void PlaceWithList(List<DraggablePanel> panelsDraggable)
         {
             Point FirstPoint = new Point(10, 100);
-            Control lastElement = ActiveDraggablePanels[0];
-            ActiveDraggablePanels = Algorithme.OrderListWithLocation(ActiveDraggablePanels);
-            Console.WriteLine("Called");
-            foreach(DraggablePanel panel in ActiveDraggablePanels)
+            Control lastElement = panelsDraggable[0];
+            Algorithme.OrderListWithLocation(ref panelsDraggable);
+            foreach(DraggablePanel panel in panelsDraggable)
             {
-                if(panel == ActiveDraggablePanels[0])
+                if(panel == panelsDraggable[0])
                 {
                     lastElement.Location = FirstPoint;
                     lastElement = panel;
@@ -158,10 +166,7 @@ namespace deepFake.Elements
                     panel.Location = new Point(lastElement.Location.X, lastElement.Bottom + 20);
                     lastElement = panel;
                 }
-                Console.WriteLine(panel.Name);
             }
-            Console.WriteLine("end");
-
         }
     }
 }

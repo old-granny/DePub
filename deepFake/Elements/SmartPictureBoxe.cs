@@ -166,8 +166,9 @@ namespace deepFake.Elements
         {
             if(this.FindForm().GetType() == typeof(PublierPost))
             {
-                Remove_Draggable_Panel();
+                
                 PublierPost par = this.FindForm() as PublierPost;
+                Remove_Draggable_Panel(par.ActivePanelsDraggables);
                 par?.ElementRemoved(this);
             }
             

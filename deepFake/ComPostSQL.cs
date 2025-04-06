@@ -56,25 +56,31 @@ namespace deepFake
         /// <param name="img1"> deuxieme image </param>
         /// <param name="img2"> troisieme image </param>
         /// <returns> si l'action a fonctionner </returns>
-        public bool insertIntoData(string title, string content, byte[] img0, byte[] img1, byte[] img2)
+        public bool insertIntoData(string order, string title, List<string> content, List<byte[]> images)
         {
             // Vérifier si les données sont sécurisées
-            if (!Algorithme.IsPostDataSecure(title, content, img0, img1, img2))
+            if (!Algorithme.IsPostDataSecure(title, content, images))
             {
                 return false; // On stoppe l'insertion si les données ne sont pas sécurisées
             }
 
             // Command SQL 
-            string cmd = $"INSERT INTO {TABLENAME} (title, content, image1, image2, image3) VALUES (@title, @content, @img0, @img1, @img2)";
+            string cmd = $"INSERT INTO {TABLENAME} (title, structure, content1, content2, content3, content4, image1, image2, image3) VALUES (@title, @structure, @content1, @content2, @content3, @content4, @img1, @img2, @img3)";
 
             // Utilisation des paramètres sécurisés
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
                 query.Parameters.AddWithValue("@title", title);
-                query.Parameters.AddWithValue("@content", content);
-                query.Parameters.Add("@img0", MySqlDbType.MediumBlob).Value = (img0 ?? new byte[0]);
-                query.Parameters.Add("@img1", MySqlDbType.MediumBlob).Value = (img1 ?? new byte[0]);
-                query.Parameters.Add("@img2", MySqlDbType.MediumBlob).Value = (img2 ?? new byte[0]);
+                query.Parameters.AddWithValue("@structure", order);
+                
+                query.Parameters.AddWithValue("@content1", content[0] ?? "");
+                query.Parameters.AddWithValue("@content2", content[1] ?? "");
+                query.Parameters.AddWithValue("@content3", content[2] ?? "");
+                query.Parameters.AddWithValue("@content4", content[3] ?? "");
+
+                query.Parameters.Add("@img1", MySqlDbType.MediumBlob).Value = (images[0] ?? new byte[0]);
+                query.Parameters.Add("@img2", MySqlDbType.MediumBlob).Value = (images[1] ?? new byte[0]);
+                query.Parameters.Add("@img3", MySqlDbType.MediumBlob).Value = (images[2] ?? new byte[0]);
 
                 query.ExecuteNonQuery();
             }
