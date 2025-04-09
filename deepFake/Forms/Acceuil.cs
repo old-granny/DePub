@@ -4,63 +4,60 @@ using System.Security.Cryptography;
 
 namespace deepFake
 {
-    // Section Principale
+
+    /// <summary>
+    /// Cette classe vas servir de controleur principale
+    /// il vas toute gerer
+    /// </summary>
     public partial class Acceuil : Form
     {
-        public UserInstance User;
-
-        // Form
+        
+        public UserInstance User; // Instance de l'usager
+        
+        /*  Instance des Form  */
         private PublierPost PublierPostPage;
         private FrontPage FrontPagePage;
         private Signup SignupPage;
         private Signing SigningPage;
-
-        // Form
-        private Form currentActive = null;
-        
-
-        // Attribut
-        List<Form> forms = new List<Form>();
+        /*  Instance des Form  */
+        private Form currentActive = null; // Form active
 
 
         public Acceuil()
         {
-            InitializeComponent();
-            InstancierAttribut();
-            Beautefull();
-            OnLoadPage();
-
-        }
-
-        private void OnLoadPage()
-        {
-            LoadFrontPage();
-        }
-
-        private void InstancierAttribut()
-        {
+            InitializeComponent(); // Fonction implementer automatiquement par .NET
             User = new UserInstance();
-            User.Username = "hello";
-            User.id= 1;
-            // Forms
+
+            CreationInstanceForm();
+            Beautefull();
+            LoadFrontPage();
+
+        }
+
+        /* Fonction complementaire au constructeur */
+        private void CreationInstanceForm()
+        {
             PublierPostPage = new PublierPost(this) { TopLevel = false, TopMost = true };
             FrontPagePage = new FrontPage(this) { TopLevel = false, TopMost = true };
             SignupPage = new Signup(this) { TopLevel = false, TopMost = true };
             SigningPage = new Signing(this) { TopLevel = false, TopMost = true };
         }
+
         private void Beautefull()
         {
             PanelLoadForm.BackColor = ColorTranslator.FromHtml("#FBE4D8");
-
         }
+        /* Fonction complementaire au constructeur */
 
+
+
+        /* Fonction public pour permettre de changer de form facillement */
 
         public void LoadFrontPage()
         {
             FrontPagePage.Cleanup();
             LoadFormInsidePanel(FrontPagePage);
         }
-
         public void LoadSignUpPage()
         {
             SignupPage.Cleanup();
@@ -76,7 +73,10 @@ namespace deepFake
             SigningPage.Cleanup();
             LoadFormInsidePanel(SigningPage);
         }
+        /* Fonction public pour permettre de changer de form facillement */
 
+
+        /* Fonction pour faciliter la tache des Loader de form */
         private bool LoadFormInsidePanel(Form form)
         {
             if (currentActive != null)
@@ -95,6 +95,8 @@ namespace deepFake
             form.Hide();
             return true;
         }
+        /* Fonction pour faciliter la tache des Loader de form */
+
 
         public bool Cleanup()
         {

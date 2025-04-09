@@ -47,7 +47,6 @@ namespace deepFake
                     y += 900;
                     x = 100;
                 }
-                
             }
             
             return list;

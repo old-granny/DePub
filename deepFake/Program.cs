@@ -12,11 +12,12 @@ namespace deepFake
         {
 
             ApplicationConfiguration.Initialize();
-            
             Acceuil pageAcceuil = new Acceuil();
+
             SetGlobals();
             Application.Run(pageAcceuil);
             Globals.AppRunning = false;
+        
         }
         static void SetGlobals()
         {

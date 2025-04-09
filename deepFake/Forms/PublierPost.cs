@@ -5,54 +5,74 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
-using System.Xml.Linq;
 using deepFake;
 using deepFake.Elements;
-using Mysqlx.Crud;
+
 
 
 namespace deepFake
 {
     public partial class PublierPost : Form
     {
-        private List<InputTexte> inputTexteList = new List<InputTexte>(); // Vas garder en memoire le nombre de TexteList que le form contient
-        private List<SmartPictureBoxe> smartPictureBoxes = new List<SmartPictureBoxe>(); // Garder en memoire les smartPictureBox contenue dans le form
+        /*---  Constante  ---*/
 
-        public List<DraggablePanel> ActivePanelsDraggables = new List<DraggablePanel>();
+        private Point PREMIER_POINT = new Point(10, 100);
+        private const int DISTANCE_ENTRE_2_ELEMENTS = 20;
+        private const int MAX_PICTURE = 2, MAX_INPUT = 3;
 
-        private Point FirstPoint = new Point(10, 100);
-        private int DistanceEntre2Element = 20;
+        /*---  Constante  ---*/
+
+
+        /* List des element actif dans le form */
         
-        // Attribut
+        private List<InputTexte> InputTexteList = new List<InputTexte>(); // Vas garder en memoire le nombre de TexteList que le form contient
+        private List<SmartPictureBoxe> SmartPictureBoxes = new List<SmartPictureBoxe>(); // Garder en memoire les smartPictureBox contenue dans le form
+        public List<DraggablePanel> ActivePanelsDraggables = new List<DraggablePanel>();
+        
+        /* List des element actif dans le form */
+
+
+        /* Form comme attribut */
+
         private Acceuil Main;
         private ComPostSQL Handle;
 
-        // Element contenue
+        /* Form comme attribut */
+
+
+
+        /* Elements constituant le form */
+        
         private InputTexte InputeTitre;
         private AddElement AddsElements;
         private Button SubmitButton;
+        private Button CancelButton;
 
-        // int pour le scrolling
-        private int Y_Max = 135, Y_Min = 0;
 
-        private const int MAX_PICTURE = 2, MAX_INPUT = 3;
+        /* Elements constituant le form */
+
+
+        /*--- Attribut ---*/
+        private int Y_Max = 135, Y_Min = 0; // int pour le scrolling
+
 
 
         public PublierPost(Acceuil acceuil)
         {
+            InitializeComponent(); // Fonction implement automatique
+
+
             Main = acceuil;
             Handle = new ComPostSQL();
-            InitializeComponent();
             InitializeElement();
+            
             Beautefull();
         }
-
+        
+        /* Methodes helpers pour le constructeur */
         private void Beautefull()
         {
             PanelContenue.BackColor = ColorTranslator.FromHtml("#E3DDE2");
@@ -78,19 +98,32 @@ namespace deepFake
                 Size = new Size(100, 40),
                 Font = new Font("Candara", 16F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };
-            
+            CancelButton = new Button()
+            {
+                Location = new Point(SubmitButton.Location.X, SubmitButton.Bottom + 30),
+                Text = "Cancel",
+                Size = new Size(100, 40),
+                Font = new Font("Candara", 16F, FontStyle.Regular, GraphicsUnit.Point, 0)
+
+            };
+
+
             AddsElements.ajouterImageBtn.Click += AjouterImageBtn_Click;
             AddsElements.ajouterTexteBtn.Click += AjouterTexteBtn_Click;
             SubmitButton.Click += SubmitButton_Click;
+            CancelButton.Click += CancelBTN_Click;
 
-
+            ScrollablePanel.Controls.Add(CancelButton);
             ScrollablePanel.Controls.Add(AddsElements);
             ScrollablePanel.Controls.Add(InputeTitre);
             ScrollablePanel.Controls.Add(SubmitButton);
 
         }
+        /* Methodes helpers pour le constructeur */
 
-        
+
+
+        /* Methodes de publier posts */
         public void ElementRemoved(Control element)
         {
             if (element == null) return;
@@ -98,7 +131,7 @@ namespace deepFake
 
             if(element is InputTexte input)
             {
-                inputTexteList.Remove(input);
+                InputTexteList.Remove(input);
                 ActivePanelsDraggables.Remove(input);
                 input.Parent.Controls.Remove(input);
                 toMove = 300;
@@ -106,7 +139,7 @@ namespace deepFake
 
             if (element is SmartPictureBoxe smartPictureBoxe)
             {
-                smartPictureBoxes.Remove(smartPictureBoxe);
+                SmartPictureBoxes.Remove(smartPictureBoxe);
                 ActivePanelsDraggables.Remove(smartPictureBoxe);
                 smartPictureBoxe.Parent.Controls.Remove(smartPictureBoxe);
                 toMove = 400;
@@ -141,19 +174,19 @@ namespace deepFake
             // Placer les element actif en ordre de vue
             Algorithme.OrderListWithLocation(ref ActivePanelsDraggables);
             
-            if (smartPictureBoxes.Count > MAX_PICTURE-1) return; // si execed le nombre de picture
+            if (SmartPictureBoxes.Count > MAX_PICTURE-1) return; // si execed le nombre de picture
 
-            Point p = new Point(FirstPoint.X, FirstPoint.Y);
+            Point p = new Point(PREMIER_POINT.X, PREMIER_POINT.Y);
             if (ActivePanelsDraggables.Count > 0)
             {
                 Control lastElement = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1];
-                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DISTANCE_ENTRE_2_ELEMENTS);
             }
-            SmartPictureBoxe smart = new SmartPictureBoxe($"Image {smartPictureBoxes.Count}", p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
+            SmartPictureBoxe smart = new SmartPictureBoxe($"Image {SmartPictureBoxes.Count}", p, new Size(800, 400), [200, 1000], [InputeTitre.Bottom + 20, 1000]);
 
             ActivePanelsDraggables.Add(smart);
             ScrollablePanel.Controls.Add(smart);
-            smartPictureBoxes.Add(smart);
+            SmartPictureBoxes.Add(smart);
 
             SetLocationElementSubmit();
 
@@ -165,20 +198,20 @@ namespace deepFake
         private void AjouterTexteBtn_Click(object? sender, EventArgs e)
         {
 
-            if (inputTexteList.Count > MAX_INPUT-1) return;
+            if (InputTexteList.Count > MAX_INPUT-1) return;
 
             Algorithme.OrderListWithLocation(ref ActivePanelsDraggables);
 
-            Point p = FirstPoint;
+            Point p = new Point(PREMIER_POINT.X, PREMIER_POINT.Y);
             if (ActivePanelsDraggables.Count > 0)
             {
                 Control lastElement = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1];
-                p = new Point(lastElement.Location.X, lastElement.Bottom + DistanceEntre2Element);
+                p = new Point(lastElement.Location.X, lastElement.Bottom + DISTANCE_ENTRE_2_ELEMENTS);
             }
-            InputTexte inputT = new InputTexte($"Input {inputTexteList.Count}", p, $"input{inputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
+            InputTexte inputT = new InputTexte($"Input {InputTexteList.Count}", p, $"input{InputTexteList.Count}", new Size(800, 200), 1000, true, true, [200, 1000], [InputeTitre.Bottom + 20, 1000], true);
 
             ActivePanelsDraggables.Add(inputT);
-            inputTexteList.Add(inputT);
+            InputTexteList.Add(inputT);
             ScrollablePanel.Controls.Add(inputT);
 
             SetLocationElementSubmit();
@@ -214,10 +247,18 @@ namespace deepFake
             }
         }
 
+        private void CancelBTN_Click(object sender, EventArgs e)
+        {
+            Main.LoadFrontPage();
+        }
+        /* Methodes de publier posts */
+
+
+        /* Methode helpers pour obtenir les infos des contenues du publier post */
         private List<string> GetStringContentOfPage()
         {
             List<string> contents = new List<string>();
-            foreach (InputTexte inp in inputTexteList)
+            foreach (InputTexte inp in InputTexteList)
             {
                 contents.Add(inp.GetContentOfInput());
             }
@@ -226,8 +267,7 @@ namespace deepFake
         private List<byte[]> GetPictureBoxContent()
         {
             List<byte[]> images = new List<byte[]>();
-
-            foreach (SmartPictureBoxe pic in smartPictureBoxes)
+            foreach (SmartPictureBoxe pic in SmartPictureBoxes)
             {
                 images.Add(pic.Current_Image_Data);
             }
@@ -243,17 +283,11 @@ namespace deepFake
             }
             return order;
         }
+        /* Methode helpers pour obtenir les infos des contenues du publier post */
 
-        private void CancelBTN_Click(object sender, EventArgs e)
-        {
-            Main.LoadFrontPage();
-        }
 
-        public bool Cleanup()
-        {
-            return true;
-        }
 
+        /* Methode de deplacement */
         private void SetNewY_S()
         {
             foreach (DraggablePanel draggableElement in ActivePanelsDraggables)
@@ -270,7 +304,19 @@ namespace deepFake
 
 
             AddsElements.Location = new Point(X, Y + 30);
-            SubmitButton.Location = new Point(X, Y + 120);
+            SubmitButton.Location = new Point(X, AddsElements.Bottom + 30);
+            CancelButton.Location = new Point(X, SubmitButton.Bottom + 30);
+        }
+        /* Methode de deplacement */
+
+        public bool Cleanup()
+        {
+            foreach(Control con in ActivePanelsDraggables)
+            {
+                ScrollablePanel.Controls.Remove(con);
+            }
+
+            return true;
         }
 
     }

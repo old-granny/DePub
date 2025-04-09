@@ -12,75 +12,62 @@ using System.Windows.Forms;
 
 namespace deepFake
 {
+
     public partial class FrontPage : Form
     {
-        // Form 
+        /* Instance de Forms */
+        /* Instance de Forms */
+
+
+        /* Instance de Main attend un acceuil */
         private Acceuil Main;
 
-        // Class 
+        /*  Instance des classes Helpers  */ 
         private FrontPageLoader FrontPageHandle;
 
         public FrontPage(Acceuil acceuil)
         {
+            InitializeComponent();
+
             Main = acceuil;
             this.Name = "FrontPage";
-            InitializeComponent();
-            beautefull();
+            
+            Beautefull();
             LoadInstance();
-            OnLoadPage();
+            LoadPosts(0, 10);
         }
 
-        private void beautefull()
+        /* Fonction helper pour le constructeur */
+        private void Beautefull()
         {
             this.BackColor = ColorTranslator.FromHtml("#E3DDE2");
             PanelContenuePublication.BackColor = ColorTranslator.FromHtml("#E3DDE2");
             PanelTop.BackColor = ColorTranslator.FromHtml("#554971");
 
         }
-
-
         private void LoadInstance()
-        // Fonction qui vas servir a instancier les instances
         {
             FrontPageHandle = new FrontPageLoader();
         }
+        /* Fonction helper pour le constructeur */
 
+        /* Methode de Front page */
 
-        public void LoadUserInfos(string name, int id)
+        public void LoadPosts(int startPos, int maxPost)
         {
-            //ProfilTitle.Text = name;
-        }
-
-        /// <summary>  
-        /// TODO  
-        /// </summary>
-        public void OnLoadPage()
-        {
-            LoadFrontPage();
-            if (Main.User != null)
-            {
-                LoadUserInfos(Main.User.Username, Main.User.id);
-                panelSignin.Show();
-                panelSign.Hide();
-            }
-            else
-            {
-                panelSignin.Hide();
-                panelSign.Show();
-            }
-        }
-
-        private void LoadFrontPage()
-        {
-
             List<Panel> panelList = FrontPageHandle.getPosts(1);
-            for (int i = 0; i < panelList.Count; i++)
+            int nbPost = 0;
+            for (int i = startPos; i < panelList.Count; i++)
             {
+                if (nbPost >= maxPost) break;
                 PanelContenuePublication.Controls.Add(panelList[i]);
+                nbPost++;
             }
             PanelContenuePublication.Show();
         }
 
+
+        /*--- Action des boutons ---*/
         private void boutonPagePost_Click(object sender, EventArgs e)
         {
             Main.LoadPublierPost();
@@ -98,11 +85,11 @@ namespace deepFake
 
         private void SignoutBTN_Click(object sender, EventArgs e)
         {
-            const string defaut = "Not Sign In";
-            Main.User = null;
-            //ProfilTitle.Text = defaut;
             Main.LoadFrontPage();
         }
+
+        /*--- Action des boutons ---*/
+
 
         public bool Cleanup()
         {

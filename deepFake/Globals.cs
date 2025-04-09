@@ -61,7 +61,7 @@ namespace deepFake
                 if (!Algorithme.IsTexteSecure(cont, 10000)) return false;
             
             foreach (byte[] img in images)
-                if(Algorithme.IsImageSecure(img)) return false;
+                if(!Algorithme.IsImageSecure(img)) return false;
 
             return true;
             
@@ -70,10 +70,10 @@ namespace deepFake
         static public bool IsTexteSecure(string content, int maxChar)
         {
             if(content == null) return false;
-            if (string.IsNullOrWhiteSpace(content) || content.Length > 255)
+            if (content.Length > maxChar)
                 return false;
             // Vérifier la présence de caractères "bizarres" qui pourraient causer des bugs (ex: null byte)
-            if (content.Contains('\0') || content.Contains('\0'))
+            if (content.Contains('\0'))
                 return false;
 
             return true;

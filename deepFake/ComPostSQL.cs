@@ -61,11 +61,18 @@ namespace deepFake
             // Vérifier si les données sont sécurisées
             if (!Algorithme.IsPostDataSecure(title, content, images))
             {
+                Console.WriteLine("didn't work");
                 return false; // On stoppe l'insertion si les données ne sont pas sécurisées
             }
 
             // Command SQL 
             string cmd = $"INSERT INTO {TABLENAME} (title, structure, content1, content2, content3, content4, image1, image2, image3) VALUES (@title, @structure, @content1, @content2, @content3, @content4, @img1, @img2, @img3)";
+            
+            int pos_c = content.Count - 1;
+            for (int i = pos_c; i < 4; i++) content.Add("");
+
+            int pos_i = images.Count - 1;
+            for (int i = pos_i; i < 4; i++) images.Add(new byte[0]);
 
             // Utilisation des paramètres sécurisés
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
@@ -169,7 +176,7 @@ namespace deepFake
             // Verifier si le ID est correct 
             if (id <= 0) throw new ArgumentException("Invalid ID");
 
-            string query = $"SELECT title, content FROM {tableName} WHERE ID = @id"; // la commande pour aller chercher le titre et le contenue
+            string query = $"SELECT title, content1 FROM {tableName} WHERE ID = @id"; // la commande pour aller chercher le titre et le contenue
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@id", id);
