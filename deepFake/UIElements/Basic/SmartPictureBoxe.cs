@@ -7,7 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace deepFake.Elements
+namespace deepFake.UIElements.Basic
 {
     internal class SmartPictureBoxe : DraggablePanel
     {
@@ -53,7 +53,7 @@ namespace deepFake.Elements
                 BorderStyle = BorderStyle.FixedSingle,
             }; SetDefaultImage();
 
-            this.Controls.Add(Picture);
+            Controls.Add(Picture);
             Picture.Controls.Add(DeleteBTN);
 
             Picture.Click += Picture_Click;
@@ -73,7 +73,7 @@ namespace deepFake.Elements
 
             ModifyBTN = new Button()
             {
-                Location = new Point(10, size.Height-40),
+                Location = new Point(10, size.Height - 40),
                 Size = new Size(60, 30),
                 Text = "Modify"
             };
@@ -83,17 +83,17 @@ namespace deepFake.Elements
                 Size = new Size(60, 30),
                 Text = "Remove"
             };
-            
+
 
             Picture = new PictureBox()
             {
                 Location = new Point(4, 4),
-                Size = new Size(size.Width-10, size.Height-10),
+                Size = new Size(size.Width - 10, size.Height - 10),
                 SizeMode = PictureBoxSizeMode.StretchImage,
                 BorderStyle = BorderStyle.FixedSingle,
             }; SetDefaultImage();
-            
-            this.Controls.Add(Picture);
+
+            Controls.Add(Picture);
             Picture.Controls.Add(DeleteBTN);
 
             Picture.Click += Picture_Click;
@@ -137,7 +137,7 @@ namespace deepFake.Elements
         {
             byte[] img_bytes = File.ReadAllBytes(filename);
             Current_Image_Data = img_bytes;
-            Image img = (Bitmap)((new ImageConverter()).ConvertFrom(img_bytes));
+            Image img = (Bitmap)new ImageConverter().ConvertFrom(img_bytes);
             Picture.Image = img ?? Picture.Image; // si image null remet l'image original dedans
 
         }
@@ -145,7 +145,7 @@ namespace deepFake.Elements
         public void SetPicture(byte[] images)
         {
             Current_Image_Data = images;
-            Image img = (Bitmap)((new ImageConverter()).ConvertFrom(images));
+            Image img = (Bitmap)new ImageConverter().ConvertFrom(images);
             Picture.Image = img ?? Picture.Image; // si image null remet l'image original dedans
         }
 
@@ -162,19 +162,19 @@ namespace deepFake.Elements
             RemoveSmartBoxe();
         }
 
-        public void RemoveSmartBoxe() 
+        public void RemoveSmartBoxe()
         {
-            if(this.FindForm().GetType() == typeof(PublierPost))
+            if (FindForm().GetType() == typeof(PublierPost))
             {
-                
-                PublierPost par = this.FindForm() as PublierPost;
+
+                PublierPost par = FindForm() as PublierPost;
                 Remove_Draggable_Panel(par.ActivePanelsDraggables);
                 par?.ElementRemoved(this);
             }
-            
+
 
         }
 
-        
+
     }
 }

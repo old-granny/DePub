@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace deepFake
+namespace deepFake.SQL
 {
     internal class ComUserSQL
     {
@@ -20,15 +20,15 @@ namespace deepFake
         private MySqlConnection conn;
 
         public ComUserSQL()
-        {   
+        {
             connectionDataBase(); // Instancier la connection
         }
-        
-        
+
+
         public bool createNewUser(string username, string name, string prename, string email, string password, string date)
         {
             // Etape 1 verification initial
-            if(!Algorithme.IsSignUpParamSecure(username, name, prename, email, password, date)) return false;
+            if (!Algorithme.IsSignUpParamSecure(username, name, prename, email, password, date)) return false;
 
             // Etape 2 utiliser hashing sur le mot de passe
             string hashedPassword = Algorithme.HashPassword(password);
@@ -50,12 +50,13 @@ namespace deepFake
 
                 return true;
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine("There was an error inserting data");
                 Console.WriteLine(ex.ToString());
                 return false;
             }
-            
+
         }
 
         public bool SigningCheck(string username, string password)
@@ -65,11 +66,11 @@ namespace deepFake
             Console.WriteLine(hashedPassword);
 
             if (!Algorithme.VerifySigningParam(username, password)) return false;
-            
+
             List<string[]> tableContent = new List<string[]>();
             string cmd = $"SELECT COUNT(*) FROM {TABLENAME} WHERE username = @username AND password = @password";
 
-            
+
             using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
                 query.Parameters.AddWithValue("@username", username);
@@ -92,13 +93,14 @@ namespace deepFake
                 }
                 reader.Close();
             }
-            
+
             // Devrait utiliser tryParse
 
             // Vas parse le premier paramettre recu apres le query pour obtenir l'ID
-            int id = Int32.Parse(tableContent[0][0]); 
-            if (id > 0) { // Si le ID n'est pas 0 alors la combinaison username - password n'existe pas
-                validUser = true;   
+            int id = int.Parse(tableContent[0][0]);
+            if (id > 0)
+            { // Si le ID n'est pas 0 alors la combinaison username - password n'existe pas
+                validUser = true;
             }
 
             return validUser;
@@ -107,7 +109,7 @@ namespace deepFake
 
         public string getUsername() =>
             getTableContent(TABLENAME)[0][0];
-        
+
 
 
         private List<string[]> getTableContent(string tableName)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace deepFake.Elements
+namespace deepFake.UIElements.Basic
 {
     internal class AddElement : Panel
     {
@@ -13,9 +13,9 @@ namespace deepFake.Elements
 
         public AddElement()
         {
-            this.Location = new Point(0, 0);
-            this.Size = new Size(140, 80); 
-            this.BorderStyle = BorderStyle.FixedSingle;
+            Location = new Point(0, 0);
+            Size = new Size(140, 80);
+            BorderStyle = BorderStyle.FixedSingle;
 
             InitializeCompenents();
         }
@@ -38,8 +38,8 @@ namespace deepFake.Elements
             ajouterImageBtn.Location = new Point(0, 0);
             ajouterTexteBtn.Location = new Point(0, 40);
 
-            this.Controls.Add(ajouterTexteBtn);
-            this.Controls.Add(ajouterImageBtn);
+            Controls.Add(ajouterTexteBtn);
+            Controls.Add(ajouterImageBtn);
 
         }
     }

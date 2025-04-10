@@ -1,19 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="BubblePub.cs">
+    <Compile Update="UIElements\Basic\AddElement.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Elements\AddElement.cs">
+    <Compile Update="UIElements\Basic\DraggablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Elements\DraggablePanel.cs">
+    <Compile Update="UIElements\Basic\InputTexte.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Elements\InputTexte.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Elements\SmartPictureBoxe.cs">
+    <Compile Update="UIElements\Basic\SmartPictureBoxe.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="Forms\Acceuil.cs">
@@ -33,6 +30,12 @@
     </Compile>
     <Compile Update="Forms\Signup.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UIElements\WithForms\BublePub\BubblePost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="UIElements\WithForms\BublePub\BubblePubLoader.cs">
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
 </Project>

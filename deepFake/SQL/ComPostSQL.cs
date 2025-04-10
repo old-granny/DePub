@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace deepFake
+namespace deepFake.SQL
 {
     public class ComPostSQL
     {
@@ -14,7 +14,7 @@ namespace deepFake
         const string DATABASENAME = "deepfake";
         const string TABLENAME = "post_data";
         private string ConnectionString = $"Server=127.0.0.1;Port=3306;Database = {DATABASENAME};User Id=root;Password=;";
-        
+
         // Attribut
         private MySqlConnection conn;
 
@@ -22,8 +22,9 @@ namespace deepFake
         // Constructor
         public ComPostSQL()
         {
-            
-            if (!connectionDataBase()) { // Si la connection n'a pas fonctionner
+
+            if (!connectionDataBase())
+            { // Si la connection n'a pas fonctionner
                 throw new Exception("Tes con");
             }
 
@@ -67,7 +68,7 @@ namespace deepFake
 
             // Command SQL 
             string cmd = $"INSERT INTO {TABLENAME} (title, structure, content1, content2, content3, content4, image1, image2, image3) VALUES (@title, @structure, @content1, @content2, @content3, @content4, @img1, @img2, @img3)";
-            
+
             int pos_c = content.Count - 1;
             for (int i = pos_c; i < 4; i++) content.Add("");
 
@@ -79,15 +80,15 @@ namespace deepFake
             {
                 query.Parameters.AddWithValue("@title", title);
                 query.Parameters.AddWithValue("@structure", order);
-                
+
                 query.Parameters.AddWithValue("@content1", content[0] ?? "");
                 query.Parameters.AddWithValue("@content2", content[1] ?? "");
                 query.Parameters.AddWithValue("@content3", content[2] ?? "");
                 query.Parameters.AddWithValue("@content4", content[3] ?? "");
 
-                query.Parameters.Add("@img1", MySqlDbType.MediumBlob).Value = (images[0] ?? new byte[0]);
-                query.Parameters.Add("@img2", MySqlDbType.MediumBlob).Value = (images[1] ?? new byte[0]);
-                query.Parameters.Add("@img3", MySqlDbType.MediumBlob).Value = (images[2] ?? new byte[0]);
+                query.Parameters.Add("@img1", MySqlDbType.MediumBlob).Value = images[0] ?? new byte[0];
+                query.Parameters.Add("@img2", MySqlDbType.MediumBlob).Value = images[1] ?? new byte[0];
+                query.Parameters.Add("@img3", MySqlDbType.MediumBlob).Value = images[2] ?? new byte[0];
 
                 query.ExecuteNonQuery();
             }
@@ -105,15 +106,16 @@ namespace deepFake
             List<int> ids = new List<int>(); // List contenant les IDs
 
             // Si le nombre de post voulue est superieur a la quantiter de post present bloque au nombre de post
-            if(nbPost > getNbPost(TABLENAME))
+            if (nbPost > getNbPost(TABLENAME))
                 nbPost = getNbPost(TABLENAME);
-            
+
             // Aller chercher tout les id dans la table
             string cmd = $"SELECT ID FROM {TABLENAME}";
-            using(MySqlCommand query  = new MySqlCommand(cmd, conn))
+            using (MySqlCommand query = new MySqlCommand(cmd, conn))
             {
                 MySqlDataReader reader = query.ExecuteReader();
-                while (reader.Read()) { // Lire les row dans qu'il en reste
+                while (reader.Read())
+                { // Lire les row dans qu'il en reste
                     int id = reader.GetInt32("id"); // transformer en int 
                     ids.Add(id);
                 }
@@ -142,7 +144,7 @@ namespace deepFake
             // contient 100% des donnees de la table
             // devrait une utiliter plus simple
             List<string[]> tableContent = new List<string[]>();
-         
+
             string cmd = $"SELECT * FROM {tableName};";
 
             MySqlCommand query = new MySqlCommand(cmd, conn);
@@ -182,14 +184,14 @@ namespace deepFake
                 cmd.Parameters.AddWithValue("@id", id);
 
                 MySqlDataReader reader = cmd.ExecuteReader();
-                
+
                 if (reader.Read()) // Move to the first row
                 {
                     string[] content = [reader.IsDBNull(0) ? null : reader.GetString(0), reader.IsDBNull(1) ? null : reader.GetString(1)]; // ["titre", "contenue"]
                     reader.Close();
                     return content;
                 }
-                
+
             }
             return null; // No data found
         }
@@ -232,13 +234,14 @@ namespace deepFake
                 if (reader.Read() && !reader.IsDBNull(0)) // is le reader n'est pas null
                 {
                     byte[] imageData = (byte[])reader[0];
-                    if (imageData.Length > 1) { 
-                        image = (Bitmap)((new ImageConverter()).ConvertFrom(imageData)); // Permet de lire l'image BLOB(bytes) et le transformer en IMAGE
+                    if (imageData.Length > 1)
+                    {
+                        image = (Bitmap)new ImageConverter().ConvertFrom(imageData); // Permet de lire l'image BLOB(bytes) et le transformer en IMAGE
                     }
                 }
                 reader.Close();
             }
-            
+
             return image;
         }
 
@@ -304,7 +307,7 @@ namespace deepFake
 
     }
 
-     
+
 
 
 

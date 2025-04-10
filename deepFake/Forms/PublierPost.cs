@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
-using deepFake;
-using deepFake.Elements;
+using deepFake.SQL;
+using deepFake.UIElements.Basic;
 
 
 
