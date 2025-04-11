@@ -35,17 +35,18 @@ namespace deepFake.Handlers
             int nbPostsLoader = 0;
             // Devrait trouver une facon qui pourrait fonctionnner si on veut pas necessairement les premier post
             List<Panel> list = new List<Panel>();
-            for (int i = 0; i < postToShow; i++)
+            for (int i = 0; i < 10; i++)
             {
-                string[] ligne = Handle.getPostData("post_data", idPost[i]); // Ici le i est senser representer le id du post, vas surement launch une erreur
-                List<Image> images = Handle.GetTableImages("post_data", idPost[i]);
-                Panel panel = new BubblePubLoader(ligne[i], ligne[i], images[i]);
+                string[] ligne = Handle.getPostData("post_data", idPost[0]); // Ici le i est senser representer le id du post, vas surement launch une erreur
+                List<Image> images = Handle.GetTableImages("post_data", idPost[0]);
+                Panel panel = new BubblePubLoader(ligne[0], ligne[0], images[0]);
+                panel.Location = new Point(x, y);
                 list.Add(panel);
                 nbPostsLoader++;
-                x += 600;
+                x += panel.Width + 50;
                 if (nbPostsLoader % 3 == 0) // Augmenter la position selon le le nombre de posts
                 {
-                    y += 900;
+                    y += 700;
                     x = 100;
                 }
             }

@@ -11,50 +11,94 @@ namespace deepFake.UIElements.WithForms.BublePub
         Label Content1;
         PictureBox ImagePublication;
 
+        int Ratio;
+        Random Gen;
+
+        List<int[]> RatioPossible = new List<int[]>();
         public BubblePubLoader(string titre, string content1, Image image)
         {
+            LoadAttribut();
+            LoadThisStyle();
             LoadElements(titre, content1, image);
         }
 
+        private void LoadAttribut()
+        {
+            Gen = new Random();
+
+            Screen myScreen = Screen.FromControl(this);
+            Rectangle area = myScreen.WorkingArea;
+
+            RatioPossible.Clear();
+
+            int minWidth = (int)(area.Width * 0.25);  
+            int maxWidth = (int)(area.Width * 0.3);  
+
+            int minHeight = (int)(area.Height * 0.4); 
+            int maxHeight = (int)(area.Height * 0.6); 
+
+            for (int i = 0; i < 10; i++)
+            {
+                int width = Gen.Next(minWidth, maxWidth + 1);
+                int height = Gen.Next(minHeight, maxHeight + 1);
+
+                RatioPossible.Add(new int[2] { width, height });
+            }
+        }
+
+
+        private void LoadThisStyle()
+        {
+            int pos = Gen.Next(0, RatioPossible.Count - 1);
+            this.Size = new Size(RatioPossible[pos][0], RatioPossible[pos][1]);
+            this.BackColor = Color.FromArgb(200, 200, 200);
+        }
         private void LoadElements(string titre, string content1, Image image)
         {
-            // Panel styling
-            this.BackColor = Color.WhiteSmoke;
-            this.BorderStyle = BorderStyle.FixedSingle;
-            this.Size = new Size(800, 400);
-            this.Padding = new Padding(10);
-
-            // Title Label with new styling
+            // Title Label
             Titre = new Label()
             {
                 Location = new Point(10, 10),
                 Text = titre,
                 Size = new Size(280, 40),
                 Font = new Font("Segoe UI", 20F, FontStyle.Bold, GraphicsUnit.Point),
-                ForeColor = Color.FromArgb(54, 93, 217)
             };
 
-            // Image with rounded corners styling
+            // Create PictureBox without fixed size
             ImagePublication = new PictureBox()
             {
-                Location = new Point(10, 60),
-                Size = new Size(80, 80),
                 Image = image,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                BorderStyle = BorderStyle.Fixed3D
+                SizeMode = PictureBoxSizeMode.StretchImage
             };
 
-            // Content Label with a refreshed look
+            this.Resize += (s, e) =>
+            {
+                int margin = 40;
+                int availableWidth = this.ClientSize.Width - margin * 2;
+
+                // Maintain image aspect ratio
+                double aspectRatio = (double)image.Height / image.Width;
+                int width = availableWidth;
+                int height = (int)(width * aspectRatio);
+
+                ImagePublication.Size = new Size(width, height);
+                ImagePublication.Location = new Point(margin, Titre.Bottom + 10);
+            };
+
+            // Force trigger initial layout
+            this.Resize += null;
+            this.OnResize(EventArgs.Empty);
+
+            // Content Label
             Content1 = new Label()
             {
-                Location = new Point(100, 60),
+                Location = new Point(100, ImagePublication.Bottom + 10), // Will be repositioned after Resize
                 Text = content1,
                 Size = new Size(180, 80),
                 Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point),
                 ForeColor = Color.FromArgb(64, 64, 64)
             };
 
-            // Adding elements to the Panel
             this.Controls.Add(Titre);
             this.Controls.Add(ImagePublication);
             this.Controls.Add(Content1);
