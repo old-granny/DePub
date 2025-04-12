@@ -294,6 +294,15 @@ namespace deepFake
             return panelOver;
         }
 
+        public static List<string> FormaterFormatPost(string format) {
+            string[] fo = format.Split(';');
+            List<string> res = new List<string>();
+            foreach (string fo2 in fo) { 
+                res.Add(fo2);
+            }
+            return res;
+        }
+
         
 
     }

@@ -47,7 +47,7 @@ namespace deepFake
         }
         private void LoadInstance()
         {
-            FrontPageHandle = new FrontPageLoader();
+            FrontPageHandle = new FrontPageLoader(Main);
         }
         /* Fonction helper pour le constructeur */
 

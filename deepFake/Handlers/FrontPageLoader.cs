@@ -16,9 +16,11 @@ namespace deepFake.Handlers
         //Attribut
         // Instance Class
         private ComPostSQL Handle;
+        private Acceuil Main;
 
-        public FrontPageLoader()
+        public FrontPageLoader(Acceuil acceuil)
         {
+            Main = acceuil;
             Handle = new ComPostSQL();
         }
 
@@ -35,11 +37,12 @@ namespace deepFake.Handlers
             int nbPostsLoader = 0;
             // Devrait trouver une facon qui pourrait fonctionnner si on veut pas necessairement les premier post
             List<Panel> list = new List<Panel>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < idPost.Count; i++)
             {
-                string[] ligne = Handle.getPostData("post_data", idPost[0]); // Ici le i est senser representer le id du post, vas surement launch une erreur
+                List<string> lignes = Handle.getPostData("post_data", idPost[0]); // Ici le i est senser representer le id du post, vas surement launch une erreur
                 List<Image> images = Handle.GetTableImages("post_data", idPost[0]);
-                Panel panel = new BubblePubLoader(ligne[0], ligne[0], images[0]);
+                string format = Handle.GetFormatWithId("post_data", idPost[0]);
+                Panel panel = new BubblePubLoader(Main, lignes[0], format, lignes, images);
                 panel.Location = new Point(x, y);
                 list.Add(panel);
                 nbPostsLoader++;

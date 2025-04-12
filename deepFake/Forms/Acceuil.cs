@@ -77,7 +77,7 @@ namespace deepFake
 
 
         /* Fonction pour faciliter la tache des Loader de form */
-        private bool LoadFormInsidePanel(Form form)
+        public bool LoadFormInsidePanel(Form form)
         {
             if (currentActive != null)
             {

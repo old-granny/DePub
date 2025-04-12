@@ -10,16 +10,21 @@ namespace deepFake.UIElements.WithForms.BublePub
         Label Titre;
         Label Content1;
         PictureBox ImagePublication;
+        BubblePost BubblePostForm;
+
+        Acceuil Main;
 
         int Ratio;
         Random Gen;
 
         List<int[]> RatioPossible = new List<int[]>();
-        public BubblePubLoader(string titre, string content1, Image image)
+        public BubblePubLoader(Acceuil acceuil, string titre, string format, List<string> contents, List<Image> images)
         {
+            Main = acceuil;
             LoadAttribut();
             LoadThisStyle();
-            LoadElements(titre, content1, image);
+            LoadElements(titre, contents, images);
+            BubblePostForm = new BubblePost(Main, titre, Algorithme.FormaterFormatPost(format), images, contents) { TopLevel = false, TopMost = true };
         }
 
         private void LoadAttribut()
@@ -53,7 +58,8 @@ namespace deepFake.UIElements.WithForms.BublePub
             this.Size = new Size(RatioPossible[pos][0], RatioPossible[pos][1]);
             this.BackColor = Color.FromArgb(200, 200, 200);
         }
-        private void LoadElements(string titre, string content1, Image image)
+
+        private void LoadElements(string titre, List<string> contents, List<Image> images)
         {
             // Title Label
             Titre = new Label()
@@ -67,7 +73,7 @@ namespace deepFake.UIElements.WithForms.BublePub
             // Create PictureBox without fixed size
             ImagePublication = new PictureBox()
             {
-                Image = image,
+                Image = images[0],
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
 
@@ -77,7 +83,7 @@ namespace deepFake.UIElements.WithForms.BublePub
                 int availableWidth = this.ClientSize.Width - margin * 2;
 
                 // Maintain image aspect ratio
-                double aspectRatio = (double)image.Height / image.Width;
+                double aspectRatio = (double)images[0].Height / images[0].Width;
                 int width = availableWidth;
                 int height = (int)(width * aspectRatio);
 
@@ -93,7 +99,7 @@ namespace deepFake.UIElements.WithForms.BublePub
             Content1 = new Label()
             {
                 Location = new Point(100, ImagePublication.Bottom + 10), // Will be repositioned after Resize
-                Text = content1,
+                Text = contents[0],
                 Size = new Size(180, 80),
                 Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point),
                 ForeColor = Color.FromArgb(64, 64, 64)
@@ -102,6 +108,17 @@ namespace deepFake.UIElements.WithForms.BublePub
             this.Controls.Add(Titre);
             this.Controls.Add(ImagePublication);
             this.Controls.Add(Content1);
+
+
+            Titre.Click += Click_LoadBubblePost;
+            ImagePublication.Click += Click_LoadBubblePost;
+            Content1.Click += Click_LoadBubblePost;
+            this.Click += Click_LoadBubblePost;
+        }
+
+        private void Click_LoadBubblePost(object? sender, EventArgs e)
+        {
+            Main.LoadFormInsidePanel(BubblePostForm);
         }
     }
 }

@@ -173,7 +173,7 @@ namespace deepFake.SQL
         /// <param name="id"></param>
         /// <returns> un tableau avec titre et contenue </returns>
         /// <exception cref="ArgumentException"></exception>
-        public string[] getPostData(string tableName, int id)
+        public List<string> getPostData(string tableName, int id)
         {
             // Verifier si le ID est correct 
             if (id <= 0) throw new ArgumentException("Invalid ID");
@@ -187,7 +187,7 @@ namespace deepFake.SQL
 
                 if (reader.Read()) // Move to the first row
                 {
-                    string[] content = [reader.IsDBNull(0) ? null : reader.GetString(0), reader.IsDBNull(1) ? null : reader.GetString(1)]; // ["titre", "contenue"]
+                    List<string> content = [reader.IsDBNull(0) ? null : reader.GetString(0), reader.IsDBNull(1) ? null : reader.GetString(1)]; // ["titre", "contenue"]
                     reader.Close();
                     return content;
                 }
@@ -244,6 +244,28 @@ namespace deepFake.SQL
 
             return image;
         }
+
+        public string GetFormatWithId(string tableName, int idPost)
+        {
+            // Format row -> id | title | structure | 
+            string query = $"SELECT structure FROM {tableName} WHERE ID = @id";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@id", idPost); // inserer le id dans la query
+            string format = "";
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read() && !reader.IsDBNull(0)) // is le reader n'est pas null
+                {
+                    format = reader.GetString(0);
+                    
+                }
+                reader.Close();
+            }
+            return format;
+        }
+
+
+        
 
         // Cree une dataBase simple et universel comme sa n'importe quelle serveur auront les meme 
         // paramettre
