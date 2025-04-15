@@ -15,6 +15,7 @@ namespace deepFake.UIElements.Basic
         private TextBox EditTextBox;
         private Button RemoveButton;
         private bool Multined;
+        private string StartString;
 
         public int MaxChar;
         public bool IsDraggable = false;
@@ -79,6 +80,7 @@ namespace deepFake.UIElements.Basic
         private void Create_InputText(string contenue, Size size, bool multiline)
         {
             // Create and set up Label
+            StartString = contenue;
             EditableLabel = new Label
             {
                 Text = contenue,
@@ -198,6 +200,11 @@ namespace deepFake.UIElements.Basic
         public string GetContentOfInput()
         {
             return EditableLabel.Text;
+        }
+
+        public void ResetContent()
+        {
+            EditableLabel.Text = StartString;
         }
     }
 }

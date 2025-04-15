@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using deepFake.SQL;
 using deepFake.UIElements.Basic;
+using static Google.Protobuf.Reflection.SourceCodeInfo.Types;
 
 
 
@@ -20,6 +23,9 @@ namespace deepFake
         /*---  Constante  ---*/
 
         private Point PREMIER_POINT = new Point(10, 100);
+        private Point PREMIER_POINT_SCROLLABLE = new Point(3, 15);
+        private Point PREMIER_POINT_ELEMENT = new Point(10, 200);
+
         private const int DISTANCE_ENTRE_2_ELEMENTS = 20;
         private const int MAX_PICTURE = 2, MAX_INPUT = 3;
 
@@ -56,7 +62,8 @@ namespace deepFake
 
 
         /*--- Attribut ---*/
-        private int Y_Max = 135, Y_Min = 0; // int pour le scrolling
+        private const int Y_Max_S = 135, Y_Min_s = 0;
+        private int Y_Max = Y_Max_S, Y_Min = Y_Min_s;  // int pour le scrolling
 
 
 
@@ -298,10 +305,19 @@ namespace deepFake
 
         private void SetLocationElementSubmit()
         {
-            if (ActivePanelsDraggables.Count == 0) return;
-            int X = ActivePanelsDraggables[ActivePanelsDraggables.Count-1].Location.X;
-            int Y = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1].Bottom;
-
+            int X = 0;
+            int Y = 0;
+            
+            if (ActivePanelsDraggables.Count == 0) 
+            {
+                X = PREMIER_POINT_ELEMENT.X;
+                Y = PREMIER_POINT_ELEMENT.Y;
+            }
+            else
+            {
+                X = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1].Location.X;
+                Y = ActivePanelsDraggables[ActivePanelsDraggables.Count - 1].Bottom;
+            }
 
             AddsElements.Location = new Point(X, Y + 30);
             SubmitButton.Location = new Point(X, AddsElements.Bottom + 30);
@@ -311,13 +327,54 @@ namespace deepFake
 
         public bool Cleanup()
         {
-            foreach(Control con in ActivePanelsDraggables)
+            var itemsPicutre = new List<SmartPictureBoxe>();
+            foreach (SmartPictureBoxe picture in SmartPictureBoxes)
             {
-                ScrollablePanel.Controls.Remove(con);
+                itemsPicutre.Add(picture);
             }
+            foreach (var item in itemsPicutre)
+            {
+                ActivePanelsDraggables.Remove(item);
+                ScrollablePanel.Controls.Remove(item);
+            }
+
+
+            var itemsInput = new List<InputTexte>();
+            foreach (InputTexte inp in InputTexteList)
+            {
+                itemsInput.Add(inp);
+            }
+            foreach (var item in itemsInput)
+            {
+                ActivePanelsDraggables.Remove(item);
+                ScrollablePanel.Controls.Remove(item);
+            }
+
+
+            SmartPictureBoxes.Clear();
+            InputTexteList.Clear();
+
+            var itemsToRemove = new List<DraggablePanel>();
+            foreach (DraggablePanel dragganle in ActivePanelsDraggables)
+            {
+                itemsToRemove.Add(dragganle);
+            }
+            foreach (var item in itemsToRemove)
+            {
+                ActivePanelsDraggables.Remove(item);
+            }
+
+            Y_Max = Y_Max_S;
+            Y_Min = Y_Min_s;
+
+            SetNewY_S();
+            ScrollablePanel.Location = new Point(PREMIER_POINT_SCROLLABLE.X, PREMIER_POINT_SCROLLABLE.Y);
+            SetLocationElementSubmit();
+            InputeTitre.ResetContent();
 
             return true;
         }
+
 
     }
 }

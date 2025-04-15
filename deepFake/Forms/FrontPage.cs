@@ -43,7 +43,6 @@ namespace deepFake
             this.BackColor = ColorTranslator.FromHtml("#E3DDE2");
             PanelContenuePublication.BackColor = ColorTranslator.FromHtml("#E3DDE2");
             PanelTop.BackColor = ColorTranslator.FromHtml("#554971");
-
         }
         private void LoadInstance()
         {

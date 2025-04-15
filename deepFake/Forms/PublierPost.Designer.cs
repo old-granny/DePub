@@ -102,8 +102,9 @@
             // PublierPost
             // 
             AutoScaleMode = AutoScaleMode.None;
+            AutoSize = true;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1540, 845);
             Controls.Add(PanelPrincipale);
             Margin = new Padding(3, 4, 3, 4);
             Name = "PublierPost";

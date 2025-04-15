@@ -39,9 +39,9 @@ namespace deepFake.Handlers
             List<Panel> list = new List<Panel>();
             for (int i = 0; i < idPost.Count; i++)
             {
-                List<string> lignes = Handle.getPostData("post_data", idPost[0]); // Ici le i est senser representer le id du post, vas surement launch une erreur
-                List<Image> images = Handle.GetTableImages("post_data", idPost[0]);
-                string format = Handle.GetFormatWithId("post_data", idPost[0]);
+                List<string> lignes = Handle.getPostData("post_data", idPost[i]); // Ici le i est senser representer le id du post, vas surement launch une erreur
+                List<Image> images = Handle.GetTableImages("post_data", idPost[i]);
+                string format = Handle.GetFormatWithId("post_data", idPost[i]);
                 Panel panel = new BubblePubLoader(Main, lignes[0], format, lignes, images);
                 panel.Location = new Point(x, y);
                 list.Add(panel);
