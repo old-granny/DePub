@@ -96,7 +96,7 @@
             TetePNL.Location = new Point(0, 0);
             TetePNL.Margin = new Padding(3, 4, 3, 4);
             TetePNL.Name = "TetePNL";
-            TetePNL.Size = new Size(2194, 100);
+            TetePNL.Size = new Size(1920, 100);
             TetePNL.TabIndex = 0;
             // 
             // PublierPost
