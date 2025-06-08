@@ -103,9 +103,19 @@ namespace deepFake.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CanadaImage {
+        internal static System.Drawing.Bitmap Exit {
             get {
-                object obj = ResourceManager.GetObject("CanadaImage", resourceCulture);
+                object obj = ResourceManager.GetObject("Exit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExitHover {
+            get {
+                object obj = ResourceManager.GetObject("ExitHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

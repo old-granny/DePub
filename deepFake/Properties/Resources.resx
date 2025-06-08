@@ -121,9 +121,6 @@
   <data name="BigRectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BigRectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CanadaImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CanadaImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,4 +145,10 @@
   <data name="AddImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+    <data name="ExitHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+	    <value>..\Resources\ExitHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    </data>
+	<data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\Properties\Resources\Exit_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
 </root>
