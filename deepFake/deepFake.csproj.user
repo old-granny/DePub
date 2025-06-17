@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Forms\Acceuils\Reisizing.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UIElements\Basic\AddElement.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -13,7 +16,7 @@
     <Compile Update="UIElements\Basic\SmartPictureBoxe.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="Forms\Acceuil.cs">
+    <Compile Update="Forms\Acceuils\Acceuil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FrontPage.cs">
@@ -31,11 +34,19 @@
     <Compile Update="Forms\Signup.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UIElements\Basic\TaskBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="UIElements\WithForms\BublePub\BubblePost.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UIElements\WithForms\BublePub\BubblePubLoader.cs">
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
