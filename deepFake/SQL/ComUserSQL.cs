@@ -16,12 +16,34 @@ namespace deepFake.SQL
         const string TABLENAME = "users_infos";
         private string ConnectionString = $"Server=localhost;Port=3306;Database = {DATABASENAME};User Id=root;Password=;";
         private string ConnectionStringCreateDatabse = $"Server=localhost;Port=3306;User Id=root;Password=wx2413#10MIA?;";
+        
+        
+        
         // Attribut
         private MySqlConnection conn;
+        private static ComUserSQL Instance_;
 
-        public ComUserSQL()
+        public static ComUserSQL Instance
         {
-            connectionDataBase(); // Instancier la connection
+            get
+            {
+                if (Instance_ == null)
+                {
+                    return new ComUserSQL();
+                }
+                return Instance_;
+
+            }
+
+        }
+        // Constructor
+        private ComUserSQL()
+        {
+            if (!connectionDataBase())
+            { // Si la connection n'a pas fonctionner
+                throw new Exception("Tes con");
+            }
+            Instance_ = this;
         }
 
 

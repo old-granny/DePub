@@ -19,7 +19,7 @@ namespace deepFake
         public Signup(Acceuil acceuil)
         {
             Main = acceuil;
-            conn = new ComUserSQL();
+            conn = ComUserSQL.Instance;
             InitializeComponent();
         }
 

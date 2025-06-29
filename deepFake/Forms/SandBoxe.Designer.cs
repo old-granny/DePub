@@ -125,7 +125,6 @@ namespace deepFake
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.BigRectangle;
             pictureBox1.Location = new Point(180, 64);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1387, 818);

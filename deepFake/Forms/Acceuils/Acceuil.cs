@@ -1,5 +1,4 @@
-﻿using deepFake;
-using System.Drawing.Printing;
+﻿using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
@@ -8,6 +7,8 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System;
 using FormsTimer = System.Windows.Forms.Timer;
+using deepFake.ModelConception.Observateur;
+using deepFake.UIElements.Basic.TaskBar;
 using deepFake.UIElements.Basic;
 
 
@@ -19,10 +20,9 @@ namespace deepFake
     /// Cette classe vas servir de controleur principale
     /// il vas toute gerer
     /// </summary>
-    public partial class Acceuil : Form
+    public partial class Acceuil : Form, AbonneUser
     {
 
-        public UserInstance User; // Instance de l'usager
 
         /*  Instance des Form  */
         private PublierPost PublierPostPage;
@@ -31,24 +31,39 @@ namespace deepFake
         private Signing SigningPage;
         /*  Instance des Form  */
         private Form currentActive = null; // Form active
+        private TaskBar _TaskBar_;
+        private Panel ContentWrapper;
 
+
+
+        private static Acceuil _instance = null;
+
+        public static Acceuil GetInstance()
+        {
+            Console.WriteLine("Here");
+            if( _instance == null)
+            {
+                _instance = new Acceuil();
+            }
+            return _instance;
+        }
 
         public Acceuil()
         {
-            InitializeComponent(); // Fonction implementer automatiquement par .NET
 
-            User = new UserInstance();
+            InitializeComponent(); // Fonction implementer automatiquement par .NET
             CreationInstanceForm();
             Beautefull();
+            _instance = this;
             InstancierComposants();
             LoadFrontPage();
-
+            Globals.User.AjouterAbonne(_instance);
         }
 
         private void InstancierComposants()
         {
-            TaskBar taskBar = new TaskBar();
-            this.Controls.Add(taskBar);
+            _TaskBar_ = TaskBar.Instance;
+            this.PanelPrincipale.Controls.Add(_TaskBar_);
         }
 
         /* Fonction complementaire au constructeur */
@@ -96,6 +111,7 @@ namespace deepFake
             PanelLoadForm.Controls.Add(publicationPanel);
 
             currentActive = null; // since we are not showing the full form anymore
+            _TaskBar_.Show();
         }
 
         public void LoadSignUpPage()
@@ -128,6 +144,7 @@ namespace deepFake
         }
         public void LoadSigningPage()
         {
+
             if (currentActive != null)
             {
                 if (PanelLoadForm.Controls.Contains(currentActive))
@@ -136,7 +153,7 @@ namespace deepFake
 
             // Clear previous controls from the container panel
             PanelLoadForm.Controls.Clear();
-
+            this.BackColor = Color.White;
             SigningPage.Cleanup();
             LoadFormInsidePanel(SigningPage);
         }
@@ -164,13 +181,16 @@ namespace deepFake
         }
         /* Fonction pour faciliter la tache des Loader de form */
 
-
         public bool Cleanup()
         {
             return true;
         }
 
-       
+        public void FaireAction()
+        {
+            Console.WriteLine("Acceuil, user is login");
+        }
 
+        
     }
 }

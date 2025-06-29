@@ -18,15 +18,30 @@ namespace deepFake.SQL
         // Attribut
         private MySqlConnection conn;
 
+        private static ComPostSQL Instance_;
 
+        public static ComPostSQL Instance 
+        {
+            get 
+            {
+                if (Instance_ == null)
+                {
+                    return new ComPostSQL();
+                }
+                return Instance_;
+            
+            }
+        
+        }
         // Constructor
-        public ComPostSQL()
+        private ComPostSQL()
         {
 
             if (!connectionDataBase())
             { // Si la connection n'a pas fonctionner
                 throw new Exception("Tes con");
             }
+            Instance_ = this;
 
         }
         /// <summary>

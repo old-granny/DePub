@@ -13,6 +13,9 @@
     <Compile Update="UIElements\Basic\InputTexte.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="UIElements\Basic\TaskBar\Components\SearchBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="UIElements\Basic\SmartPictureBoxe.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -34,7 +37,13 @@
     <Compile Update="Forms\Signup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="UIElements\Basic\TaskBar.cs">
+    <Compile Update="UIElements\Basic\TaskBar\Mouvements.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UIElements\Basic\TaskBar\TaskBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="UIElements\Basic\TransparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="UIElements\WithForms\BublePub\BubblePost.cs">

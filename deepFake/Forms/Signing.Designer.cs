@@ -28,131 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label2 = new Label();
             PanelSigning = new Panel();
-            ResultLBL = new Label();
-            label1 = new Label();
-            LoginBTN = new Button();
-            UsernameTXB = new TextBox();
             PasswordTXB = new TextBox();
-            panel1.SuspendLayout();
+            UsernameTXB = new TextBox();
+            LoginBTN = new Button();
+            label1 = new Label();
+            ResultLBL = new Label();
+            label2 = new Label();
             PanelSigning.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // PanelSigning
             // 
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(PanelSigning);
-            panel1.Location = new Point(1, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1282, 728);
-            panel1.TabIndex = 0;
+            PanelSigning.BorderStyle = BorderStyle.FixedSingle;
+            PanelSigning.Controls.Add(label2);
+            PanelSigning.Controls.Add(ResultLBL);
+            PanelSigning.Controls.Add(label1);
+            PanelSigning.Controls.Add(LoginBTN);
+            PanelSigning.Controls.Add(UsernameTXB);
+            PanelSigning.Controls.Add(PasswordTXB);
+            PanelSigning.Location = new Point(12, 12);
+            PanelSigning.Name = "PanelSigning";
+            PanelSigning.Size = new Size(347, 444);
+            PanelSigning.TabIndex = 4;
+            // 
+            // PasswordTXB
+            // 
+            PasswordTXB.Location = new Point(39, 279);
+            PasswordTXB.Name = "PasswordTXB";
+            PasswordTXB.Size = new Size(276, 23);
+            PasswordTXB.TabIndex = 1;
+            PasswordTXB.Text = "Password";
+            PasswordTXB.Enter += PasswordTXB_Enter;
+            // 
+            // UsernameTXB
+            // 
+            UsernameTXB.Location = new Point(39, 250);
+            UsernameTXB.Name = "UsernameTXB";
+            UsernameTXB.Size = new Size(276, 23);
+            UsernameTXB.TabIndex = 0;
+            UsernameTXB.Text = "Username";
+            UsernameTXB.Enter += UsernameTXB_Enter;
+            // 
+            // LoginBTN
+            // 
+            LoginBTN.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            LoginBTN.Location = new Point(98, 329);
+            LoginBTN.Name = "LoginBTN";
+            LoginBTN.Size = new Size(139, 46);
+            LoginBTN.TabIndex = 3;
+            LoginBTN.Text = "Login";
+            LoginBTN.UseVisualStyleBackColor = true;
+            LoginBTN.Click += LoginBTN_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(109, 67);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 40);
+            label1.TabIndex = 2;
+            label1.Text = "Signing";
+            // 
+            // ResultLBL
+            // 
+            ResultLBL.AutoSize = true;
+            ResultLBL.Location = new Point(160, 329);
+            ResultLBL.Name = "ResultLBL";
+            ResultLBL.Size = new Size(0, 15);
+            ResultLBL.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Blue;
-            label2.Location = new Point(583, 662);
+            label2.Location = new Point(138, 412);
             label2.Name = "label2";
-            label2.Size = new Size(83, 28);
+            label2.Size = new Size(66, 21);
             label2.TabIndex = 5;
             label2.Text = "Go Back";
             label2.Click += label2_Click;
             // 
-            // PanelSigning
-            // 
-            PanelSigning.BorderStyle = BorderStyle.FixedSingle;
-            PanelSigning.Controls.Add(ResultLBL);
-            PanelSigning.Controls.Add(label1);
-            PanelSigning.Controls.Add(LoginBTN);
-            PanelSigning.Controls.Add(UsernameTXB);
-            PanelSigning.Controls.Add(PasswordTXB);
-            PanelSigning.Location = new Point(435, 41);
-            PanelSigning.Margin = new Padding(3, 4, 3, 4);
-            PanelSigning.Name = "PanelSigning";
-            PanelSigning.Size = new Size(396, 591);
-            PanelSigning.TabIndex = 4;
-            // 
-            // ResultLBL
-            // 
-            ResultLBL.AutoSize = true;
-            ResultLBL.Location = new Point(183, 439);
-            ResultLBL.Name = "ResultLBL";
-            ResultLBL.Size = new Size(0, 20);
-            ResultLBL.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(125, 89);
-            label1.Name = "label1";
-            label1.Size = new Size(146, 50);
-            label1.TabIndex = 2;
-            label1.Text = "Signing";
-            // 
-            // LoginBTN
-            // 
-            LoginBTN.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LoginBTN.Location = new Point(125, 497);
-            LoginBTN.Margin = new Padding(3, 4, 3, 4);
-            LoginBTN.Name = "LoginBTN";
-            LoginBTN.Size = new Size(159, 61);
-            LoginBTN.TabIndex = 3;
-            LoginBTN.Text = "Login";
-            LoginBTN.UseVisualStyleBackColor = true;
-            LoginBTN.Click += LoginBTN_Click;
-            // 
-            // UsernameTXB
-            // 
-            UsernameTXB.Location = new Point(45, 333);
-            UsernameTXB.Margin = new Padding(3, 4, 3, 4);
-            UsernameTXB.Name = "UsernameTXB";
-            UsernameTXB.Size = new Size(315, 27);
-            UsernameTXB.TabIndex = 0;
-            UsernameTXB.Text = "Username";
-            UsernameTXB.Enter += UsernameTXB_Enter;
-            // 
-            // PasswordTXB
-            // 
-            PasswordTXB.Location = new Point(45, 372);
-            PasswordTXB.Margin = new Padding(3, 4, 3, 4);
-            PasswordTXB.Name = "PasswordTXB";
-            PasswordTXB.Size = new Size(315, 27);
-            PasswordTXB.TabIndex = 1;
-            PasswordTXB.Text = "Password";
-            PasswordTXB.Enter += PasswordTXB_Enter;
-            // 
             // Signing
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1282, 728);
-            Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
+            ClientSize = new Size(379, 476);
+            Controls.Add(PanelSigning);
             Name = "Signing";
             Text = "Signing";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             PanelSigning.ResumeLayout(false);
             PanelSigning.PerformLayout();
             ResumeLayout(false);
         }
 
-
-
         #endregion
 
-        private Panel panel1;
-        private TextBox UsernameTXB;
         private Panel PanelSigning;
-        private Label label1;
-        private Button LoginBTN;
-        private TextBox PasswordTXB;
         private Label label2;
         private Label ResultLBL;
+        private Label label1;
+        private Button LoginBTN;
+        private TextBox UsernameTXB;
+        private TextBox PasswordTXB;
     }
 }

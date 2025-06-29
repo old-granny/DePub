@@ -24,43 +24,79 @@ namespace deepFake
         protected override void WndProc(ref Message m)
         {
             const int WM_NCHITTEST = 0x84;
-            const int HTLEFT = 10;
-            const int HTRIGHT = 11;
-            const int HTTOP = 12;
-
             if (m.Msg == WM_NCHITTEST)
             {
-                Point screenPoint = new Point(m.LParam.ToInt32());
-                Point clientPoint = this.PointToClient(screenPoint);
+                base.WndProc(ref m);
 
-                int grip = 5;
+                var screenPoint = new Point(m.LParam.ToInt32());
+                var clientPoint = this.PointToClient(screenPoint);
+                int grip = 8;
 
-                // Top edge
+                // Check edges
+                if (clientPoint.X <= grip && clientPoint.Y <= grip)
+                {
+                    m.Result = (IntPtr)HTTOPLEFT;
+                    return;
+                }
+                if (clientPoint.X >= this.ClientSize.Width - grip && clientPoint.Y <= grip)
+                {
+                    m.Result = (IntPtr)HTTOPRIGHT;
+                    return;
+                }
+                if (clientPoint.X <= grip && clientPoint.Y >= this.ClientSize.Height - grip)
+                {
+                    m.Result = (IntPtr)HTBOTTOMLEFT;
+                    return;
+                }
+                if (clientPoint.X >= this.ClientSize.Width - grip && clientPoint.Y >= this.ClientSize.Height - grip)
+                {
+                    m.Result = (IntPtr)HTBOTTOMRIGHT;
+                    return;
+                }
                 if (clientPoint.Y <= grip)
                 {
                     m.Result = (IntPtr)HTTOP;
                     return;
                 }
-
-                // Left edge
+                if (clientPoint.Y >= this.ClientSize.Height - grip)
+                {
+                    m.Result = (IntPtr)HTBOTTOM;
+                    return;
+                }
                 if (clientPoint.X <= grip)
                 {
                     m.Result = (IntPtr)HTLEFT;
                     return;
                 }
-
-                // Right edge
                 if (clientPoint.X >= this.ClientSize.Width - grip)
                 {
                     m.Result = (IntPtr)HTRIGHT;
                     return;
                 }
 
-                m.Result = (IntPtr)HTCLIENT; // Default
                 return;
             }
 
             base.WndProc(ref m);
         }
+
+
+        public void ChangeLeftSize()
+        {
+            this.Width = this.Width - 5;
+            this.Left = this.Left + 5;
+        }
+
+        public void ChangeRightSize()
+        {
+            this.Width = this.Width - 5;
+        }
+
+        public void ChangeTopSize()
+        {
+            this.Height = this.Height - 5;
+            this.Top = this.Top + 5;
+        }
     }
+
 }

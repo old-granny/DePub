@@ -82,7 +82,6 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.BigRectangle;
             pictureBox1.Location = new Point(259, 59);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";

@@ -21,7 +21,7 @@ namespace deepFake.Handlers
         public FrontPageLoader(Acceuil acceuil)
         {
             Main = acceuil;
-            Handle = new ComPostSQL();
+            Handle = ComPostSQL.Instance;
         }
 
         public List<Panel> getPosts(int start)

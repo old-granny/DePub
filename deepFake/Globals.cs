@@ -1,4 +1,5 @@
-﻿using deepFake.UIElements.Basic;
+﻿using deepFake.ModelConception.Observateur;
+using deepFake.UIElements.Basic;
 using Org.BouncyCastle.Asn1.Crmf;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace deepFake
 
         public const int MinimumPrenameCount = 2;
         public const int MaximumPrenameCount = 20;
+        public static UserInstance User = new UserInstance();
 
 
     }

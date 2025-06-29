@@ -118,51 +118,59 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BigRectangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigRectangle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rectanglePUB" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rectanglePUB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GreyRect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GreyRect.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightBlueRect1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LightBlueRect1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LavenderRect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LavenderRect.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LightBlueRect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LightBlueRect1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AddImage1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AddImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 	<!--Section Acceuil -->
     <data name="ExitHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-	    <value>..\Properties\Resources\Acceuil\ExitHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	    <value>..\..\Images\ExitHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
     </data>
 	<data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-		<value>..\Properties\Resources\Acceuil\Exit_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+		<value>..\..\Images\Exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
 	</data>
 	<data name="petitLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-		<value>..\Properties\Resources\Acceuil\petitLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+		<value>..\..\Images\petitLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
 	</data>
 	<data name="maximize" type="System.Resources.ResXFileRef, System.Windows.Forms">
-		<value>..\Properties\Resources\Acceuil\maximise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+		<value>..\..\Images\maximise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="maximizeHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\maximiseHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
 	</data>
 	<data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-		<value>..\Properties\Resources\Acceuil\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+		<value>..\..\Images\Minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="minusHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\MinusHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
 	</data>
 	<data name="screenNormal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-		<value>..\Properties\Resources\Acceuil\screenNomal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+		<value>..\..\Images\screenNomal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="screenNormalHover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\screenNomalHover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	
+	<data name="messagerie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\Messagesquare.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\Bell.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="signIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="logOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\Logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="SearchIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
 	</data>
 	<!--Section Acceuil -->
+
+	<!--Section Login -->
+	<data name="LogosGros" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\LogoGros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<data name="Phrase" type="System.Resources.ResXFileRef, System.Windows.Forms">
+		<value>..\..\Images\Phrase.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+	</data>
+	<!--Section Login -->
+
 </root>

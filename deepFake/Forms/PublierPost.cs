@@ -73,7 +73,7 @@ namespace deepFake
 
 
             Main = acceuil;
-            Handle = new ComPostSQL();
+            Handle = ComPostSQL.Instance;
             InitializeElement();
             
             Beautefull();

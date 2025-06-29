@@ -1,4 +1,6 @@
-﻿namespace deepFake
+﻿using deepFake.UIElements.Basic;
+
+namespace deepFake
 {
     partial class Acceuil
     {
@@ -32,6 +34,8 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ScrollPub = new VScrollBar();
             PanelLoadForm = new Panel();
+            PanelPrincipale = new TransparentPanel();
+            PanelPrincipale.SuspendLayout();
             SuspendLayout();
             // 
             // ScrollPub
@@ -44,10 +48,22 @@
             // PanelLoadForm
             // 
             PanelLoadForm.AutoSize = true;
-            PanelLoadForm.Location = new Point(3, 101);
+            PanelLoadForm.Location = new Point(12, 8);
             PanelLoadForm.Name = "PanelLoadForm";
-            PanelLoadForm.Size = new Size(323, 100);
+            PanelLoadForm.Size = new Size(200, 100);
             PanelLoadForm.TabIndex = 0;
+            // 
+            // PanelPrincipale
+            // 
+            PanelPrincipale.BackColor = Color.Transparent;
+            PanelPrincipale.Controls.Add(PanelLoadForm);
+            PanelPrincipale.Dock = DockStyle.Fill;
+            PanelPrincipale.Location = new Point(0, 0);
+            PanelPrincipale.Margin = new Padding(5);
+            PanelPrincipale.Name = "PanelPrincipale";
+            PanelPrincipale.Padding = new Padding(5);
+            PanelPrincipale.Size = new Size(1904, 1041);
+            PanelPrincipale.TabIndex = 1;
             // 
             // Acceuil
             // 
@@ -56,7 +72,7 @@
             BackColor = Color.White;
             ClientSize = new Size(1904, 1041);
             ControlBox = false;
-            Controls.Add(PanelLoadForm);
+            Controls.Add(PanelPrincipale);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
@@ -66,8 +82,9 @@
             ShowInTaskbar = false;
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "Form1";
+            PanelPrincipale.ResumeLayout(false);
+            PanelPrincipale.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -75,5 +92,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private VScrollBar ScrollPub;
         private Panel PanelLoadForm;
+        private TransparentPanel PanelPrincipale;
     }
 }

@@ -151,7 +151,7 @@ namespace deepFake.UIElements.Basic
 
         private void SetDefaultImage()
         {
-            Default_image = Properties.Resources.AddImage;
+            //Default_image = Properties.Resources.AddImage;
             Picture.Image = Default_image;
         }
 

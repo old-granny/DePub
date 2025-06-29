@@ -18,9 +18,17 @@ namespace deepFake
 
         public Signing(Acceuil acceuil)
         {
-            Conn = new ComUserSQL();
+            Conn = ComUserSQL.Instance;
             Main = acceuil;
             InitializeComponent();
+            Beautiful();
+        }
+
+
+        private void Beautiful()
+        {
+            //PanelGrosLogo.BackgroundImage = Properties.Resources.LogosGros;
+            //PanelPhrase.BackgroundImage = Properties.Resources.Phrase;
         }
 
         private void LoginBTN_Click(object sender, EventArgs e)
@@ -28,9 +36,7 @@ namespace deepFake
             string username = UsernameTXB.Text;
             string password = PasswordTXB.Text;
             if (Conn.SigningCheck(username, password)) {
-                Main.User = new UserInstance();
-                Main.User.Username = username;
-                Main.User.id = 0;
+                Globals.User.Login(username, 1);
                 Main.LoadFrontPage();
             }
             else
