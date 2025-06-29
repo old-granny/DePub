@@ -32,15 +32,13 @@ namespace deepFake
         /*  Instance des Form  */
         private Form currentActive = null; // Form active
         private TaskBar _TaskBar_;
+
         private Panel ContentWrapper;
-
-
 
         private static Acceuil _instance = null;
 
         public static Acceuil GetInstance()
         {
-            Console.WriteLine("Here");
             if( _instance == null)
             {
                 _instance = new Acceuil();
@@ -64,6 +62,18 @@ namespace deepFake
         {
             _TaskBar_ = TaskBar.Instance;
             this.PanelPrincipale.Controls.Add(_TaskBar_);
+            
+            PanelLoadForm.Location = new Point(10, _TaskBar_.Bottom + 10);
+
+            this.Resize += Acceuil_Resize;
+        }
+
+        private void Acceuil_Resize(object? sender, EventArgs e)
+        {
+            PanelPrincipale.Width = this.Width - 4;
+            PanelPrincipale.Top = 2;
+            PanelPrincipale.Left = 2;
+            PanelPrincipale.Height = this.Height - 4;
         }
 
         /* Fonction complementaire au constructeur */
@@ -111,7 +121,6 @@ namespace deepFake
             PanelLoadForm.Controls.Add(publicationPanel);
 
             currentActive = null; // since we are not showing the full form anymore
-            _TaskBar_.Show();
         }
 
         public void LoadSignUpPage()
@@ -155,6 +164,7 @@ namespace deepFake
             PanelLoadForm.Controls.Clear();
             this.BackColor = Color.White;
             SigningPage.Cleanup();
+
             LoadFormInsidePanel(SigningPage);
         }
         /* Fonction public pour permettre de changer de form facillement */

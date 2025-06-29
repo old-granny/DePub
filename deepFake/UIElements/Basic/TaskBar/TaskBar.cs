@@ -265,7 +265,7 @@ namespace deepFake.UIElements.Basic.TaskBar
 
                 signInBtn.Click += (s, e) =>
                 {
-                    ((Acceuil)Parent).LoadSigningPage();
+                    Acceuil.GetInstance().LoadSigningPage();
                 };
                 layoutPanelForm.Controls.Add(CreateEmptyPanel(8));
                 layoutPanelForm.Controls.Add(signInBtn);
@@ -376,7 +376,7 @@ namespace deepFake.UIElements.Basic.TaskBar
                 {
                     Globals.User.Logout();
                 }
-                ((Acceuil)Parent).LoadFrontPage();
+                Acceuil.GetInstance().LoadFrontPage();
             };
 
             Button notificationBtn = CreateFormButton(Properties.Resources.notification);
@@ -400,7 +400,7 @@ namespace deepFake.UIElements.Basic.TaskBar
 
             signInBtn.Click += (s, e) =>
             {
-                ((Acceuil)Parent).LoadSigningPage();
+                Acceuil.GetInstance().LoadSigningPage();
             };
             layoutPanelForm.Controls.Add(CreateEmptyPanel(8));
             layoutPanelForm.Controls.Add(signInBtn);

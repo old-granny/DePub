@@ -32,7 +32,6 @@ namespace deepFake.UIElements.Basic.TaskBar
         private void Mouvements()
         {
             MouseDown += TaskBar_MouseDown;
-            MouseMove += Taskbar_MouseMove;
             MouseLeave += (s, e) => Cursor = Cursors.Default;
         }
 
@@ -49,68 +48,16 @@ namespace deepFake.UIElements.Basic.TaskBar
                 bool right = e.X >= Width - grip;
                 bool top = e.Y <= grip;
 
-                if (top && left)
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTTOPLEFT, 0);
-                else if (top && right)
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
-                else if (top)
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
 
-                else if (left)
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
+                // drag window normally
+                ReleaseCapture();
+                SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+                BtnMaximize.BackgroundImage = form.WindowState == FormWindowState.Maximized
+                ? Properties.Resources.screenNormal
+                : Properties.Resources.maximize;
 
-                else if (right)
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTTOPRIGHT, 0);
-
-                else
-                {
-                    // drag window normally
-                    ReleaseCapture();
-                    SendMessage(form.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
-                    BtnMaximize.BackgroundImage = form.WindowState == FormWindowState.Maximized
-                    ? Properties.Resources.screenNormal
-                    : Properties.Resources.maximize;
-                }
             }
         }
 
-
-        private void Taskbar_MouseMove(object sender, MouseEventArgs e)
-        {
-            int edgeTolerance = 5;
-            var panel = (Panel)sender;
-
-            bool left = e.X <= edgeTolerance;
-            bool right = e.X >= panel.Width - edgeTolerance;
-            bool top = e.Y <= edgeTolerance;
-
-            // Corners
-            if (top && left)
-                panel.Cursor = Cursors.SizeNWSE; // Top-left
-            else if (top && right)
-                panel.Cursor = Cursors.SizeNESW; // Top-right
-
-            // Edges
-            else if (left || right)
-                panel.Cursor = Cursors.SizeWE; // Left or Right edge
-            else if (top)
-                panel.Cursor = Cursors.SizeNS; // Top or Bottom edge
-
-            // Elsewhere
-            else
-                panel.Cursor = Cursors.Default;
-        }
-
-        protected override void WndProc(ref Message m)
-        {
-            const int WM_NCHITTEST = 0x84;
-
-            if (m.Msg == WM_NCHITTEST)
-            {
-                m.Result = (IntPtr)1; // HTCLIENT → lets parent (form) handle it
-                return;
-            }
-            base.WndProc(ref m);
-        }
     }
 }

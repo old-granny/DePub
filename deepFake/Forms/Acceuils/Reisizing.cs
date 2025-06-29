@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace deepFake
 {
@@ -21,82 +23,69 @@ namespace deepFake
 
         private int resizeBorderThickness = 8;
 
+
         protected override void WndProc(ref Message m)
         {
             const int WM_NCHITTEST = 0x84;
+
             if (m.Msg == WM_NCHITTEST)
             {
-                base.WndProc(ref m);
+                var form = FindForm();
 
-                var screenPoint = new Point(m.LParam.ToInt32());
-                var clientPoint = this.PointToClient(screenPoint);
-                int grip = 8;
+                if (form.WindowState == FormWindowState.Maximized) return;
 
-                // Check edges
-                if (clientPoint.X <= grip && clientPoint.Y <= grip)
-                {
-                    m.Result = (IntPtr)HTTOPLEFT;
-                    return;
-                }
-                if (clientPoint.X >= this.ClientSize.Width - grip && clientPoint.Y <= grip)
-                {
-                    m.Result = (IntPtr)HTTOPRIGHT;
-                    return;
-                }
-                if (clientPoint.X <= grip && clientPoint.Y >= this.ClientSize.Height - grip)
-                {
-                    m.Result = (IntPtr)HTBOTTOMLEFT;
-                    return;
-                }
-                if (clientPoint.X >= this.ClientSize.Width - grip && clientPoint.Y >= this.ClientSize.Height - grip)
-                {
-                    m.Result = (IntPtr)HTBOTTOMRIGHT;
-                    return;
-                }
-                if (clientPoint.Y <= grip)
-                {
-                    m.Result = (IntPtr)HTTOP;
-                    return;
-                }
-                if (clientPoint.Y >= this.ClientSize.Height - grip)
-                {
-                    m.Result = (IntPtr)HTBOTTOM;
-                    return;
-                }
+                // Get screen coordinates from message
+                int x = (short)((m.LParam.ToInt32()) & 0xFFFF);
+                int y = (short)((m.LParam.ToInt32() >> 16) & 0xFFFF);
+                Point screenPoint = new Point(x, y);
+                Point clientPoint = this.PointToClient(screenPoint);
+
+                int grip = 8; // Thickness of the resize area
+
                 if (clientPoint.X <= grip)
                 {
-                    m.Result = (IntPtr)HTLEFT;
+                    if (clientPoint.Y <= grip)
+                        m.Result = (IntPtr)13; // HTTOPLEFT
+                    else if (clientPoint.Y >= this.ClientSize.Height - grip)
+                        m.Result = (IntPtr)16; // HTBOTTOMLEFT
+                    else
+                        m.Result = (IntPtr)10; // HTLEFT
                     return;
                 }
-                if (clientPoint.X >= this.ClientSize.Width - grip)
+                else if (clientPoint.X >= this.ClientSize.Width - grip)
                 {
-                    m.Result = (IntPtr)HTRIGHT;
+                    if (clientPoint.Y <= grip)
+                        m.Result = (IntPtr)14; // HTTOPRIGHT
+                    else if (clientPoint.Y >= this.ClientSize.Height - grip)
+                        m.Result = (IntPtr)17; // HTBOTTOMRIGHT
+                    else
+                        m.Result = (IntPtr)11; // HTRIGHT
                     return;
                 }
-
-                return;
+                else if (clientPoint.Y <= grip)
+                {
+                    m.Result = (IntPtr)12; // HTTOP
+                    return;
+                }
+                else if (clientPoint.Y >= this.ClientSize.Height - grip)
+                {
+                    m.Result = (IntPtr)15; // HTBOTTOM
+                    return;
+                }
             }
-
             base.WndProc(ref m);
         }
 
-
-        public void ChangeLeftSize()
+        protected override void OnPaint(PaintEventArgs e)
         {
-            this.Width = this.Width - 5;
-            this.Left = this.Left + 5;
+            base.OnPaint(e);
+
+            using (Pen borderPen = new Pen(ColorTranslator.FromHtml("#0A3241"), 3))
+            {
+                Rectangle rect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
+                e.Graphics.DrawRectangle(borderPen, rect);
+            }
         }
 
-        public void ChangeRightSize()
-        {
-            this.Width = this.Width - 5;
-        }
-
-        public void ChangeTopSize()
-        {
-            this.Height = this.Height - 5;
-            this.Top = this.Top + 5;
-        }
     }
-
 }

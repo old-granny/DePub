@@ -34,7 +34,7 @@ namespace deepFake
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ScrollPub = new VScrollBar();
             PanelLoadForm = new Panel();
-            PanelPrincipale = new TransparentPanel();
+            PanelPrincipale = new Panel();
             PanelPrincipale.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,7 +48,7 @@ namespace deepFake
             // PanelLoadForm
             // 
             PanelLoadForm.AutoSize = true;
-            PanelLoadForm.Location = new Point(12, 8);
+            PanelLoadForm.Location = new Point(-4, -4);
             PanelLoadForm.Name = "PanelLoadForm";
             PanelLoadForm.Size = new Size(200, 100);
             PanelLoadForm.TabIndex = 0;
@@ -57,11 +57,9 @@ namespace deepFake
             // 
             PanelPrincipale.BackColor = Color.Transparent;
             PanelPrincipale.Controls.Add(PanelLoadForm);
-            PanelPrincipale.Dock = DockStyle.Fill;
-            PanelPrincipale.Location = new Point(0, 0);
-            PanelPrincipale.Margin = new Padding(5);
+            PanelPrincipale.Location = new Point(1, 1);
+            PanelPrincipale.Margin = new Padding(0);
             PanelPrincipale.Name = "PanelPrincipale";
-            PanelPrincipale.Padding = new Padding(5);
             PanelPrincipale.Size = new Size(1904, 1041);
             PanelPrincipale.TabIndex = 1;
             // 
@@ -92,6 +90,6 @@ namespace deepFake
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private VScrollBar ScrollPub;
         private Panel PanelLoadForm;
-        private TransparentPanel PanelPrincipale;
+        private Panel PanelPrincipale;
     }
 }

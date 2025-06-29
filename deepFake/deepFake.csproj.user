@@ -43,9 +43,6 @@
     <Compile Update="UIElements\Basic\TaskBar\TaskBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="UIElements\Basic\TransparentPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Update="UIElements\WithForms\BublePub\BubblePost.cs">
       <SubType>Form</SubType>
     </Compile>
