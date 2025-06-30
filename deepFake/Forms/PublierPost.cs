@@ -43,7 +43,6 @@ namespace deepFake
 
         /* Form comme attribut */
 
-        private Acceuil Main;
         private ComPostSQL Handle;
 
         /* Form comme attribut */
@@ -67,12 +66,9 @@ namespace deepFake
 
 
 
-        public PublierPost(Acceuil acceuil)
+        public PublierPost()
         {
             InitializeComponent(); // Fonction implement automatique
-
-
-            Main = acceuil;
             Handle = ComPostSQL.Instance;
             InitializeElement();
             
@@ -247,7 +243,7 @@ namespace deepFake
             }
 
             if(Handle.insertIntoData(order.ToString(), InputeTitre.GetContentOfInput(), inputBoxContent, pictureBoxContent))
-                Main.LoadFrontPage();
+                Acceuil.GetInstance().LoadFrontPage();
             else
             {
                 Console.WriteLine("ERROR");
@@ -256,7 +252,7 @@ namespace deepFake
 
         private void CancelBTN_Click(object sender, EventArgs e)
         {
-            Main.LoadFrontPage();
+            Acceuil.GetInstance().LoadFrontPage();
         }
         /* Methodes de publier posts */
 

@@ -15,10 +15,8 @@ namespace deepFake
     public partial class Signup : Form
     {
         private ComUserSQL conn;
-        private Acceuil Main;
-        public Signup(Acceuil acceuil)
+        public Signup()
         {
-            Main = acceuil;
             conn = ComUserSQL.Instance;
             InitializeComponent();
         }
@@ -48,7 +46,7 @@ namespace deepFake
                     else
                     {
                         // everything worked
-                        Main.LoadFrontPage();
+                        Acceuil.GetInstance().LoadFrontPage();
                     }
                     break;
                 case "USERNAME":
@@ -71,7 +69,7 @@ namespace deepFake
 
         private void GoBackLBL_Click(object sender, EventArgs e)
         {
-            Main.LoadFrontPage(); // Aller a la page principale
+            Acceuil.GetInstance().LoadFrontPage(); // Aller a la page principale
         }
         private void UsernameMistake()
         {

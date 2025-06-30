@@ -12,19 +12,17 @@ namespace deepFake.UIElements.WithForms.BublePub
         PictureBox ImagePublication;
         BubblePost BubblePostForm;
 
-        Acceuil Main;
 
         int Ratio;
         Random Gen;
 
         List<int[]> RatioPossible = new List<int[]>();
-        public BubblePubLoader(Acceuil acceuil, string titre, string format, List<string> contents, List<Image> images)
+        public BubblePubLoader(string titre, string format, List<string> contents, List<Image> images)
         {
-            Main = acceuil;
             LoadAttribut();
             LoadThisStyle();
             LoadElements(titre, contents, images);
-            BubblePostForm = new BubblePost(Main, titre, Algorithme.FormaterFormatPost(format), images, contents) { TopLevel = false, TopMost = true };
+            BubblePostForm = new BubblePost(titre, Algorithme.FormaterFormatPost(format), images, contents) { TopLevel = false, TopMost = true };
         }
 
         private void LoadAttribut()
@@ -118,7 +116,7 @@ namespace deepFake.UIElements.WithForms.BublePub
 
         private void Click_LoadBubblePost(object? sender, EventArgs e)
         {
-            Main.LoadFormInsidePanel(BubblePostForm);
+            Acceuil.GetInstance().LoadFormInsidePanel(BubblePostForm);
         }
     }
 }

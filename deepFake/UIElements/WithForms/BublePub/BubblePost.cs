@@ -26,9 +26,8 @@ namespace deepFake.UIElements.WithForms.BublePub
         int Y_Min = 0;
         // --- Attribut --- //
 
-        public BubblePost(Acceuil acceuil, string titre, List<string> format, List<Image> images, List<string> contents)
+        public BubblePost(string titre, List<string> format, List<Image> images, List<string> contents)
         {
-            Main = acceuil;
             InitializeComponent();
             InstancierElement(titre, format, images, contents);
         }

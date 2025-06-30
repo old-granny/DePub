@@ -28,110 +28,122 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PanelSigning = new Panel();
-            PasswordTXB = new TextBox();
-            UsernameTXB = new TextBox();
-            LoginBTN = new Button();
-            label1 = new Label();
-            ResultLBL = new Label();
-            label2 = new Label();
-            PanelSigning.SuspendLayout();
+            FormPanel = new Panel();
+            flowPanelForm = new FlowLayoutPanel();
+            panel2 = new Panel();
+            label3 = new Label();
+            GrosLogo = new Panel();
+            PhraseIntro = new Panel();
+            LeftSidePanel = new Panel();
+            RightSidePanel = new Panel();
+            FormPanel.SuspendLayout();
+            flowPanelForm.SuspendLayout();
+            panel2.SuspendLayout();
+            LeftSidePanel.SuspendLayout();
+            RightSidePanel.SuspendLayout();
             SuspendLayout();
             // 
-            // PanelSigning
+            // FormPanel
             // 
-            PanelSigning.BorderStyle = BorderStyle.FixedSingle;
-            PanelSigning.Controls.Add(label2);
-            PanelSigning.Controls.Add(ResultLBL);
-            PanelSigning.Controls.Add(label1);
-            PanelSigning.Controls.Add(LoginBTN);
-            PanelSigning.Controls.Add(UsernameTXB);
-            PanelSigning.Controls.Add(PasswordTXB);
-            PanelSigning.Location = new Point(12, 12);
-            PanelSigning.Name = "PanelSigning";
-            PanelSigning.Size = new Size(347, 444);
-            PanelSigning.TabIndex = 4;
+            FormPanel.BackColor = Color.White;
+            FormPanel.Controls.Add(flowPanelForm);
+            FormPanel.Location = new Point(163, 136);
+            FormPanel.Name = "FormPanel";
+            FormPanel.Size = new Size(672, 609);
+            FormPanel.TabIndex = 5;
             // 
-            // PasswordTXB
+            // flowPanelForm
             // 
-            PasswordTXB.Location = new Point(39, 279);
-            PasswordTXB.Name = "PasswordTXB";
-            PasswordTXB.Size = new Size(276, 23);
-            PasswordTXB.TabIndex = 1;
-            PasswordTXB.Text = "Password";
-            PasswordTXB.Enter += PasswordTXB_Enter;
+            flowPanelForm.BackColor = Color.Transparent;
+            flowPanelForm.Controls.Add(panel2);
+            flowPanelForm.FlowDirection = FlowDirection.TopDown;
+            flowPanelForm.Location = new Point(90, 50);
+            flowPanelForm.Name = "flowPanelForm";
+            flowPanelForm.Size = new Size(476, 492);
+            flowPanelForm.TabIndex = 0;
             // 
-            // UsernameTXB
+            // panel2
             // 
-            UsernameTXB.Location = new Point(39, 250);
-            UsernameTXB.Name = "UsernameTXB";
-            UsernameTXB.Size = new Size(276, 23);
-            UsernameTXB.TabIndex = 0;
-            UsernameTXB.Text = "Username";
-            UsernameTXB.Enter += UsernameTXB_Enter;
+            panel2.BackColor = SystemColors.ActiveBorder;
+            panel2.Controls.Add(label3);
+            panel2.Location = new Point(3, 3);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(473, 121);
+            panel2.TabIndex = 0;
             // 
-            // LoginBTN
+            // label3
             // 
-            LoginBTN.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            LoginBTN.Location = new Point(98, 329);
-            LoginBTN.Name = "LoginBTN";
-            LoginBTN.Size = new Size(139, 46);
-            LoginBTN.TabIndex = 3;
-            LoginBTN.Text = "Login";
-            LoginBTN.UseVisualStyleBackColor = true;
-            LoginBTN.Click += LoginBTN_Click;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Constantia", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(134, 15);
+            label3.Name = "label3";
+            label3.Size = new Size(193, 78);
+            label3.TabIndex = 0;
+            label3.Text = "Login";
             // 
-            // label1
+            // GrosLogo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(109, 67);
-            label1.Name = "label1";
-            label1.Size = new Size(112, 40);
-            label1.TabIndex = 2;
-            label1.Text = "Signing";
+            GrosLogo.BackColor = Color.Transparent;
+            GrosLogo.BackgroundImageLayout = ImageLayout.Zoom;
+            GrosLogo.Location = new Point(3, 3);
+            GrosLogo.Name = "GrosLogo";
+            GrosLogo.Size = new Size(445, 181);
+            GrosLogo.TabIndex = 6;
             // 
-            // ResultLBL
+            // PhraseIntro
             // 
-            ResultLBL.AutoSize = true;
-            ResultLBL.Location = new Point(160, 329);
-            ResultLBL.Name = "ResultLBL";
-            ResultLBL.Size = new Size(0, 15);
-            ResultLBL.TabIndex = 4;
+            PhraseIntro.BackColor = Color.Transparent;
+            PhraseIntro.BackgroundImageLayout = ImageLayout.Zoom;
+            PhraseIntro.Location = new Point(198, 255);
+            PhraseIntro.Name = "PhraseIntro";
+            PhraseIntro.Size = new Size(463, 141);
+            PhraseIntro.TabIndex = 7;
             // 
-            // label2
+            // LeftSidePanel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Blue;
-            label2.Location = new Point(138, 412);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 21);
-            label2.TabIndex = 5;
-            label2.Text = "Go Back";
-            label2.Click += label2_Click;
+            LeftSidePanel.BackColor = Color.White;
+            LeftSidePanel.Controls.Add(GrosLogo);
+            LeftSidePanel.Controls.Add(PhraseIntro);
+            LeftSidePanel.Location = new Point(3, 3);
+            LeftSidePanel.Name = "LeftSidePanel";
+            LeftSidePanel.Size = new Size(469, 867);
+            LeftSidePanel.TabIndex = 8;
+            // 
+            // RightSidePanel
+            // 
+            RightSidePanel.Controls.Add(FormPanel);
+            RightSidePanel.Location = new Point(478, 3);
+            RightSidePanel.Name = "RightSidePanel";
+            RightSidePanel.Size = new Size(957, 867);
+            RightSidePanel.TabIndex = 9;
             // 
             // Signing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(379, 476);
-            Controls.Add(PanelSigning);
+            ClientSize = new Size(1432, 866);
+            Controls.Add(RightSidePanel);
+            Controls.Add(LeftSidePanel);
             Name = "Signing";
             Text = "Signing";
-            PanelSigning.ResumeLayout(false);
-            PanelSigning.PerformLayout();
+            FormPanel.ResumeLayout(false);
+            flowPanelForm.ResumeLayout(false);
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            LeftSidePanel.ResumeLayout(false);
+            RightSidePanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel PanelSigning;
-        private Label label2;
-        private Label ResultLBL;
-        private Label label1;
-        private Button LoginBTN;
-        private TextBox UsernameTXB;
-        private TextBox PasswordTXB;
+        private Panel FormPanel;
+        private FlowLayoutPanel flowPanelForm;
+        private Panel panel2;
+        private Label label3;
+        private Panel GrosLogo;
+        private Panel PhraseIntro;
+        private Panel LeftSidePanel;
+        private Panel RightSidePanel;
     }
 }

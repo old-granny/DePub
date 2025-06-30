@@ -150,7 +150,7 @@ namespace deepFake.UIElements.Basic.TaskBar
         }
 
         private void PetitLogo_Click(object? sender, EventArgs e) =>
-            ((Acceuil)Parent).LoadFrontPage();
+            Acceuil.GetInstance().LoadFrontPage();
         
 
         private void CreateTopBarButton()

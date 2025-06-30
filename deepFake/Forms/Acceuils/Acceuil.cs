@@ -50,12 +50,14 @@ namespace deepFake
         {
 
             InitializeComponent(); // Fonction implementer automatiquement par .NET
-            CreationInstanceForm();
             Beautefull();
             _instance = this;
             InstancierComposants();
+
+            CreationInstanceForm();
             LoadFrontPage();
             Globals.User.AjouterAbonne(_instance);
+
         }
 
         private void InstancierComposants()
@@ -79,10 +81,10 @@ namespace deepFake
         /* Fonction complementaire au constructeur */
         private void CreationInstanceForm()
         {
-            PublierPostPage = new PublierPost(this) { TopLevel = false, TopMost = true };
-            FrontPagePage = new FrontPage(this) { TopLevel = false, TopMost = true };
-            SignupPage = new Signup(this) { TopLevel = false, TopMost = true };
-            SigningPage = new Signing(this) { TopLevel = false, TopMost = true };
+            PublierPostPage = new PublierPost() { TopLevel = false, TopMost = true };
+            FrontPagePage = new FrontPage() { TopLevel = false, TopMost = true };
+            SignupPage = new Signup() { TopLevel = false, TopMost = true };
+            SigningPage = new Signing() { TopLevel = false, TopMost = true };
         }
 
         private void Beautefull()
@@ -162,7 +164,6 @@ namespace deepFake
 
             // Clear previous controls from the container panel
             PanelLoadForm.Controls.Clear();
-            this.BackColor = Color.White;
             SigningPage.Cleanup();
 
             LoadFormInsidePanel(SigningPage);

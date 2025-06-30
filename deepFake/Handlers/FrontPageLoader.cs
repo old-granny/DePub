@@ -16,11 +16,9 @@ namespace deepFake.Handlers
         //Attribut
         // Instance Class
         private ComPostSQL Handle;
-        private Acceuil Main;
 
-        public FrontPageLoader(Acceuil acceuil)
+        public FrontPageLoader()
         {
-            Main = acceuil;
             Handle = ComPostSQL.Instance;
         }
 
@@ -42,7 +40,7 @@ namespace deepFake.Handlers
                 List<string> lignes = Handle.getPostData("post_data", idPost[i]); // Ici le i est senser representer le id du post, vas surement launch une erreur
                 List<Image> images = Handle.GetTableImages("post_data", idPost[i]);
                 string format = Handle.GetFormatWithId("post_data", idPost[i]);
-                Panel panel = new BubblePubLoader(Main, lignes[0], format, lignes, images);
+                Panel panel = new BubblePubLoader(lignes[0], format, lignes, images);
                 panel.Location = new Point(x, y);
                 list.Add(panel);
                 nbPostsLoader++;

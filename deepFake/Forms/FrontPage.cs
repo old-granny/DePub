@@ -21,16 +21,14 @@ namespace deepFake
 
         public Panel PublicationPanel => PanelContenuePublication;
         /* Instance de Main attend un acceuil */
-        private Acceuil Main;
 
         /*  Instance des classes Helpers  */ 
         private FrontPageLoader FrontPageHandle;
 
-        public FrontPage(Acceuil acceuil)
+        public FrontPage()
         {
             InitializeComponent();
 
-            Main = acceuil;
             this.Name = "FrontPage";
             
             Beautefull();
@@ -45,7 +43,7 @@ namespace deepFake
         }
         private void LoadInstance()
         {
-            FrontPageHandle = new FrontPageLoader(Main);
+            FrontPageHandle = new FrontPageLoader();
         }
 
 
